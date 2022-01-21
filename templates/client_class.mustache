@@ -1,0 +1,12 @@
+{{warning_comment}}
+module Aws
+  module {{service_name}}
+    class Client
+      def self.new: ({{client_option}}) -> instance
+      {{#operations}}
+      def {{method_name}}: ({{arguments}}) -> {{returns}}
+      {{/operations}}
+    end
+  end
+end
+

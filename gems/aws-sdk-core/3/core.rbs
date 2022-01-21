@@ -1,0 +1,14 @@
+module Aws
+  class EmptyStructure
+  end
+
+  module Resources
+    class Collection
+    end
+  end
+
+  module Errors
+    class ServiceError < RuntimeError
+    end
+  end
+end

@@ -1,0 +1,4 @@
+AllCops:
+  Exclude:
+    - _src/**/*
+  TargetRubyVersion: 3.1

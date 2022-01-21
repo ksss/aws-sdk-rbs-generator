@@ -1,0 +1,34 @@
+module YARD
+  class Docstring < String
+    def tags: (:param) -> Array[Tags::Tag]
+            | (:option) -> Array[Tags::OptionTag]
+            | (:return) -> Array[Tags::Tag]
+  end
+  module Tags
+    class Tag
+      attr_accessor tag_name: String
+      attr_accessor text: String?
+      attr_accessor types: Array[String]
+      attr_accessor name: String
+    end
+    class DefaultTag < Tag
+      attr_reader defaults: Array[String?]
+    end
+    class OptionTag < Tag
+      attr_accessor pair: DefaultTag
+    end
+    class TypesExplainer
+      class Type
+        attr_accessor name: String
+      end
+      class CollectionType < Type
+        attr_accessor types: Array[Type]
+      end
+      class FixedCollectionType < CollectionType
+      end
+      class Parser
+        def self.parse: (String) -> Array[Type | CollectionType | FixedCollectionType]
+      end
+    end
+  end
+end

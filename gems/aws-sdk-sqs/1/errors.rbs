@@ -1,0 +1,45 @@
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the generator README.md for more information:
+# https://github.com/ksss/aws-sdk-rbs-generator/blob/main/README.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws
+  module SQS
+    module Errors
+      class BatchEntryIdsNotDistinct < Aws::Errors::ServiceError
+      end
+      class BatchRequestTooLong < Aws::Errors::ServiceError
+      end
+      class EmptyBatchRequest < Aws::Errors::ServiceError
+      end
+      class InvalidAttributeName < Aws::Errors::ServiceError
+      end
+      class InvalidBatchEntryId < Aws::Errors::ServiceError
+      end
+      class InvalidIdFormat < Aws::Errors::ServiceError
+      end
+      class InvalidMessageContents < Aws::Errors::ServiceError
+      end
+      class MessageNotInflight < Aws::Errors::ServiceError
+      end
+      class OverLimit < Aws::Errors::ServiceError
+      end
+      class PurgeQueueInProgress < Aws::Errors::ServiceError
+      end
+      class QueueDeletedRecently < Aws::Errors::ServiceError
+      end
+      class QueueDoesNotExist < Aws::Errors::ServiceError
+      end
+      class QueueNameExists < Aws::Errors::ServiceError
+      end
+      class ReceiptHandleIsInvalid < Aws::Errors::ServiceError
+      end
+      class TooManyEntriesInBatchRequest < Aws::Errors::ServiceError
+      end
+      class UnsupportedOperation < Aws::Errors::ServiceError
+      end
+    end
+  end
+end
