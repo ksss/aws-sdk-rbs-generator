@@ -1,0 +1,60 @@
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the generator README.md for more information:
+# https://github.com/ksss/aws-sdk-rbs-generator/blob/main/README.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws
+  module RDS
+    class OptionGroup
+      # identifiers
+
+      def initialize: (name: String, client: Client) -> void
+      def name: () -> String
+
+      # data_attribute
+
+      def option_group_description: () -> Types::string
+      def engine_name: () -> Types::string
+      def major_engine_version: () -> Types::string
+      def options: () -> Types::options_list
+      def allows_vpc_and_non_vpc_instance_memberships: () -> Types::boolean
+      def vpc_id: () -> Types::string
+      def option_group_arn: () -> Types::string
+
+      # client_method
+
+      def client: () -> Client
+
+      # load_method
+
+      def load: () -> self
+      alias reload load
+
+      # data_method
+
+      def data: () -> Types::OptionGroup
+
+      def data_loaded?: () -> bool
+
+      # waiters
+
+
+      # actions
+
+      def create: (engine_name: Types::string, major_engine_version: Types::string, option_group_description: Types::string, ?tags: Types::tag_list_input) -> OptionGroup
+      def copy: (target_option_group_identifier: Types::string, target_option_group_description: Types::string, ?tags: Types::tag_list_input) -> OptionGroup
+      def delete: () -> EmptyStructure
+      def modify: (?options_to_include: Types::option_configuration_list, ?options_to_remove: Types::option_names_list, ?apply_immediately: Types::boolean) -> OptionGroup
+
+      # associations
+
+
+      # batch_actions
+
+      class Collection < ::Aws::Resources::Collection[OptionGroup]
+      end
+    end
+  end
+end

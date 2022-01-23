@@ -1,0 +1,89 @@
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the generator README.md for more information:
+# https://github.com/ksss/aws-sdk-rbs-generator/blob/main/README.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws
+  module RDS
+    class DBSnapshot
+      # identifiers
+
+      def initialize: (instance_id: String, snapshot_id: String, client: Client) -> void
+      def instance_id: () -> String
+      def snapshot_id: () -> String
+
+      # data_attribute
+
+      def snapshot_create_time: () -> Types::t_stamp
+      def engine: () -> Types::string
+      def allocated_storage: () -> Types::integer
+      def status: () -> Types::string
+      def port: () -> Types::integer
+      def availability_zone: () -> Types::string
+      def vpc_id: () -> Types::string
+      def instance_create_time: () -> Types::t_stamp
+      def master_username: () -> Types::string
+      def engine_version: () -> Types::string
+      def license_model: () -> Types::string
+      def snapshot_type: () -> Types::string
+      def iops: () -> Types::integer_optional
+      def option_group_name: () -> Types::string
+      def percent_progress: () -> Types::integer
+      def source_region: () -> Types::string
+      def source_db_snapshot_identifier: () -> Types::string
+      def storage_type: () -> Types::string
+      def tde_credential_arn: () -> Types::string
+      def encrypted: () -> Types::boolean
+      def kms_key_id: () -> Types::string
+      def db_snapshot_arn: () -> Types::string
+      def timezone: () -> Types::string
+      def iam_database_authentication_enabled: () -> Types::boolean
+      def processor_features: () -> Types::processor_feature_list_output
+      def dbi_resource_id: () -> Types::string
+      def tag_list: () -> Types::tag_list_output
+      def original_snapshot_create_time: () -> Types::t_stamp
+      def snapshot_target: () -> Types::string
+
+      # client_method
+
+      def client: () -> Client
+
+      # load_method
+
+      def load: () -> self
+      alias reload load
+
+      # data_method
+
+      def data: () -> Types::DBSnapshot
+
+      def data_loaded?: () -> bool
+
+      # waiters
+
+
+      # actions
+
+      def create: (?tags: Types::tag_list_input) -> DBSnapshot
+      def copy: (target_db_snapshot_identifier: Types::string, ?kms_key_id: Types::string, ?tags: Types::tag_list_input, ?copy_tags: Types::boolean_optional, ?pre_signed_url: Types::string, ?option_group_name: Types::string, ?target_custom_availability_zone: Types::string) -> DBSnapshot
+      def delete: () -> DBSnapshot
+      def restore: (db_instance_identifier: Types::string, ?db_instance_class: Types::string, ?port: Types::integer_optional, ?availability_zone: Types::string, ?db_subnet_group_name: Types::string, ?multi_az: Types::boolean_optional, ?publicly_accessible: Types::boolean_optional, ?auto_minor_version_upgrade: Types::boolean_optional, ?license_model: Types::string, ?db_name: Types::string, ?engine: Types::string, ?iops: Types::integer_optional, ?option_group_name: Types::string, ?tags: Types::tag_list_input, ?storage_type: Types::string, ?tde_credential_arn: Types::string, ?tde_credential_password: Types::string, ?vpc_security_group_ids: Types::vpc_security_group_id_list, ?domain: Types::string, ?copy_tags_to_snapshot: Types::boolean_optional, ?domain_iam_role_name: Types::string, ?enable_iam_database_authentication: Types::boolean_optional, ?enable_cloudwatch_logs_exports: Types::log_type_list, ?processor_features: Types::processor_feature_list_input, ?use_default_processor_features: Types::boolean_optional, ?db_parameter_group_name: Types::string, ?deletion_protection: Types::boolean_optional, ?enable_customer_owned_ip: Types::boolean_optional, ?custom_iam_instance_profile: Types::string, ?backup_target: Types::string) -> DBInstance
+      def subscribe_to: (subscription_name: Types::string) -> EventSubscription
+      def unsubscribe_from: (subscription_name: Types::string) -> EventSubscription
+
+      # associations
+
+      def attributes: () -> DBSnapshotAttribute::Collection
+      def events: (?start_time: Types::t_stamp, ?end_time: Types::t_stamp, ?duration: Types::integer_optional, ?event_categories: Types::event_categories_list, ?filters: Types::filter_list, ?max_records: Types::integer_optional, ?marker: Types::string) -> Event::Collection
+      def instance: () -> DBInstance
+      def option_group: () -> OptionGroup?
+
+      # batch_actions
+
+      class Collection < ::Aws::Resources::Collection[DBSnapshot]
+      end
+    end
+  end
+end

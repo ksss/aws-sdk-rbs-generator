@@ -1,0 +1,57 @@
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the generator README.md for more information:
+# https://github.com/ksss/aws-sdk-rbs-generator/blob/main/README.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws
+  module RDS
+    class DBSubnetGroup
+      # identifiers
+
+      def initialize: (name: String, client: Client) -> void
+      def name: () -> String
+
+      # data_attribute
+
+      def db_subnet_group_description: () -> Types::string
+      def vpc_id: () -> Types::string
+      def subnet_group_status: () -> Types::string
+      def subnets: () -> Types::subnet_list
+      def db_subnet_group_arn: () -> Types::string
+
+      # client_method
+
+      def client: () -> Client
+
+      # load_method
+
+      def load: () -> self
+      alias reload load
+
+      # data_method
+
+      def data: () -> Types::DBSubnetGroup
+
+      def data_loaded?: () -> bool
+
+      # waiters
+
+
+      # actions
+
+      def create: (db_subnet_group_description: Types::string, subnet_ids: Types::subnet_identifier_list, ?tags: Types::tag_list_input) -> DBSubnetGroup
+      def delete: () -> EmptyStructure
+      def modify: (?db_subnet_group_description: Types::string, subnet_ids: Types::subnet_identifier_list) -> DBSubnetGroup
+
+      # associations
+
+
+      # batch_actions
+
+      class Collection < ::Aws::Resources::Collection[DBSubnetGroup]
+      end
+    end
+  end
+end

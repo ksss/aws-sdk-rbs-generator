@@ -1,0 +1,51 @@
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the generator README.md for more information:
+# https://github.com/ksss/aws-sdk-rbs-generator/blob/main/README.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws
+  module RDS
+    class DBEngine
+      # identifiers
+
+      def initialize: (name: String, client: Client) -> void
+      def name: () -> String
+
+      # data_attribute
+
+
+      # client_method
+
+      def client: () -> Client
+
+      # load_method
+
+
+      # data_method
+
+      def data: () -> EmptyStructure
+
+      def data_loaded?: () -> bool
+
+      # waiters
+
+
+      # actions
+
+
+      # associations
+
+      def option_group_options: (?major_engine_version: Types::string, ?filters: Types::filter_list, ?max_records: Types::integer_optional, ?marker: Types::string) -> OptionGroupOption::Collection
+      def option_groups: (?option_group_name: Types::string, ?filters: Types::filter_list, ?marker: Types::string, ?max_records: Types::integer_optional, ?major_engine_version: Types::string) -> OptionGroup::Collection
+      def version: (String version) -> DBEngineVersion
+      def versions: (?engine_version: Types::string, ?db_parameter_group_family: Types::string, ?filters: Types::filter_list, ?max_records: Types::integer_optional, ?marker: Types::string, ?default_only: Types::boolean, ?list_supported_character_sets: Types::boolean_optional, ?list_supported_timezones: Types::boolean_optional, ?include_all: Types::boolean_optional) -> DBEngineVersion::Collection
+
+      # batch_actions
+
+      class Collection < ::Aws::Resources::Collection[DBEngine]
+      end
+    end
+  end
+end

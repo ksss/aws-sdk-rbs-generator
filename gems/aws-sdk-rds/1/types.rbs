@@ -1,0 +1,1403 @@
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the generator README.md for more information:
+# https://github.com/ksss/aws-sdk-rbs-generator/blob/main/README.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws
+  module RDS
+    module Types
+      class AccountAttributesMessage
+        attr_accessor account_quotas: account_quota_list
+      end
+      class AccountQuota
+        attr_accessor account_quota_name: string
+        attr_accessor used: long
+        attr_accessor max: long
+      end
+      type account_quota_list = ::Array[AccountQuota]
+      type activity_stream_mode = ("sync" | "async")
+      type activity_stream_mode_list = ::Array[string]
+      type activity_stream_status = ("stopped" | "starting" | "started" | "stopping")
+      class AddSourceIdentifierToSubscriptionResult
+        attr_accessor event_subscription: EventSubscription
+      end
+      type apply_method = ("immediate" | "pending-reboot")
+      class ApplyPendingMaintenanceActionResult
+        attr_accessor resource_pending_maintenance_actions: ResourcePendingMaintenanceActions
+      end
+      type attribute_value_list = ::Array[string]
+      type auth_scheme = ("SECRETS")
+      class AuthorizeDBSecurityGroupIngressResult
+        attr_accessor db_security_group: DBSecurityGroup
+      end
+      type automation_mode = ("full" | "all-paused")
+      class AvailabilityZone
+        attr_accessor name: string
+      end
+      type availability_zone_list_output = ::Array[AvailabilityZone]
+      type availability_zones = ::Array[string]
+      class AvailableProcessorFeature
+        attr_accessor name: string
+        attr_accessor default_value: string
+        attr_accessor allowed_values: string
+      end
+      type available_processor_feature_list = ::Array[AvailableProcessorFeature]
+      type aws_backup_recovery_point_arn = ::String
+      type boolean = bool
+      type boolean_optional = bool
+      type bucket_name = ::String
+      class Certificate
+        attr_accessor certificate_identifier: string
+        attr_accessor certificate_type: string
+        attr_accessor thumbprint: string
+        attr_accessor valid_from: t_stamp
+        attr_accessor valid_till: t_stamp
+        attr_accessor certificate_arn: string
+        attr_accessor customer_override: boolean_optional
+        attr_accessor customer_override_valid_till: t_stamp
+      end
+      type certificate_list_output = ::Array[Certificate]
+      class CertificateMessage
+        attr_accessor certificates: certificate_list_output
+        attr_accessor marker: string
+      end
+      class CharacterSet
+        attr_accessor character_set_name: string
+        attr_accessor character_set_description: string
+      end
+      type cloudwatch_logs_export_configuration = { enable_log_types: log_type_list?, disable_log_types: log_type_list? }
+      class ClusterPendingModifiedValues
+        attr_accessor pending_cloudwatch_logs_exports: PendingCloudwatchLogsExports
+        attr_accessor db_cluster_identifier: string
+        attr_accessor master_user_password: string
+        attr_accessor iam_database_authentication_enabled: boolean_optional
+        attr_accessor engine_version: string
+      end
+      type connection_pool_configuration = { max_connections_percent: integer_optional?, max_idle_connections_percent: integer_optional?, connection_borrow_timeout: integer_optional?, session_pinning_filters: string_list?, init_query: string? }
+      class ConnectionPoolConfigurationInfo
+        attr_accessor max_connections_percent: integer
+        attr_accessor max_idle_connections_percent: integer
+        attr_accessor connection_borrow_timeout: integer
+        attr_accessor session_pinning_filters: string_list
+        attr_accessor init_query: string
+      end
+      class CopyDBClusterParameterGroupResult
+        attr_accessor db_cluster_parameter_group: DBClusterParameterGroup
+      end
+      class CopyDBClusterSnapshotResult
+        attr_accessor db_cluster_snapshot: DBClusterSnapshot
+      end
+      class CopyDBParameterGroupResult
+        attr_accessor db_parameter_group: DBParameterGroup
+      end
+      class CopyDBSnapshotResult
+        attr_accessor db_snapshot: DBSnapshot
+      end
+      class CopyOptionGroupResult
+        attr_accessor option_group: OptionGroup
+      end
+      class CreateCustomAvailabilityZoneResult
+        attr_accessor custom_availability_zone: CustomAvailabilityZone
+      end
+      class CreateDBClusterParameterGroupResult
+        attr_accessor db_cluster_parameter_group: DBClusterParameterGroup
+      end
+      class CreateDBClusterResult
+        attr_accessor db_cluster: DBCluster
+      end
+      class CreateDBClusterSnapshotResult
+        attr_accessor db_cluster_snapshot: DBClusterSnapshot
+      end
+      class CreateDBInstanceReadReplicaResult
+        attr_accessor db_instance: DBInstance
+      end
+      class CreateDBInstanceResult
+        attr_accessor db_instance: DBInstance
+      end
+      class CreateDBParameterGroupResult
+        attr_accessor db_parameter_group: DBParameterGroup
+      end
+      class CreateDBProxyEndpointResponse
+        attr_accessor db_proxy_endpoint: DBProxyEndpoint
+      end
+      class CreateDBProxyResponse
+        attr_accessor db_proxy: DBProxy
+      end
+      class CreateDBSecurityGroupResult
+        attr_accessor db_security_group: DBSecurityGroup
+      end
+      class CreateDBSnapshotResult
+        attr_accessor db_snapshot: DBSnapshot
+      end
+      class CreateDBSubnetGroupResult
+        attr_accessor db_subnet_group: DBSubnetGroup
+      end
+      class CreateEventSubscriptionResult
+        attr_accessor event_subscription: EventSubscription
+      end
+      class CreateGlobalClusterResult
+        attr_accessor global_cluster: GlobalCluster
+      end
+      class CreateOptionGroupResult
+        attr_accessor option_group: OptionGroup
+      end
+      class CustomAvailabilityZone
+        attr_accessor custom_availability_zone_id: string
+        attr_accessor custom_availability_zone_name: string
+        attr_accessor custom_availability_zone_status: string
+        attr_accessor vpn_details: VpnDetails
+      end
+      type custom_availability_zone_list_output = ::Array[CustomAvailabilityZone]
+      class CustomAvailabilityZoneMessage
+        attr_accessor marker: string
+        attr_accessor custom_availability_zones: custom_availability_zone_list_output
+      end
+      type custom_db_engine_version_manifest = ::String
+      type custom_engine_name = ::String
+      type custom_engine_version = ::String
+      type custom_engine_version_status = ("available" | "inactive" | "inactive-except-restore")
+      class DBCluster
+        attr_accessor allocated_storage: integer_optional
+        attr_accessor availability_zones: availability_zones
+        attr_accessor backup_retention_period: integer_optional
+        attr_accessor character_set_name: string
+        attr_accessor database_name: string
+        attr_accessor db_cluster_identifier: string
+        attr_accessor db_cluster_parameter_group: string
+        attr_accessor db_subnet_group: string
+        attr_accessor status: string
+        attr_accessor automatic_restart_time: t_stamp
+        attr_accessor percent_progress: string
+        attr_accessor earliest_restorable_time: t_stamp
+        attr_accessor endpoint: string
+        attr_accessor reader_endpoint: string
+        attr_accessor custom_endpoints: string_list
+        attr_accessor multi_az: boolean_optional
+        attr_accessor engine: string
+        attr_accessor engine_version: string
+        attr_accessor latest_restorable_time: t_stamp
+        attr_accessor port: integer_optional
+        attr_accessor master_username: string
+        attr_accessor db_cluster_option_group_memberships: db_cluster_option_group_memberships
+        attr_accessor preferred_backup_window: string
+        attr_accessor preferred_maintenance_window: string
+        attr_accessor replication_source_identifier: string
+        attr_accessor read_replica_identifiers: read_replica_identifier_list
+        attr_accessor db_cluster_members: db_cluster_member_list
+        attr_accessor vpc_security_groups: vpc_security_group_membership_list
+        attr_accessor hosted_zone_id: string
+        attr_accessor storage_encrypted: boolean
+        attr_accessor kms_key_id: string
+        attr_accessor db_cluster_resource_id: string
+        attr_accessor db_cluster_arn: string
+        attr_accessor associated_roles: db_cluster_roles
+        attr_accessor iam_database_authentication_enabled: boolean_optional
+        attr_accessor clone_group_id: string
+        attr_accessor cluster_create_time: t_stamp
+        attr_accessor earliest_backtrack_time: t_stamp
+        attr_accessor backtrack_window: long_optional
+        attr_accessor backtrack_consumed_change_records: long_optional
+        attr_accessor enabled_cloudwatch_logs_exports: log_type_list
+        attr_accessor capacity: integer_optional
+        attr_accessor engine_mode: string
+        attr_accessor scaling_configuration_info: ScalingConfigurationInfo
+        attr_accessor deletion_protection: boolean_optional
+        attr_accessor http_endpoint_enabled: boolean_optional
+        attr_accessor activity_stream_mode: activity_stream_mode
+        attr_accessor activity_stream_status: activity_stream_status
+        attr_accessor activity_stream_kms_key_id: string
+        attr_accessor activity_stream_kinesis_stream_name: string
+        attr_accessor copy_tags_to_snapshot: boolean_optional
+        attr_accessor cross_account_clone: boolean_optional
+        attr_accessor domain_memberships: domain_membership_list
+        attr_accessor tag_list: tag_list_output
+        attr_accessor global_write_forwarding_status: write_forwarding_status
+        attr_accessor global_write_forwarding_requested: boolean_optional
+        attr_accessor pending_modified_values: ClusterPendingModifiedValues
+        attr_accessor db_cluster_instance_class: string
+        attr_accessor storage_type: string
+        attr_accessor iops: integer_optional
+        attr_accessor publicly_accessible: boolean_optional
+        attr_accessor auto_minor_version_upgrade: boolean
+        attr_accessor monitoring_interval: integer_optional
+        attr_accessor monitoring_role_arn: string
+        attr_accessor performance_insights_enabled: boolean_optional
+        attr_accessor performance_insights_kms_key_id: string
+        attr_accessor performance_insights_retention_period: integer_optional
+      end
+      class DBClusterBacktrack
+        attr_accessor db_cluster_identifier: string
+        attr_accessor backtrack_identifier: string
+        attr_accessor backtrack_to: t_stamp
+        attr_accessor backtracked_from: t_stamp
+        attr_accessor backtrack_request_creation_time: t_stamp
+        attr_accessor status: string
+      end
+      type db_cluster_backtrack_list_output = ::Array[DBClusterBacktrack]
+      class DBClusterBacktrackMessage
+        attr_accessor marker: string
+        attr_accessor db_cluster_backtracks: db_cluster_backtrack_list_output
+      end
+      class DBClusterCapacityInfo
+        attr_accessor db_cluster_identifier: string
+        attr_accessor pending_capacity: integer_optional
+        attr_accessor current_capacity: integer_optional
+        attr_accessor seconds_before_timeout: integer_optional
+        attr_accessor timeout_action: string
+      end
+      class DBClusterEndpoint
+        attr_accessor db_cluster_endpoint_identifier: string
+        attr_accessor db_cluster_identifier: string
+        attr_accessor db_cluster_endpoint_resource_identifier: string
+        attr_accessor endpoint: string
+        attr_accessor status: string
+        attr_accessor endpoint_type: string
+        attr_accessor custom_endpoint_type: string
+        attr_accessor static_members: string_list
+        attr_accessor excluded_members: string_list
+        attr_accessor db_cluster_endpoint_arn: string
+      end
+      type db_cluster_endpoint_list_output = ::Array[DBClusterEndpoint]
+      class DBClusterEndpointMessage
+        attr_accessor marker: string
+        attr_accessor db_cluster_endpoints: db_cluster_endpoint_list_output
+      end
+      type db_cluster_identifier = ::String
+      type db_cluster_list_output = ::Array[DBCluster]
+      class DBClusterMember
+        attr_accessor db_instance_identifier: string
+        attr_accessor is_cluster_writer: boolean
+        attr_accessor db_cluster_parameter_group_status: string
+        attr_accessor promotion_tier: integer_optional
+      end
+      type db_cluster_member_list = ::Array[DBClusterMember]
+      class DBClusterMessage
+        attr_accessor marker: string
+        attr_accessor db_clusters: db_cluster_list_output
+      end
+      type db_cluster_option_group_memberships = ::Array[DBClusterOptionGroupStatus]
+      class DBClusterOptionGroupStatus
+        attr_accessor db_cluster_option_group_name: string
+        attr_accessor status: string
+      end
+      class DBClusterParameterGroup
+        attr_accessor db_cluster_parameter_group_name: string
+        attr_accessor db_parameter_group_family: string
+        attr_accessor description: string
+        attr_accessor db_cluster_parameter_group_arn: string
+      end
+      class DBClusterParameterGroupDetails
+        attr_accessor parameters: parameters_list_output
+        attr_accessor marker: string
+      end
+      type db_cluster_parameter_group_list_output = ::Array[DBClusterParameterGroup]
+      class DBClusterParameterGroupNameMessage
+        attr_accessor db_cluster_parameter_group_name: string
+      end
+      class DBClusterParameterGroupsMessage
+        attr_accessor marker: string
+        attr_accessor db_cluster_parameter_groups: db_cluster_parameter_group_list_output
+      end
+      class DBClusterRole
+        attr_accessor role_arn: string
+        attr_accessor status: string
+        attr_accessor feature_name: string
+      end
+      type db_cluster_roles = ::Array[DBClusterRole]
+      class DBClusterSnapshot
+        attr_accessor availability_zones: availability_zones
+        attr_accessor db_cluster_snapshot_identifier: string
+        attr_accessor db_cluster_identifier: string
+        attr_accessor snapshot_create_time: t_stamp
+        attr_accessor engine: string
+        attr_accessor engine_mode: string
+        attr_accessor allocated_storage: integer
+        attr_accessor status: string
+        attr_accessor port: integer
+        attr_accessor vpc_id: string
+        attr_accessor cluster_create_time: t_stamp
+        attr_accessor master_username: string
+        attr_accessor engine_version: string
+        attr_accessor license_model: string
+        attr_accessor snapshot_type: string
+        attr_accessor percent_progress: integer
+        attr_accessor storage_encrypted: boolean
+        attr_accessor kms_key_id: string
+        attr_accessor db_cluster_snapshot_arn: string
+        attr_accessor source_db_cluster_snapshot_arn: string
+        attr_accessor iam_database_authentication_enabled: boolean
+        attr_accessor tag_list: tag_list_output
+      end
+      class DBClusterSnapshotAttribute
+        attr_accessor attribute_name: string
+        attr_accessor attribute_values: attribute_value_list
+      end
+      type db_cluster_snapshot_attribute_list = ::Array[DBClusterSnapshotAttribute]
+      class DBClusterSnapshotAttributesResult
+        attr_accessor db_cluster_snapshot_identifier: string
+        attr_accessor db_cluster_snapshot_attributes: db_cluster_snapshot_attribute_list
+      end
+      type db_cluster_snapshot_list_output = ::Array[DBClusterSnapshot]
+      class DBClusterSnapshotMessage
+        attr_accessor marker: string
+        attr_accessor db_cluster_snapshots: db_cluster_snapshot_list_output
+      end
+      class DBEngineVersion
+        attr_accessor engine: string
+        attr_accessor engine_version: string
+        attr_accessor db_parameter_group_family: string
+        attr_accessor db_engine_description: string
+        attr_accessor db_engine_version_description: string
+        attr_accessor default_character_set: CharacterSet
+        attr_accessor supported_character_sets: supported_character_sets_list_output
+        attr_accessor supported_nchar_character_sets: supported_character_sets_list_output
+        attr_accessor valid_upgrade_target: valid_upgrade_target_list
+        attr_accessor supported_timezones: supported_timezones_list
+        attr_accessor exportable_log_types: log_type_list
+        attr_accessor supports_log_exports_to_cloudwatch_logs: boolean
+        attr_accessor supports_read_replica: boolean
+        attr_accessor supported_engine_modes: engine_mode_list
+        attr_accessor supported_feature_names: feature_name_list
+        attr_accessor status: string
+        attr_accessor supports_parallel_query: boolean
+        attr_accessor supports_global_databases: boolean
+        attr_accessor major_engine_version: string
+        attr_accessor database_installation_files_s3_bucket_name: string
+        attr_accessor database_installation_files_s3_prefix: string
+        attr_accessor db_engine_version_arn: string
+        attr_accessor kms_key_id: string
+        attr_accessor create_time: t_stamp
+        attr_accessor tag_list: tag_list_output
+      end
+      type db_engine_version_list_output = ::Array[DBEngineVersion]
+      class DBEngineVersionMessage
+        attr_accessor marker: string
+        attr_accessor db_engine_versions: db_engine_version_list_output
+      end
+      class DBInstance
+        attr_accessor db_instance_identifier: string
+        attr_accessor db_instance_class: string
+        attr_accessor engine: string
+        attr_accessor db_instance_status: string
+        attr_accessor automatic_restart_time: t_stamp
+        attr_accessor master_username: string
+        attr_accessor db_name: string
+        attr_accessor endpoint: Endpoint
+        attr_accessor allocated_storage: integer
+        attr_accessor instance_create_time: t_stamp
+        attr_accessor preferred_backup_window: string
+        attr_accessor backup_retention_period: integer
+        attr_accessor db_security_groups: db_security_group_membership_list
+        attr_accessor vpc_security_groups: vpc_security_group_membership_list
+        attr_accessor db_parameter_groups: db_parameter_group_status_list
+        attr_accessor availability_zone: string
+        attr_accessor db_subnet_group: DBSubnetGroup
+        attr_accessor preferred_maintenance_window: string
+        attr_accessor pending_modified_values: PendingModifiedValues
+        attr_accessor latest_restorable_time: t_stamp
+        attr_accessor multi_az: boolean
+        attr_accessor engine_version: string
+        attr_accessor auto_minor_version_upgrade: boolean
+        attr_accessor read_replica_source_db_instance_identifier: string
+        attr_accessor read_replica_db_instance_identifiers: read_replica_db_instance_identifier_list
+        attr_accessor read_replica_db_cluster_identifiers: read_replica_db_cluster_identifier_list
+        attr_accessor replica_mode: replica_mode
+        attr_accessor license_model: string
+        attr_accessor iops: integer_optional
+        attr_accessor option_group_memberships: option_group_membership_list
+        attr_accessor character_set_name: string
+        attr_accessor nchar_character_set_name: string
+        attr_accessor secondary_availability_zone: string
+        attr_accessor publicly_accessible: boolean
+        attr_accessor status_infos: db_instance_status_info_list
+        attr_accessor storage_type: string
+        attr_accessor tde_credential_arn: string
+        attr_accessor db_instance_port: integer
+        attr_accessor db_cluster_identifier: string
+        attr_accessor storage_encrypted: boolean
+        attr_accessor kms_key_id: string
+        attr_accessor dbi_resource_id: string
+        attr_accessor ca_certificate_identifier: string
+        attr_accessor domain_memberships: domain_membership_list
+        attr_accessor copy_tags_to_snapshot: boolean
+        attr_accessor monitoring_interval: integer_optional
+        attr_accessor enhanced_monitoring_resource_arn: string
+        attr_accessor monitoring_role_arn: string
+        attr_accessor promotion_tier: integer_optional
+        attr_accessor db_instance_arn: string
+        attr_accessor timezone: string
+        attr_accessor iam_database_authentication_enabled: boolean
+        attr_accessor performance_insights_enabled: boolean_optional
+        attr_accessor performance_insights_kms_key_id: string
+        attr_accessor performance_insights_retention_period: integer_optional
+        attr_accessor enabled_cloudwatch_logs_exports: log_type_list
+        attr_accessor processor_features: processor_feature_list_output
+        attr_accessor deletion_protection: boolean
+        attr_accessor associated_roles: db_instance_roles
+        attr_accessor listener_endpoint: Endpoint
+        attr_accessor max_allocated_storage: integer_optional
+        attr_accessor tag_list: tag_list_output
+        attr_accessor db_instance_automated_backups_replications: db_instance_automated_backups_replication_list
+        attr_accessor customer_owned_ip_enabled: boolean_optional
+        attr_accessor aws_backup_recovery_point_arn: string
+        attr_accessor activity_stream_status: activity_stream_status
+        attr_accessor activity_stream_kms_key_id: string
+        attr_accessor activity_stream_kinesis_stream_name: string
+        attr_accessor activity_stream_mode: activity_stream_mode
+        attr_accessor activity_stream_engine_native_audit_fields_included: boolean_optional
+        attr_accessor automation_mode: automation_mode
+        attr_accessor resume_full_automation_mode_time: t_stamp
+        attr_accessor custom_iam_instance_profile: string
+        attr_accessor backup_target: string
+      end
+      class DBInstanceAutomatedBackup
+        attr_accessor db_instance_arn: string
+        attr_accessor dbi_resource_id: string
+        attr_accessor region: string
+        attr_accessor db_instance_identifier: string
+        attr_accessor restore_window: RestoreWindow
+        attr_accessor allocated_storage: integer
+        attr_accessor status: string
+        attr_accessor port: integer
+        attr_accessor availability_zone: string
+        attr_accessor vpc_id: string
+        attr_accessor instance_create_time: t_stamp
+        attr_accessor master_username: string
+        attr_accessor engine: string
+        attr_accessor engine_version: string
+        attr_accessor license_model: string
+        attr_accessor iops: integer_optional
+        attr_accessor option_group_name: string
+        attr_accessor tde_credential_arn: string
+        attr_accessor encrypted: boolean
+        attr_accessor storage_type: string
+        attr_accessor kms_key_id: string
+        attr_accessor timezone: string
+        attr_accessor iam_database_authentication_enabled: boolean
+        attr_accessor backup_retention_period: integer_optional
+        attr_accessor db_instance_automated_backups_arn: string
+        attr_accessor db_instance_automated_backups_replications: db_instance_automated_backups_replication_list
+        attr_accessor backup_target: string
+      end
+      type db_instance_automated_backup_list_output = ::Array[DBInstanceAutomatedBackup]
+      class DBInstanceAutomatedBackupMessage
+        attr_accessor marker: string
+        attr_accessor db_instance_automated_backups: db_instance_automated_backup_list_output
+      end
+      class DBInstanceAutomatedBackupsReplication
+        attr_accessor db_instance_automated_backups_arn: string
+      end
+      type db_instance_automated_backups_replication_list = ::Array[DBInstanceAutomatedBackupsReplication]
+      type db_instance_list_output = ::Array[DBInstance]
+      class DBInstanceMessage
+        attr_accessor marker: string
+        attr_accessor db_instances: db_instance_list_output
+      end
+      class DBInstanceRole
+        attr_accessor role_arn: string
+        attr_accessor feature_name: string
+        attr_accessor status: string
+      end
+      type db_instance_roles = ::Array[DBInstanceRole]
+      class DBInstanceStatusInfo
+        attr_accessor status_type: string
+        attr_accessor normal: boolean
+        attr_accessor status: string
+        attr_accessor message: string
+      end
+      type db_instance_status_info_list = ::Array[DBInstanceStatusInfo]
+      class DBParameterGroup
+        attr_accessor db_parameter_group_name: string
+        attr_accessor db_parameter_group_family: string
+        attr_accessor description: string
+        attr_accessor db_parameter_group_arn: string
+      end
+      class DBParameterGroupDetails
+        attr_accessor parameters: parameters_list_output
+        attr_accessor marker: string
+      end
+      type db_parameter_group_list_output = ::Array[DBParameterGroup]
+      class DBParameterGroupNameMessage
+        attr_accessor db_parameter_group_name: string
+      end
+      class DBParameterGroupStatus
+        attr_accessor db_parameter_group_name: string
+        attr_accessor parameter_apply_status: string
+      end
+      type db_parameter_group_status_list = ::Array[DBParameterGroupStatus]
+      class DBParameterGroupsMessage
+        attr_accessor marker: string
+        attr_accessor db_parameter_groups: db_parameter_group_list_output
+      end
+      class DBProxy
+        attr_accessor db_proxy_name: string
+        attr_accessor db_proxy_arn: string
+        attr_accessor status: db_proxy_status
+        attr_accessor engine_family: string
+        attr_accessor vpc_id: string
+        attr_accessor vpc_security_group_ids: string_list
+        attr_accessor vpc_subnet_ids: string_list
+        attr_accessor auth: user_auth_config_info_list
+        attr_accessor role_arn: string
+        attr_accessor endpoint: string
+        attr_accessor require_tls: boolean
+        attr_accessor idle_client_timeout: integer
+        attr_accessor debug_logging: boolean
+        attr_accessor created_date: t_stamp
+        attr_accessor updated_date: t_stamp
+      end
+      class DBProxyEndpoint
+        attr_accessor db_proxy_endpoint_name: string
+        attr_accessor db_proxy_endpoint_arn: string
+        attr_accessor db_proxy_name: string
+        attr_accessor status: db_proxy_endpoint_status
+        attr_accessor vpc_id: string
+        attr_accessor vpc_security_group_ids: string_list
+        attr_accessor vpc_subnet_ids: string_list
+        attr_accessor endpoint: string
+        attr_accessor created_date: t_stamp
+        attr_accessor target_role: db_proxy_endpoint_target_role
+        attr_accessor is_default: boolean
+      end
+      type db_proxy_endpoint_list = ::Array[DBProxyEndpoint]
+      type db_proxy_endpoint_name = ::String
+      type db_proxy_endpoint_status = ("available" | "modifying" | "incompatible-network" | "insufficient-resource-limits" | "creating" | "deleting")
+      type db_proxy_endpoint_target_role = ("READ_WRITE" | "READ_ONLY")
+      type db_proxy_list = ::Array[DBProxy]
+      type db_proxy_name = ::String
+      type db_proxy_status = ("available" | "modifying" | "incompatible-network" | "insufficient-resource-limits" | "creating" | "deleting" | "suspended" | "suspending" | "reactivating")
+      class DBProxyTarget
+        attr_accessor target_arn: string
+        attr_accessor endpoint: string
+        attr_accessor tracked_cluster_id: string
+        attr_accessor rds_resource_id: string
+        attr_accessor port: integer
+        attr_accessor type_: target_type
+        attr_accessor role: target_role
+        attr_accessor target_health: TargetHealth
+      end
+      class DBProxyTargetGroup
+        attr_accessor db_proxy_name: string
+        attr_accessor target_group_name: string
+        attr_accessor target_group_arn: string
+        attr_accessor is_default: boolean
+        attr_accessor status: string
+        attr_accessor connection_pool_config: ConnectionPoolConfigurationInfo
+        attr_accessor created_date: t_stamp
+        attr_accessor updated_date: t_stamp
+      end
+      class DBSecurityGroup
+        attr_accessor owner_id: string
+        attr_accessor db_security_group_name: string
+        attr_accessor db_security_group_description: string
+        attr_accessor vpc_id: string
+        attr_accessor ec2_security_groups: ec2_security_group_list
+        attr_accessor ip_ranges: ip_range_list
+        attr_accessor db_security_group_arn: string
+      end
+      class DBSecurityGroupMembership
+        attr_accessor db_security_group_name: string
+        attr_accessor status: string
+      end
+      type db_security_group_membership_list = ::Array[DBSecurityGroupMembership]
+      class DBSecurityGroupMessage
+        attr_accessor marker: string
+        attr_accessor db_security_groups: db_security_groups_output
+      end
+      type db_security_group_name_list = ::Array[string]
+      type db_security_groups_output = ::Array[DBSecurityGroup]
+      class DBSnapshot
+        attr_accessor db_snapshot_identifier: string
+        attr_accessor db_instance_identifier: string
+        attr_accessor snapshot_create_time: t_stamp
+        attr_accessor engine: string
+        attr_accessor allocated_storage: integer
+        attr_accessor status: string
+        attr_accessor port: integer
+        attr_accessor availability_zone: string
+        attr_accessor vpc_id: string
+        attr_accessor instance_create_time: t_stamp
+        attr_accessor master_username: string
+        attr_accessor engine_version: string
+        attr_accessor license_model: string
+        attr_accessor snapshot_type: string
+        attr_accessor iops: integer_optional
+        attr_accessor option_group_name: string
+        attr_accessor percent_progress: integer
+        attr_accessor source_region: string
+        attr_accessor source_db_snapshot_identifier: string
+        attr_accessor storage_type: string
+        attr_accessor tde_credential_arn: string
+        attr_accessor encrypted: boolean
+        attr_accessor kms_key_id: string
+        attr_accessor db_snapshot_arn: string
+        attr_accessor timezone: string
+        attr_accessor iam_database_authentication_enabled: boolean
+        attr_accessor processor_features: processor_feature_list_output
+        attr_accessor dbi_resource_id: string
+        attr_accessor tag_list: tag_list_output
+        attr_accessor original_snapshot_create_time: t_stamp
+        attr_accessor snapshot_target: string
+      end
+      class DBSnapshotAttribute
+        attr_accessor attribute_name: string
+        attr_accessor attribute_values: attribute_value_list
+      end
+      type db_snapshot_attribute_list = ::Array[DBSnapshotAttribute]
+      class DBSnapshotAttributesResult
+        attr_accessor db_snapshot_identifier: string
+        attr_accessor db_snapshot_attributes: db_snapshot_attribute_list
+      end
+      type db_snapshot_list_output = ::Array[DBSnapshot]
+      class DBSnapshotMessage
+        attr_accessor marker: string
+        attr_accessor db_snapshots: db_snapshot_list_output
+      end
+      class DBSubnetGroup
+        attr_accessor db_subnet_group_name: string
+        attr_accessor db_subnet_group_description: string
+        attr_accessor vpc_id: string
+        attr_accessor subnet_group_status: string
+        attr_accessor subnets: subnet_list
+        attr_accessor db_subnet_group_arn: string
+      end
+      class DBSubnetGroupMessage
+        attr_accessor marker: string
+        attr_accessor db_subnet_groups: db_subnet_groups_output
+      end
+      type db_subnet_groups_output = ::Array[DBSubnetGroup]
+      class DeleteCustomAvailabilityZoneResult
+        attr_accessor custom_availability_zone: CustomAvailabilityZone
+      end
+      class DeleteDBClusterResult
+        attr_accessor db_cluster: DBCluster
+      end
+      class DeleteDBClusterSnapshotResult
+        attr_accessor db_cluster_snapshot: DBClusterSnapshot
+      end
+      class DeleteDBInstanceAutomatedBackupResult
+        attr_accessor db_instance_automated_backup: DBInstanceAutomatedBackup
+      end
+      class DeleteDBInstanceResult
+        attr_accessor db_instance: DBInstance
+      end
+      class DeleteDBProxyEndpointResponse
+        attr_accessor db_proxy_endpoint: DBProxyEndpoint
+      end
+      class DeleteDBProxyResponse
+        attr_accessor db_proxy: DBProxy
+      end
+      class DeleteDBSnapshotResult
+        attr_accessor db_snapshot: DBSnapshot
+      end
+      class DeleteEventSubscriptionResult
+        attr_accessor event_subscription: EventSubscription
+      end
+      class DeleteGlobalClusterResult
+        attr_accessor global_cluster: GlobalCluster
+      end
+      class DeregisterDBProxyTargetsResponse
+      end
+      class DescribeDBClusterSnapshotAttributesResult
+        attr_accessor db_cluster_snapshot_attributes_result: DBClusterSnapshotAttributesResult
+      end
+      class DescribeDBLogFilesDetails
+        attr_accessor log_file_name: string
+        attr_accessor last_written: long
+        attr_accessor size: long
+      end
+      type describe_db_log_files_list = ::Array[DescribeDBLogFilesDetails]
+      class DescribeDBLogFilesResponse
+        attr_accessor describe_db_log_files: describe_db_log_files_list
+        attr_accessor marker: string
+      end
+      class DescribeDBProxiesResponse
+        attr_accessor db_proxies: db_proxy_list
+        attr_accessor marker: string
+      end
+      class DescribeDBProxyEndpointsResponse
+        attr_accessor db_proxy_endpoints: db_proxy_endpoint_list
+        attr_accessor marker: string
+      end
+      class DescribeDBProxyTargetGroupsResponse
+        attr_accessor target_groups: target_group_list
+        attr_accessor marker: string
+      end
+      class DescribeDBProxyTargetsResponse
+        attr_accessor targets: target_list
+        attr_accessor marker: string
+      end
+      class DescribeDBSnapshotAttributesResult
+        attr_accessor db_snapshot_attributes_result: DBSnapshotAttributesResult
+      end
+      class DescribeEngineDefaultClusterParametersResult
+        attr_accessor engine_defaults: EngineDefaults
+      end
+      class DescribeEngineDefaultParametersResult
+        attr_accessor engine_defaults: EngineDefaults
+      end
+      class DescribeValidDBInstanceModificationsResult
+        attr_accessor valid_db_instance_modifications_message: ValidDBInstanceModificationsMessage
+      end
+      type description = ::String
+      class DomainMembership
+        attr_accessor domain: string
+        attr_accessor status: string
+        attr_accessor fqdn: string
+        attr_accessor iam_role_name: string
+      end
+      type domain_membership_list = ::Array[DomainMembership]
+      type double = ::Float
+      type double_optional = ::Float
+      class DoubleRange
+        attr_accessor from: double
+        attr_accessor to: double
+      end
+      type double_range_list = ::Array[DoubleRange]
+      class DownloadDBLogFilePortionDetails
+        attr_accessor log_file_data: string
+        attr_accessor marker: string
+        attr_accessor additional_data_pending: boolean
+      end
+      class EC2SecurityGroup
+        attr_accessor status: string
+        attr_accessor ec2_security_group_name: string
+        attr_accessor ec2_security_group_id: string
+        attr_accessor ec2_security_group_owner_id: string
+      end
+      type ec2_security_group_list = ::Array[EC2SecurityGroup]
+      class Endpoint
+        attr_accessor address: string
+        attr_accessor port: integer
+        attr_accessor hosted_zone_id: string
+      end
+      class EngineDefaults
+        attr_accessor db_parameter_group_family: string
+        attr_accessor marker: string
+        attr_accessor parameters: parameters_list_output
+      end
+      type engine_family = ("MYSQL" | "POSTGRESQL")
+      type engine_mode_list = ::Array[string]
+      class Event
+        attr_accessor source_identifier: string
+        attr_accessor source_type: source_type
+        attr_accessor message: string
+        attr_accessor event_categories: event_categories_list
+        attr_accessor date: t_stamp
+        attr_accessor source_arn: string
+      end
+      type event_categories_list = ::Array[string]
+      class EventCategoriesMap
+        attr_accessor source_type: string
+        attr_accessor event_categories: event_categories_list
+      end
+      type event_categories_map_list = ::Array[EventCategoriesMap]
+      class EventCategoriesMessage
+        attr_accessor event_categories_map_list: event_categories_map_list
+      end
+      type event_list = ::Array[Event]
+      class EventSubscription
+        attr_accessor customer_aws_id: string
+        attr_accessor cust_subscription_id: string
+        attr_accessor sns_topic_arn: string
+        attr_accessor status: string
+        attr_accessor subscription_creation_time: string
+        attr_accessor source_type: string
+        attr_accessor source_ids_list: source_ids_list
+        attr_accessor event_categories_list: event_categories_list
+        attr_accessor enabled: boolean
+        attr_accessor event_subscription_arn: string
+      end
+      type event_subscriptions_list_output = ::Array[EventSubscription]
+      class EventSubscriptionsMessage
+        attr_accessor marker: string
+        attr_accessor event_subscriptions_list: event_subscriptions_list_output
+      end
+      class EventsMessage
+        attr_accessor marker: string
+        attr_accessor events: event_list
+      end
+      class ExportTask
+        attr_accessor export_task_identifier: string
+        attr_accessor source_arn: string
+        attr_accessor export_only: string_list
+        attr_accessor snapshot_time: t_stamp
+        attr_accessor task_start_time: t_stamp
+        attr_accessor task_end_time: t_stamp
+        attr_accessor s3_bucket: string
+        attr_accessor s3_prefix: string
+        attr_accessor iam_role_arn: string
+        attr_accessor kms_key_id: string
+        attr_accessor status: string
+        attr_accessor percent_progress: integer
+        attr_accessor total_extracted_data_in_gb: integer
+        attr_accessor failure_cause: string
+        attr_accessor warning_message: string
+      end
+      type export_tasks_list_output = ::Array[ExportTask]
+      class ExportTasksMessage
+        attr_accessor marker: string
+        attr_accessor export_tasks: export_tasks_list_output
+      end
+      class FailoverDBClusterResult
+        attr_accessor db_cluster: DBCluster
+      end
+      class FailoverGlobalClusterResult
+        attr_accessor global_cluster: GlobalCluster
+      end
+      class FailoverState
+        attr_accessor status: failover_status
+        attr_accessor from_db_cluster_arn: string
+        attr_accessor to_db_cluster_arn: string
+      end
+      type failover_status = ("pending" | "failing-over" | "cancelling")
+      type feature_name_list = ::Array[string]
+      type filter = { name: string, values: filter_value_list }
+      type filter_list = ::Array[filter]
+      type filter_value_list = ::Array[string]
+      class GlobalCluster
+        attr_accessor global_cluster_identifier: string
+        attr_accessor global_cluster_resource_id: string
+        attr_accessor global_cluster_arn: string
+        attr_accessor status: string
+        attr_accessor engine: string
+        attr_accessor engine_version: string
+        attr_accessor database_name: string
+        attr_accessor storage_encrypted: boolean_optional
+        attr_accessor deletion_protection: boolean_optional
+        attr_accessor global_cluster_members: global_cluster_member_list
+        attr_accessor failover_state: FailoverState
+      end
+      type global_cluster_identifier = ::String
+      type global_cluster_list_output = ::Array[GlobalCluster]
+      class GlobalClusterMember
+        attr_accessor db_cluster_arn: string
+        attr_accessor readers: readers_arn_list
+        attr_accessor is_writer: boolean
+        attr_accessor global_write_forwarding_status: write_forwarding_status
+      end
+      type global_cluster_member_list = ::Array[GlobalClusterMember]
+      class GlobalClustersMessage
+        attr_accessor marker: string
+        attr_accessor global_clusters: global_cluster_list_output
+      end
+      type iam_auth_mode = ("DISABLED" | "REQUIRED")
+      class IPRange
+        attr_accessor status: string
+        attr_accessor cidrip: string
+      end
+      type ip_range_list = ::Array[IPRange]
+      class InstallationMedia
+        attr_accessor installation_media_id: string
+        attr_accessor custom_availability_zone_id: string
+        attr_accessor engine: string
+        attr_accessor engine_version: string
+        attr_accessor engine_installation_media_path: string
+        attr_accessor os_installation_media_path: string
+        attr_accessor status: string
+        attr_accessor failure_cause: InstallationMediaFailureCause
+      end
+      class InstallationMediaFailureCause
+        attr_accessor message: string
+      end
+      type installation_media_list_output = ::Array[InstallationMedia]
+      class InstallationMediaMessage
+        attr_accessor marker: string
+        attr_accessor installation_media: installation_media_list_output
+      end
+      type integer = ::Integer
+      type integer_optional = ::Integer
+      type key_list = ::Array[string]
+      type kms_key_id_or_arn = ::String
+      type log_type_list = ::Array[string]
+      type long = ::Integer
+      type long_optional = ::Integer
+      type max_records = ::Integer
+      class MinimumEngineVersionPerAllowedValue
+        attr_accessor allowed_value: string
+        attr_accessor minimum_engine_version: string
+      end
+      type minimum_engine_version_per_allowed_value_list = ::Array[MinimumEngineVersionPerAllowedValue]
+      class ModifyCertificatesResult
+        attr_accessor certificate: Certificate
+      end
+      class ModifyDBClusterResult
+        attr_accessor db_cluster: DBCluster
+      end
+      class ModifyDBClusterSnapshotAttributeResult
+        attr_accessor db_cluster_snapshot_attributes_result: DBClusterSnapshotAttributesResult
+      end
+      class ModifyDBInstanceResult
+        attr_accessor db_instance: DBInstance
+      end
+      class ModifyDBProxyEndpointResponse
+        attr_accessor db_proxy_endpoint: DBProxyEndpoint
+      end
+      class ModifyDBProxyResponse
+        attr_accessor db_proxy: DBProxy
+      end
+      class ModifyDBProxyTargetGroupResponse
+        attr_accessor db_proxy_target_group: DBProxyTargetGroup
+      end
+      class ModifyDBSnapshotAttributeResult
+        attr_accessor db_snapshot_attributes_result: DBSnapshotAttributesResult
+      end
+      class ModifyDBSnapshotResult
+        attr_accessor db_snapshot: DBSnapshot
+      end
+      class ModifyDBSubnetGroupResult
+        attr_accessor db_subnet_group: DBSubnetGroup
+      end
+      class ModifyEventSubscriptionResult
+        attr_accessor event_subscription: EventSubscription
+      end
+      class ModifyGlobalClusterResult
+        attr_accessor global_cluster: GlobalCluster
+      end
+      class ModifyOptionGroupResult
+        attr_accessor option_group: OptionGroup
+      end
+      class Option
+        attr_accessor option_name: string
+        attr_accessor option_description: string
+        attr_accessor persistent: boolean
+        attr_accessor permanent: boolean
+        attr_accessor port: integer_optional
+        attr_accessor option_version: string
+        attr_accessor option_settings: option_setting_configuration_list_output
+        attr_accessor db_security_group_memberships: db_security_group_membership_list
+        attr_accessor vpc_security_group_memberships: vpc_security_group_membership_list
+      end
+      type option_configuration = { option_name: string, port: integer_optional?, option_version: string?, db_security_group_memberships: db_security_group_name_list?, vpc_security_group_memberships: vpc_security_group_id_list?, option_settings: option_settings_list_input? }
+      type option_configuration_list = ::Array[option_configuration]
+      class OptionGroup
+        attr_accessor option_group_name: string
+        attr_accessor option_group_description: string
+        attr_accessor engine_name: string
+        attr_accessor major_engine_version: string
+        attr_accessor options: options_list
+        attr_accessor allows_vpc_and_non_vpc_instance_memberships: boolean
+        attr_accessor vpc_id: string
+        attr_accessor option_group_arn: string
+      end
+      class OptionGroupMembership
+        attr_accessor option_group_name: string
+        attr_accessor status: string
+      end
+      type option_group_membership_list = ::Array[OptionGroupMembership]
+      class OptionGroupOption
+        attr_accessor name: string
+        attr_accessor description: string
+        attr_accessor engine_name: string
+        attr_accessor major_engine_version: string
+        attr_accessor minimum_required_minor_engine_version: string
+        attr_accessor port_required: boolean
+        attr_accessor default_port: integer_optional
+        attr_accessor options_depended_on: options_depended_on
+        attr_accessor options_conflicts_with: options_conflicts_with
+        attr_accessor persistent: boolean
+        attr_accessor permanent: boolean
+        attr_accessor requires_auto_minor_engine_version_upgrade: boolean
+        attr_accessor vpc_only: boolean
+        attr_accessor supports_option_version_downgrade: boolean_optional
+        attr_accessor option_group_option_settings: option_group_option_settings_list
+        attr_accessor option_group_option_versions: option_group_option_versions_list
+      end
+      class OptionGroupOptionSetting
+        attr_accessor setting_name: string
+        attr_accessor setting_description: string
+        attr_accessor default_value: string
+        attr_accessor apply_type: string
+        attr_accessor allowed_values: string
+        attr_accessor is_modifiable: boolean
+        attr_accessor is_required: boolean
+        attr_accessor minimum_engine_version_per_allowed_value: minimum_engine_version_per_allowed_value_list
+      end
+      type option_group_option_settings_list = ::Array[OptionGroupOptionSetting]
+      type option_group_option_versions_list = ::Array[OptionVersion]
+      type option_group_options_list = ::Array[OptionGroupOption]
+      class OptionGroupOptionsMessage
+        attr_accessor option_group_options: option_group_options_list
+        attr_accessor marker: string
+      end
+      class OptionGroups
+        attr_accessor option_groups_list: option_groups_list_output
+        attr_accessor marker: string
+      end
+      type option_groups_list_output = ::Array[OptionGroup]
+      type option_names_list = ::Array[string]
+      class OptionSetting
+        attr_accessor name: string
+        attr_accessor value: string
+        attr_accessor default_value: string
+        attr_accessor description: string
+        attr_accessor apply_type: string
+        attr_accessor data_type: string
+        attr_accessor allowed_values: string
+        attr_accessor is_modifiable: boolean
+        attr_accessor is_collection: boolean
+      end
+      type option_setting = { name: string?, value: string?, default_value: string?, description: string?, apply_type: string?, data_type: string?, allowed_values: string?, is_modifiable: boolean?, is_collection: boolean? }
+      type option_setting_configuration_list_output = ::Array[OptionSetting]
+      type option_settings_list_input = ::Array[option_setting]
+      class OptionVersion
+        attr_accessor version: string
+        attr_accessor is_default: boolean
+      end
+      type options_conflicts_with = ::Array[string]
+      type options_depended_on = ::Array[string]
+      type options_list = ::Array[Option]
+      class OrderableDBInstanceOption
+        attr_accessor engine: string
+        attr_accessor engine_version: string
+        attr_accessor db_instance_class: string
+        attr_accessor license_model: string
+        attr_accessor availability_zone_group: string
+        attr_accessor availability_zones: availability_zone_list_output
+        attr_accessor multi_az_capable: boolean
+        attr_accessor read_replica_capable: boolean
+        attr_accessor vpc: boolean
+        attr_accessor supports_storage_encryption: boolean
+        attr_accessor storage_type: string
+        attr_accessor supports_iops: boolean
+        attr_accessor supports_enhanced_monitoring: boolean
+        attr_accessor supports_iam_database_authentication: boolean
+        attr_accessor supports_performance_insights: boolean
+        attr_accessor min_storage_size: integer_optional
+        attr_accessor max_storage_size: integer_optional
+        attr_accessor min_iops_per_db_instance: integer_optional
+        attr_accessor max_iops_per_db_instance: integer_optional
+        attr_accessor min_iops_per_gib: double_optional
+        attr_accessor max_iops_per_gib: double_optional
+        attr_accessor available_processor_features: available_processor_feature_list
+        attr_accessor supported_engine_modes: engine_mode_list
+        attr_accessor supports_storage_autoscaling: boolean_optional
+        attr_accessor supports_kerberos_authentication: boolean_optional
+        attr_accessor outpost_capable: boolean
+        attr_accessor supported_activity_stream_modes: activity_stream_mode_list
+        attr_accessor supports_global_databases: boolean
+        attr_accessor supports_clusters: boolean
+      end
+      type orderable_db_instance_options_list = ::Array[OrderableDBInstanceOption]
+      class OrderableDBInstanceOptionsMessage
+        attr_accessor orderable_db_instance_options: orderable_db_instance_options_list
+        attr_accessor marker: string
+      end
+      class Outpost
+        attr_accessor arn: string
+      end
+      class Parameter
+        attr_accessor parameter_name: string
+        attr_accessor parameter_value: string
+        attr_accessor description: string
+        attr_accessor source: string
+        attr_accessor apply_type: string
+        attr_accessor data_type: string
+        attr_accessor allowed_values: string
+        attr_accessor is_modifiable: boolean
+        attr_accessor minimum_engine_version: string
+        attr_accessor apply_method: apply_method
+        attr_accessor supported_engine_modes: engine_mode_list
+      end
+      type parameter = { parameter_name: string?, parameter_value: string?, description: string?, source: string?, apply_type: string?, data_type: string?, allowed_values: string?, is_modifiable: boolean?, minimum_engine_version: string?, apply_method: apply_method?, supported_engine_modes: engine_mode_list? }
+      type parameters_list_output = ::Array[Parameter]
+      type parameters_list_input = ::Array[parameter]
+      class PendingCloudwatchLogsExports
+        attr_accessor log_types_to_enable: log_type_list
+        attr_accessor log_types_to_disable: log_type_list
+      end
+      class PendingMaintenanceAction
+        attr_accessor action: string
+        attr_accessor auto_applied_after_date: t_stamp
+        attr_accessor forced_apply_date: t_stamp
+        attr_accessor opt_in_status: string
+        attr_accessor current_apply_date: t_stamp
+        attr_accessor description: string
+      end
+      type pending_maintenance_action_details = ::Array[PendingMaintenanceAction]
+      type pending_maintenance_actions_output = ::Array[ResourcePendingMaintenanceActions]
+      class PendingMaintenanceActionsMessage
+        attr_accessor pending_maintenance_actions: pending_maintenance_actions_output
+        attr_accessor marker: string
+      end
+      class PendingModifiedValues
+        attr_accessor db_instance_class: string
+        attr_accessor allocated_storage: integer_optional
+        attr_accessor master_user_password: string
+        attr_accessor port: integer_optional
+        attr_accessor backup_retention_period: integer_optional
+        attr_accessor multi_az: boolean_optional
+        attr_accessor engine_version: string
+        attr_accessor license_model: string
+        attr_accessor iops: integer_optional
+        attr_accessor db_instance_identifier: string
+        attr_accessor storage_type: string
+        attr_accessor ca_certificate_identifier: string
+        attr_accessor db_subnet_group_name: string
+        attr_accessor pending_cloudwatch_logs_exports: PendingCloudwatchLogsExports
+        attr_accessor processor_features: processor_feature_list_output
+        attr_accessor iam_database_authentication_enabled: boolean_optional
+        attr_accessor automation_mode: automation_mode
+        attr_accessor resume_full_automation_mode_time: t_stamp
+      end
+      class ProcessorFeature
+        attr_accessor name: string
+        attr_accessor value: string
+      end
+      type processor_feature = { name: string?, value: string? }
+      type processor_feature_list_output = ::Array[ProcessorFeature]
+      type processor_feature_list_input = ::Array[processor_feature]
+      class PromoteReadReplicaDBClusterResult
+        attr_accessor db_cluster: DBCluster
+      end
+      class PromoteReadReplicaResult
+        attr_accessor db_instance: DBInstance
+      end
+      class PurchaseReservedDBInstancesOfferingResult
+        attr_accessor reserved_db_instance: ReservedDBInstance
+      end
+      class Range
+        attr_accessor from: integer
+        attr_accessor to: integer
+        attr_accessor step: integer_optional
+      end
+      type range_list = ::Array[Range]
+      type read_replica_db_cluster_identifier_list = ::Array[string]
+      type read_replica_db_instance_identifier_list = ::Array[string]
+      type read_replica_identifier_list = ::Array[string]
+      type readers_arn_list = ::Array[string]
+      class RebootDBClusterResult
+        attr_accessor db_cluster: DBCluster
+      end
+      class RebootDBInstanceResult
+        attr_accessor db_instance: DBInstance
+      end
+      class RecurringCharge
+        attr_accessor recurring_charge_amount: double
+        attr_accessor recurring_charge_frequency: string
+      end
+      type recurring_charge_list = ::Array[RecurringCharge]
+      class RegisterDBProxyTargetsResponse
+        attr_accessor db_proxy_targets: target_list
+      end
+      class RemoveFromGlobalClusterResult
+        attr_accessor global_cluster: GlobalCluster
+      end
+      class RemoveSourceIdentifierFromSubscriptionResult
+        attr_accessor event_subscription: EventSubscription
+      end
+      type replica_mode = ("open-read-only" | "mounted")
+      class ReservedDBInstance
+        attr_accessor reserved_db_instance_id: string
+        attr_accessor reserved_db_instances_offering_id: string
+        attr_accessor db_instance_class: string
+        attr_accessor start_time: t_stamp
+        attr_accessor duration: integer
+        attr_accessor fixed_price: double
+        attr_accessor usage_price: double
+        attr_accessor currency_code: string
+        attr_accessor db_instance_count: integer
+        attr_accessor product_description: string
+        attr_accessor offering_type: string
+        attr_accessor multi_az: boolean
+        attr_accessor state: string
+        attr_accessor recurring_charges: recurring_charge_list
+        attr_accessor reserved_db_instance_arn: string
+        attr_accessor lease_id: string
+      end
+      type reserved_db_instance_list_output = ::Array[ReservedDBInstance]
+      class ReservedDBInstanceMessage
+        attr_accessor marker: string
+        attr_accessor reserved_db_instances: reserved_db_instance_list_output
+      end
+      class ReservedDBInstancesOffering
+        attr_accessor reserved_db_instances_offering_id: string
+        attr_accessor db_instance_class: string
+        attr_accessor duration: integer
+        attr_accessor fixed_price: double
+        attr_accessor usage_price: double
+        attr_accessor currency_code: string
+        attr_accessor product_description: string
+        attr_accessor offering_type: string
+        attr_accessor multi_az: boolean
+        attr_accessor recurring_charges: recurring_charge_list
+      end
+      type reserved_db_instances_offering_list = ::Array[ReservedDBInstancesOffering]
+      class ReservedDBInstancesOfferingMessage
+        attr_accessor marker: string
+        attr_accessor reserved_db_instances_offerings: reserved_db_instances_offering_list
+      end
+      class ResourcePendingMaintenanceActions
+        attr_accessor resource_identifier: string
+        attr_accessor pending_maintenance_action_details: pending_maintenance_action_details
+      end
+      class RestoreDBClusterFromS3Result
+        attr_accessor db_cluster: DBCluster
+      end
+      class RestoreDBClusterFromSnapshotResult
+        attr_accessor db_cluster: DBCluster
+      end
+      class RestoreDBClusterToPointInTimeResult
+        attr_accessor db_cluster: DBCluster
+      end
+      class RestoreDBInstanceFromDBSnapshotResult
+        attr_accessor db_instance: DBInstance
+      end
+      class RestoreDBInstanceFromS3Result
+        attr_accessor db_instance: DBInstance
+      end
+      class RestoreDBInstanceToPointInTimeResult
+        attr_accessor db_instance: DBInstance
+      end
+      class RestoreWindow
+        attr_accessor earliest_time: t_stamp
+        attr_accessor latest_time: t_stamp
+      end
+      class RevokeDBSecurityGroupIngressResult
+        attr_accessor db_security_group: DBSecurityGroup
+      end
+      type scaling_configuration = { min_capacity: integer_optional?, max_capacity: integer_optional?, auto_pause: boolean_optional?, seconds_until_auto_pause: integer_optional?, timeout_action: string?, seconds_before_timeout: integer_optional? }
+      class ScalingConfigurationInfo
+        attr_accessor min_capacity: integer_optional
+        attr_accessor max_capacity: integer_optional
+        attr_accessor auto_pause: boolean_optional
+        attr_accessor seconds_until_auto_pause: integer_optional
+        attr_accessor timeout_action: string
+        attr_accessor seconds_before_timeout: integer_optional
+      end
+      type source_ids_list = ::Array[string]
+      class SourceRegion
+        attr_accessor region_name: string
+        attr_accessor endpoint: string
+        attr_accessor status: string
+        attr_accessor supports_db_instance_automated_backups_replication: boolean
+      end
+      type source_region_list = ::Array[SourceRegion]
+      class SourceRegionMessage
+        attr_accessor marker: string
+        attr_accessor source_regions: source_region_list
+      end
+      type source_type = ("db-instance" | "db-parameter-group" | "db-security-group" | "db-snapshot" | "db-cluster" | "db-cluster-snapshot" | "custom-engine-version" | "db-proxy")
+      class StartActivityStreamResponse
+        attr_accessor kms_key_id: string
+        attr_accessor kinesis_stream_name: string
+        attr_accessor status: activity_stream_status
+        attr_accessor mode: activity_stream_mode
+        attr_accessor apply_immediately: boolean
+        attr_accessor engine_native_audit_fields_included: boolean_optional
+      end
+      class StartDBClusterResult
+        attr_accessor db_cluster: DBCluster
+      end
+      class StartDBInstanceAutomatedBackupsReplicationResult
+        attr_accessor db_instance_automated_backup: DBInstanceAutomatedBackup
+      end
+      class StartDBInstanceResult
+        attr_accessor db_instance: DBInstance
+      end
+      class StopActivityStreamResponse
+        attr_accessor kms_key_id: string
+        attr_accessor kinesis_stream_name: string
+        attr_accessor status: activity_stream_status
+      end
+      class StopDBClusterResult
+        attr_accessor db_cluster: DBCluster
+      end
+      class StopDBInstanceAutomatedBackupsReplicationResult
+        attr_accessor db_instance_automated_backup: DBInstanceAutomatedBackup
+      end
+      class StopDBInstanceResult
+        attr_accessor db_instance: DBInstance
+      end
+      type string = ::String
+      type string_255 = ::String
+      type string_list = ::Array[string]
+      type string_sensitive = ::String
+      class Subnet
+        attr_accessor subnet_identifier: string
+        attr_accessor subnet_availability_zone: AvailabilityZone
+        attr_accessor subnet_outpost: Outpost
+        attr_accessor subnet_status: string
+      end
+      type subnet_identifier_list = ::Array[string]
+      type subnet_list = ::Array[Subnet]
+      type supported_character_sets_list_output = ::Array[CharacterSet]
+      type supported_timezones_list = ::Array[Timezone]
+      type t_stamp = ::Time
+      type tag = { key: string?, value: string? }
+      class Tag
+        attr_accessor key: string
+        attr_accessor value: string
+      end
+      type tag_list_input = ::Array[tag]
+      type tag_list_output = ::Array[Tag]
+      class TagListMessage
+        attr_accessor tag_list: tag_list_output
+      end
+      type target_group_list = ::Array[DBProxyTargetGroup]
+      class TargetHealth
+        attr_accessor state: target_state
+        attr_accessor reason: target_health_reason
+        attr_accessor description: string
+      end
+      type target_health_reason = ("UNREACHABLE" | "CONNECTION_FAILED" | "AUTH_FAILURE" | "PENDING_PROXY_CAPACITY" | "INVALID_REPLICATION_STATE")
+      type target_list = ::Array[DBProxyTarget]
+      type target_role = ("READ_WRITE" | "READ_ONLY" | "UNKNOWN")
+      type target_state = ("REGISTERING" | "AVAILABLE" | "UNAVAILABLE")
+      type target_type = ("RDS_INSTANCE" | "RDS_SERVERLESS_ENDPOINT" | "TRACKED_CLUSTER")
+      class Timezone
+        attr_accessor timezone_name: string
+      end
+      class UpgradeTarget
+        attr_accessor engine: string
+        attr_accessor engine_version: string
+        attr_accessor description: string
+        attr_accessor auto_upgrade: boolean
+        attr_accessor is_major_version_upgrade: boolean
+        attr_accessor supported_engine_modes: engine_mode_list
+        attr_accessor supports_parallel_query: boolean_optional
+        attr_accessor supports_global_databases: boolean_optional
+      end
+      type user_auth_config = { description: string?, user_name: string?, auth_scheme: auth_scheme?, secret_arn: string?, iam_auth: iam_auth_mode? }
+      class UserAuthConfigInfo
+        attr_accessor description: string
+        attr_accessor user_name: string
+        attr_accessor auth_scheme: auth_scheme
+        attr_accessor secret_arn: string
+        attr_accessor iam_auth: iam_auth_mode
+      end
+      type user_auth_config_info_list = ::Array[UserAuthConfigInfo]
+      type user_auth_config_list = ::Array[user_auth_config]
+      class ValidDBInstanceModificationsMessage
+        attr_accessor storage: valid_storage_options_list
+        attr_accessor valid_processor_features: available_processor_feature_list
+      end
+      class ValidStorageOptions
+        attr_accessor storage_type: string
+        attr_accessor storage_size: range_list
+        attr_accessor provisioned_iops: range_list
+        attr_accessor iops_to_storage_ratio: double_range_list
+        attr_accessor supports_storage_autoscaling: boolean
+      end
+      type valid_storage_options_list = ::Array[ValidStorageOptions]
+      type valid_upgrade_target_list = ::Array[UpgradeTarget]
+      type vpc_security_group_id_list = ::Array[string]
+      class VpcSecurityGroupMembership
+        attr_accessor vpc_security_group_id: string
+        attr_accessor status: string
+      end
+      type vpc_security_group_membership_list = ::Array[VpcSecurityGroupMembership]
+      class VpnDetails
+        attr_accessor vpn_id: string
+        attr_accessor vpn_tunnel_originator_ip: string
+        attr_accessor vpn_gateway_ip: string
+        attr_accessor vpn_psk: string_sensitive
+        attr_accessor vpn_name: string
+        attr_accessor vpn_state: string
+      end
+      type write_forwarding_status = ("enabled" | "disabled" | "enabling" | "disabling" | "unknown")
+    end
+  end
+end

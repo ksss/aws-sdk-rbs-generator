@@ -1,0 +1,65 @@
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the generator README.md for more information:
+# https://github.com/ksss/aws-sdk-rbs-generator/blob/main/README.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws
+  module RDS
+    class ReservedDBInstance
+      # identifiers
+
+      def initialize: (id: String, client: Client) -> void
+      def id: () -> String
+
+      # data_attribute
+
+      def reserved_db_instances_offering_id: () -> Types::string
+      def db_instance_class: () -> Types::string
+      def start_time: () -> Types::t_stamp
+      def duration: () -> Types::integer
+      def fixed_price: () -> Types::double
+      def usage_price: () -> Types::double
+      def currency_code: () -> Types::string
+      def db_instance_count: () -> Types::integer
+      def product_description: () -> Types::string
+      def offering_type: () -> Types::string
+      def multi_az: () -> Types::boolean
+      def state: () -> Types::string
+      def recurring_charges: () -> Types::recurring_charge_list
+      def reserved_db_instance_arn: () -> Types::string
+      def lease_id: () -> Types::string
+
+      # client_method
+
+      def client: () -> Client
+
+      # load_method
+
+      def load: () -> self
+      alias reload load
+
+      # data_method
+
+      def data: () -> Types::ReservedDBInstance
+
+      def data_loaded?: () -> bool
+
+      # waiters
+
+
+      # actions
+
+
+      # associations
+
+      def offering: () -> ReservedDBInstancesOffering?
+
+      # batch_actions
+
+      class Collection < ::Aws::Resources::Collection[ReservedDBInstance]
+      end
+    end
+  end
+end

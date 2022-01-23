@@ -1,0 +1,76 @@
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the generator README.md for more information:
+# https://github.com/ksss/aws-sdk-rbs-generator/blob/main/README.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws
+  module RDS
+    class DBClusterSnapshot
+      # identifiers
+
+      def initialize: (cluster_id: String, snapshot_id: String, client: Client) -> void
+      def cluster_id: () -> String
+      def snapshot_id: () -> String
+
+      # data_attribute
+
+      def availability_zones: () -> Types::availability_zones
+      def snapshot_create_time: () -> Types::t_stamp
+      def engine: () -> Types::string
+      def engine_mode: () -> Types::string
+      def allocated_storage: () -> Types::integer
+      def status: () -> Types::string
+      def port: () -> Types::integer
+      def vpc_id: () -> Types::string
+      def cluster_create_time: () -> Types::t_stamp
+      def master_username: () -> Types::string
+      def engine_version: () -> Types::string
+      def license_model: () -> Types::string
+      def snapshot_type: () -> Types::string
+      def percent_progress: () -> Types::integer
+      def storage_encrypted: () -> Types::boolean
+      def kms_key_id: () -> Types::string
+      def db_cluster_snapshot_arn: () -> Types::string
+      def source_db_cluster_snapshot_arn: () -> Types::string
+      def iam_database_authentication_enabled: () -> Types::boolean
+      def tag_list: () -> Types::tag_list_output
+
+      # client_method
+
+      def client: () -> Client
+
+      # load_method
+
+      def load: () -> self
+      alias reload load
+
+      # data_method
+
+      def data: () -> Types::DBClusterSnapshot
+
+      def data_loaded?: () -> bool
+
+      # waiters
+
+
+      # actions
+
+      def create: (?tags: Types::tag_list_input) -> DBClusterSnapshot
+      def copy: (target_db_cluster_snapshot_identifier: Types::string, ?kms_key_id: Types::string, ?pre_signed_url: Types::string, ?copy_tags: Types::boolean_optional, ?tags: Types::tag_list_input) -> DBClusterSnapshot
+      def delete: () -> DBClusterSnapshot
+      def restore: (?availability_zones: Types::availability_zones, db_cluster_identifier: Types::string, engine: Types::string, ?engine_version: Types::string, ?port: Types::integer_optional, ?db_subnet_group_name: Types::string, ?database_name: Types::string, ?option_group_name: Types::string, ?vpc_security_group_ids: Types::vpc_security_group_id_list, ?tags: Types::tag_list_input, ?kms_key_id: Types::string, ?enable_iam_database_authentication: Types::boolean_optional, ?backtrack_window: Types::long_optional, ?enable_cloudwatch_logs_exports: Types::log_type_list, ?engine_mode: Types::string, ?scaling_configuration: Types::scaling_configuration, ?db_cluster_parameter_group_name: Types::string, ?deletion_protection: Types::boolean_optional, ?copy_tags_to_snapshot: Types::boolean_optional, ?domain: Types::string, ?domain_iam_role_name: Types::string, ?db_cluster_instance_class: Types::string, ?storage_type: Types::string, ?iops: Types::integer_optional, ?publicly_accessible: Types::boolean_optional) -> DBCluster
+
+      # associations
+
+      def cluster: () -> DBCluster
+      def events: (?start_time: Types::t_stamp, ?end_time: Types::t_stamp, ?duration: Types::integer_optional, ?event_categories: Types::event_categories_list, ?filters: Types::filter_list, ?max_records: Types::integer_optional, ?marker: Types::string) -> Event::Collection
+
+      # batch_actions
+
+      class Collection < ::Aws::Resources::Collection[DBClusterSnapshot]
+      end
+    end
+  end
+end

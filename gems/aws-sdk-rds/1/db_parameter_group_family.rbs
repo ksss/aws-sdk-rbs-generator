@@ -1,0 +1,49 @@
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the generator README.md for more information:
+# https://github.com/ksss/aws-sdk-rbs-generator/blob/main/README.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws
+  module RDS
+    class DBParameterGroupFamily
+      # identifiers
+
+      def initialize: (name: String, client: Client) -> void
+      def name: () -> String
+
+      # data_attribute
+
+
+      # client_method
+
+      def client: () -> Client
+
+      # load_method
+
+
+      # data_method
+
+      def data: () -> EmptyStructure
+
+      def data_loaded?: () -> bool
+
+      # waiters
+
+
+      # actions
+
+
+      # associations
+
+      def engine_default_cluster_parameters: (?filters: Types::filter_list, ?max_records: Types::integer_optional, ?marker: Types::string) -> Parameter::Collection
+      def engine_default_parameters: (?filters: Types::filter_list, ?max_records: Types::integer_optional, ?marker: Types::string) -> Parameter::Collection
+
+      # batch_actions
+
+      class Collection < ::Aws::Resources::Collection[DBParameterGroupFamily]
+      end
+    end
+  end
+end

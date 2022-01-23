@@ -1,0 +1,258 @@
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the generator README.md for more information:
+# https://github.com/ksss/aws-sdk-rbs-generator/blob/main/README.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws
+  module RDS
+    module Errors
+      class ServiceError < Aws::Errors::ServiceError
+      end
+
+      class AuthorizationAlreadyExistsFault < ServiceError
+      end
+      class AuthorizationNotFoundFault < ServiceError
+      end
+      class AuthorizationQuotaExceededFault < ServiceError
+      end
+      class BackupPolicyNotFoundFault < ServiceError
+      end
+      class CertificateNotFoundFault < ServiceError
+      end
+      class CustomAvailabilityZoneAlreadyExistsFault < ServiceError
+      end
+      class CustomAvailabilityZoneNotFoundFault < ServiceError
+      end
+      class CustomAvailabilityZoneQuotaExceededFault < ServiceError
+      end
+      class CustomDBEngineVersionAlreadyExistsFault < ServiceError
+      end
+      class CustomDBEngineVersionNotFoundFault < ServiceError
+      end
+      class CustomDBEngineVersionQuotaExceededFault < ServiceError
+      end
+      class DBClusterAlreadyExistsFault < ServiceError
+      end
+      class DBClusterBacktrackNotFoundFault < ServiceError
+      end
+      class DBClusterEndpointAlreadyExistsFault < ServiceError
+      end
+      class DBClusterEndpointNotFoundFault < ServiceError
+      end
+      class DBClusterEndpointQuotaExceededFault < ServiceError
+      end
+      class DBClusterNotFoundFault < ServiceError
+      end
+      class DBClusterParameterGroupNotFoundFault < ServiceError
+      end
+      class DBClusterQuotaExceededFault < ServiceError
+      end
+      class DBClusterRoleAlreadyExistsFault < ServiceError
+      end
+      class DBClusterRoleNotFoundFault < ServiceError
+      end
+      class DBClusterRoleQuotaExceededFault < ServiceError
+      end
+      class DBClusterSnapshotAlreadyExistsFault < ServiceError
+      end
+      class DBClusterSnapshotNotFoundFault < ServiceError
+      end
+      class DBInstanceAlreadyExistsFault < ServiceError
+      end
+      class DBInstanceAutomatedBackupNotFoundFault < ServiceError
+      end
+      class DBInstanceAutomatedBackupQuotaExceededFault < ServiceError
+      end
+      class DBInstanceNotFoundFault < ServiceError
+      end
+      class DBInstanceRoleAlreadyExistsFault < ServiceError
+      end
+      class DBInstanceRoleNotFoundFault < ServiceError
+      end
+      class DBInstanceRoleQuotaExceededFault < ServiceError
+      end
+      class DBLogFileNotFoundFault < ServiceError
+      end
+      class DBParameterGroupAlreadyExistsFault < ServiceError
+      end
+      class DBParameterGroupNotFoundFault < ServiceError
+      end
+      class DBParameterGroupQuotaExceededFault < ServiceError
+      end
+      class DBProxyAlreadyExistsFault < ServiceError
+      end
+      class DBProxyEndpointAlreadyExistsFault < ServiceError
+      end
+      class DBProxyEndpointNotFoundFault < ServiceError
+      end
+      class DBProxyEndpointQuotaExceededFault < ServiceError
+      end
+      class DBProxyNotFoundFault < ServiceError
+      end
+      class DBProxyQuotaExceededFault < ServiceError
+      end
+      class DBProxyTargetAlreadyRegisteredFault < ServiceError
+      end
+      class DBProxyTargetGroupNotFoundFault < ServiceError
+      end
+      class DBProxyTargetNotFoundFault < ServiceError
+      end
+      class DBSecurityGroupAlreadyExistsFault < ServiceError
+      end
+      class DBSecurityGroupNotFoundFault < ServiceError
+      end
+      class DBSecurityGroupNotSupportedFault < ServiceError
+      end
+      class DBSecurityGroupQuotaExceededFault < ServiceError
+      end
+      class DBSnapshotAlreadyExistsFault < ServiceError
+      end
+      class DBSnapshotNotFoundFault < ServiceError
+      end
+      class DBSubnetGroupAlreadyExistsFault < ServiceError
+      end
+      class DBSubnetGroupDoesNotCoverEnoughAZs < ServiceError
+      end
+      class DBSubnetGroupNotAllowedFault < ServiceError
+      end
+      class DBSubnetGroupNotFoundFault < ServiceError
+      end
+      class DBSubnetGroupQuotaExceededFault < ServiceError
+      end
+      class DBSubnetQuotaExceededFault < ServiceError
+      end
+      class DBUpgradeDependencyFailureFault < ServiceError
+      end
+      class DomainNotFoundFault < ServiceError
+      end
+      class EventSubscriptionQuotaExceededFault < ServiceError
+      end
+      class ExportTaskAlreadyExistsFault < ServiceError
+      end
+      class ExportTaskNotFoundFault < ServiceError
+      end
+      class GlobalClusterAlreadyExistsFault < ServiceError
+      end
+      class GlobalClusterNotFoundFault < ServiceError
+      end
+      class GlobalClusterQuotaExceededFault < ServiceError
+      end
+      class IamRoleMissingPermissionsFault < ServiceError
+      end
+      class IamRoleNotFoundFault < ServiceError
+      end
+      class InstallationMediaAlreadyExistsFault < ServiceError
+      end
+      class InstallationMediaNotFoundFault < ServiceError
+      end
+      class InstanceQuotaExceededFault < ServiceError
+      end
+      class InsufficientAvailableIPsInSubnetFault < ServiceError
+      end
+      class InsufficientDBClusterCapacityFault < ServiceError
+      end
+      class InsufficientDBInstanceCapacityFault < ServiceError
+      end
+      class InsufficientStorageClusterCapacityFault < ServiceError
+      end
+      class InvalidCustomDBEngineVersionStateFault < ServiceError
+      end
+      class InvalidDBClusterCapacityFault < ServiceError
+      end
+      class InvalidDBClusterEndpointStateFault < ServiceError
+      end
+      class InvalidDBClusterSnapshotStateFault < ServiceError
+      end
+      class InvalidDBClusterStateFault < ServiceError
+      end
+      class InvalidDBInstanceAutomatedBackupStateFault < ServiceError
+      end
+      class InvalidDBInstanceStateFault < ServiceError
+      end
+      class InvalidDBParameterGroupStateFault < ServiceError
+      end
+      class InvalidDBProxyEndpointStateFault < ServiceError
+      end
+      class InvalidDBProxyStateFault < ServiceError
+      end
+      class InvalidDBSecurityGroupStateFault < ServiceError
+      end
+      class InvalidDBSnapshotStateFault < ServiceError
+      end
+      class InvalidDBSubnetGroupFault < ServiceError
+      end
+      class InvalidDBSubnetGroupStateFault < ServiceError
+      end
+      class InvalidDBSubnetStateFault < ServiceError
+      end
+      class InvalidEventSubscriptionStateFault < ServiceError
+      end
+      class InvalidExportOnlyFault < ServiceError
+      end
+      class InvalidExportSourceStateFault < ServiceError
+      end
+      class InvalidExportTaskStateFault < ServiceError
+      end
+      class InvalidGlobalClusterStateFault < ServiceError
+      end
+      class InvalidOptionGroupStateFault < ServiceError
+      end
+      class InvalidRestoreFault < ServiceError
+      end
+      class InvalidS3BucketFault < ServiceError
+      end
+      class InvalidSubnet < ServiceError
+      end
+      class InvalidVPCNetworkStateFault < ServiceError
+      end
+      class KMSKeyNotAccessibleFault < ServiceError
+      end
+      class OptionGroupAlreadyExistsFault < ServiceError
+      end
+      class OptionGroupNotFoundFault < ServiceError
+      end
+      class OptionGroupQuotaExceededFault < ServiceError
+      end
+      class PointInTimeRestoreNotEnabledFault < ServiceError
+      end
+      class ProvisionedIopsNotAvailableInAZFault < ServiceError
+      end
+      class ReservedDBInstanceAlreadyExistsFault < ServiceError
+      end
+      class ReservedDBInstanceNotFoundFault < ServiceError
+      end
+      class ReservedDBInstanceQuotaExceededFault < ServiceError
+      end
+      class ReservedDBInstancesOfferingNotFoundFault < ServiceError
+      end
+      class ResourceNotFoundFault < ServiceError
+      end
+      class SNSInvalidTopicFault < ServiceError
+      end
+      class SNSNoAuthorizationFault < ServiceError
+      end
+      class SNSTopicArnNotFoundFault < ServiceError
+      end
+      class SharedSnapshotQuotaExceededFault < ServiceError
+      end
+      class SnapshotQuotaExceededFault < ServiceError
+      end
+      class SourceNotFoundFault < ServiceError
+      end
+      class StorageQuotaExceededFault < ServiceError
+      end
+      class StorageTypeNotSupportedFault < ServiceError
+      end
+      class SubnetAlreadyInUse < ServiceError
+      end
+      class SubscriptionAlreadyExistFault < ServiceError
+      end
+      class SubscriptionCategoryNotFoundFault < ServiceError
+      end
+      class SubscriptionNotFoundFault < ServiceError
+      end
+    end
+  end
+end

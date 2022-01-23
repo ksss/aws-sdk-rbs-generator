@@ -1,0 +1,56 @@
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the generator README.md for more information:
+# https://github.com/ksss/aws-sdk-rbs-generator/blob/main/README.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws
+  module RDS
+    class PendingMaintenanceAction
+      # identifiers
+
+      def initialize: (target_arn: String, name: String, client: Client) -> void
+      def target_arn: () -> String
+      def name: () -> String
+
+      # data_attribute
+
+      def auto_applied_after_date: () -> Types::t_stamp
+      def forced_apply_date: () -> Types::t_stamp
+      def opt_in_status: () -> Types::string
+      def current_apply_date: () -> Types::t_stamp
+      def description: () -> Types::string
+
+      # client_method
+
+      def client: () -> Client
+
+      # load_method
+
+
+      # data_method
+
+      def data: () -> Types::PendingMaintenanceAction
+
+      def data_loaded?: () -> bool
+
+      # waiters
+
+
+      # actions
+
+      def apply_immediately: () -> ResourcePendingMaintenanceActionList
+      def undo_opt_in: () -> ResourcePendingMaintenanceActionList
+      def apply_on_next_maintenance: () -> ResourcePendingMaintenanceActionList
+
+      # associations
+
+
+      # batch_actions
+
+      class Collection < ::Aws::Resources::Collection[PendingMaintenanceAction]
+      end
+    end
+  end
+end

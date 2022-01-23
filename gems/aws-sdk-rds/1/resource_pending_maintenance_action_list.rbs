@@ -1,0 +1,49 @@
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the generator README.md for more information:
+# https://github.com/ksss/aws-sdk-rbs-generator/blob/main/README.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws
+  module RDS
+    class ResourcePendingMaintenanceActionList
+      # identifiers
+
+      def initialize: (arn: String, client: Client) -> void
+      def arn: () -> String
+
+      # data_attribute
+
+      def pending_maintenance_action_details: () -> Types::pending_maintenance_action_details
+
+      # client_method
+
+      def client: () -> Client
+
+      # load_method
+
+
+      # data_method
+
+      def data: () -> Types::ResourcePendingMaintenanceActions
+
+      def data_loaded?: () -> bool
+
+      # waiters
+
+
+      # actions
+
+
+      # associations
+
+      def pending_maintenance_actions: () -> PendingMaintenanceAction::Collection
+
+      # batch_actions
+
+      class Collection < ::Aws::Resources::Collection[ResourcePendingMaintenanceActionList]
+      end
+    end
+  end
+end

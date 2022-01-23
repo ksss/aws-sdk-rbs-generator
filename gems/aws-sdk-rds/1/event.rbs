@@ -1,0 +1,52 @@
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the generator README.md for more information:
+# https://github.com/ksss/aws-sdk-rbs-generator/blob/main/README.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws
+  module RDS
+    class Event
+      # identifiers
+
+      def initialize: (source_id: String, date: String, client: Client) -> void
+      def source_id: () -> String
+      def date: () -> String
+
+      # data_attribute
+
+      def source_type: () -> Types::source_type
+      def message: () -> Types::string
+      def event_categories: () -> Types::event_categories_list
+      def source_arn: () -> Types::string
+
+      # client_method
+
+      def client: () -> Client
+
+      # load_method
+
+
+      # data_method
+
+      def data: () -> Types::Event
+
+      def data_loaded?: () -> bool
+
+      # waiters
+
+
+      # actions
+
+
+      # associations
+
+
+      # batch_actions
+
+      class Collection < ::Aws::Resources::Collection[Event]
+      end
+    end
+  end
+end

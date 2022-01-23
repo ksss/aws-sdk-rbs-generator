@@ -1,0 +1,62 @@
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the generator README.md for more information:
+# https://github.com/ksss/aws-sdk-rbs-generator/blob/main/README.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws
+  module RDS
+    class DBSecurityGroup
+      # identifiers
+
+      def initialize: (name: String, client: Client) -> void
+      def name: () -> String
+
+      # data_attribute
+
+      def owner_id: () -> Types::string
+      def db_security_group_description: () -> Types::string
+      def vpc_id: () -> Types::string
+      def ec2_security_groups: () -> Types::ec2_security_group_list
+      def ip_ranges: () -> Types::ip_range_list
+      def db_security_group_arn: () -> Types::string
+
+      # client_method
+
+      def client: () -> Client
+
+      # load_method
+
+      def load: () -> self
+      alias reload load
+
+      # data_method
+
+      def data: () -> Types::DBSecurityGroup
+
+      def data_loaded?: () -> bool
+
+      # waiters
+
+
+      # actions
+
+      def authorize_ingress: (?cidrip: Types::string, ?ec2_security_group_name: Types::string, ?ec2_security_group_id: Types::string, ?ec2_security_group_owner_id: Types::string) -> DBSecurityGroup
+      def create: (db_security_group_description: Types::string, ?tags: Types::tag_list_input) -> DBSecurityGroup
+      def delete: () -> EmptyStructure
+      def revoke_ingress: (?cidrip: Types::string, ?ec2_security_group_name: Types::string, ?ec2_security_group_id: Types::string, ?ec2_security_group_owner_id: Types::string) -> DBSecurityGroup
+      def subscribe_to: (subscription_name: Types::string) -> EventSubscription
+      def unsubscribe_from: (subscription_name: Types::string) -> EventSubscription
+
+      # associations
+
+      def events: (?start_time: Types::t_stamp, ?end_time: Types::t_stamp, ?duration: Types::integer_optional, ?event_categories: Types::event_categories_list, ?filters: Types::filter_list, ?max_records: Types::integer_optional, ?marker: Types::string) -> Event::Collection
+
+      # batch_actions
+
+      class Collection < ::Aws::Resources::Collection[DBSecurityGroup]
+      end
+    end
+  end
+end

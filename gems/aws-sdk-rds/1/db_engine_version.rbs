@@ -1,0 +1,77 @@
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the generator README.md for more information:
+# https://github.com/ksss/aws-sdk-rbs-generator/blob/main/README.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws
+  module RDS
+    class DBEngineVersion
+      # identifiers
+
+      def initialize: (engine_name: String, version: String, client: Client) -> void
+      def engine_name: () -> String
+      def version: () -> String
+
+      # data_attribute
+
+      def db_parameter_group_family: () -> Types::string
+      def db_engine_description: () -> Types::string
+      def db_engine_version_description: () -> Types::string
+      def default_character_set: () -> Types::CharacterSet
+      def supported_character_sets: () -> Types::supported_character_sets_list_output
+      def supported_nchar_character_sets: () -> Types::supported_character_sets_list_output
+      def valid_upgrade_target: () -> Types::valid_upgrade_target_list
+      def supported_timezones: () -> Types::supported_timezones_list
+      def exportable_log_types: () -> Types::log_type_list
+      def supports_log_exports_to_cloudwatch_logs: () -> Types::boolean
+      def supports_read_replica: () -> Types::boolean
+      def supported_engine_modes: () -> Types::engine_mode_list
+      def supported_feature_names: () -> Types::feature_name_list
+      def status: () -> Types::string
+      def supports_parallel_query: () -> Types::boolean
+      def supports_global_databases: () -> Types::boolean
+      def major_engine_version: () -> Types::string
+      def database_installation_files_s3_bucket_name: () -> Types::string
+      def database_installation_files_s3_prefix: () -> Types::string
+      def db_engine_version_arn: () -> Types::string
+      def kms_key_id: () -> Types::string
+      def create_time: () -> Types::t_stamp
+      def tag_list: () -> Types::tag_list_output
+
+      # client_method
+
+      def client: () -> Client
+
+      # load_method
+
+      def load: () -> self
+      alias reload load
+
+      # data_method
+
+      def data: () -> Types::DBEngineVersion
+
+      def data_loaded?: () -> bool
+
+      # waiters
+
+
+      # actions
+
+
+      # associations
+
+      def engine: () -> DBEngine
+      def option_group_options: (?filters: Types::filter_list, ?max_records: Types::integer_optional, ?marker: Types::string) -> OptionGroupOption::Collection
+      def option_groups: (?option_group_name: Types::string, ?filters: Types::filter_list, ?marker: Types::string, ?max_records: Types::integer_optional) -> OptionGroup::Collection
+      def parameter_group_family: () -> DBParameterGroupFamily?
+
+      # batch_actions
+
+      class Collection < ::Aws::Resources::Collection[DBEngineVersion]
+      end
+    end
+  end
+end

@@ -1,0 +1,127 @@
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the generator README.md for more information:
+# https://github.com/ksss/aws-sdk-rbs-generator/blob/main/README.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws
+  module RDS
+    class DBCluster
+      # identifiers
+
+      def initialize: (id: String, client: Client) -> void
+      def id: () -> String
+
+      # data_attribute
+
+      def allocated_storage: () -> Types::integer_optional
+      def availability_zones: () -> Types::availability_zones
+      def backup_retention_period: () -> Types::integer_optional
+      def character_set_name: () -> Types::string
+      def database_name: () -> Types::string
+      def db_cluster_parameter_group: () -> Types::string
+      def db_subnet_group: () -> Types::string
+      def status: () -> Types::string
+      def automatic_restart_time: () -> Types::t_stamp
+      def percent_progress: () -> Types::string
+      def earliest_restorable_time: () -> Types::t_stamp
+      def endpoint: () -> Types::string
+      def reader_endpoint: () -> Types::string
+      def custom_endpoints: () -> Types::string_list
+      def multi_az: () -> Types::boolean_optional
+      def engine: () -> Types::string
+      def engine_version: () -> Types::string
+      def latest_restorable_time: () -> Types::t_stamp
+      def port: () -> Types::integer_optional
+      def master_username: () -> Types::string
+      def db_cluster_option_group_memberships: () -> Types::db_cluster_option_group_memberships
+      def preferred_backup_window: () -> Types::string
+      def preferred_maintenance_window: () -> Types::string
+      def replication_source_identifier: () -> Types::string
+      def read_replica_identifiers: () -> Types::read_replica_identifier_list
+      def db_cluster_members: () -> Types::db_cluster_member_list
+      def vpc_security_groups: () -> Types::vpc_security_group_membership_list
+      def hosted_zone_id: () -> Types::string
+      def storage_encrypted: () -> Types::boolean
+      def kms_key_id: () -> Types::string
+      def db_cluster_resource_id: () -> Types::string
+      def db_cluster_arn: () -> Types::string
+      def associated_roles: () -> Types::db_cluster_roles
+      def iam_database_authentication_enabled: () -> Types::boolean_optional
+      def clone_group_id: () -> Types::string
+      def cluster_create_time: () -> Types::t_stamp
+      def earliest_backtrack_time: () -> Types::t_stamp
+      def backtrack_window: () -> Types::long_optional
+      def backtrack_consumed_change_records: () -> Types::long_optional
+      def enabled_cloudwatch_logs_exports: () -> Types::log_type_list
+      def capacity: () -> Types::integer_optional
+      def engine_mode: () -> Types::string
+      def scaling_configuration_info: () -> Types::ScalingConfigurationInfo
+      def deletion_protection: () -> Types::boolean_optional
+      def http_endpoint_enabled: () -> Types::boolean_optional
+      def activity_stream_mode: () -> Types::activity_stream_mode
+      def activity_stream_status: () -> Types::activity_stream_status
+      def activity_stream_kms_key_id: () -> Types::string
+      def activity_stream_kinesis_stream_name: () -> Types::string
+      def copy_tags_to_snapshot: () -> Types::boolean_optional
+      def cross_account_clone: () -> Types::boolean_optional
+      def domain_memberships: () -> Types::domain_membership_list
+      def tag_list: () -> Types::tag_list_output
+      def global_write_forwarding_status: () -> Types::write_forwarding_status
+      def global_write_forwarding_requested: () -> Types::boolean_optional
+      def pending_modified_values: () -> Types::ClusterPendingModifiedValues
+      def db_cluster_instance_class: () -> Types::string
+      def storage_type: () -> Types::string
+      def iops: () -> Types::integer_optional
+      def publicly_accessible: () -> Types::boolean_optional
+      def auto_minor_version_upgrade: () -> Types::boolean
+      def monitoring_interval: () -> Types::integer_optional
+      def monitoring_role_arn: () -> Types::string
+      def performance_insights_enabled: () -> Types::boolean_optional
+      def performance_insights_kms_key_id: () -> Types::string
+      def performance_insights_retention_period: () -> Types::integer_optional
+
+      # client_method
+
+      def client: () -> Client
+
+      # load_method
+
+      def load: () -> self
+      alias reload load
+
+      # data_method
+
+      def data: () -> Types::DBCluster
+
+      def data_loaded?: () -> bool
+
+      # waiters
+
+
+      # actions
+
+      def create: (?availability_zones: Types::availability_zones, ?backup_retention_period: Types::integer_optional, ?character_set_name: Types::string, ?database_name: Types::string, ?db_cluster_parameter_group_name: Types::string, ?vpc_security_group_ids: Types::vpc_security_group_id_list, ?db_subnet_group_name: Types::string, engine: Types::string, ?engine_version: Types::string, ?port: Types::integer_optional, ?master_username: Types::string, ?master_user_password: Types::string, ?option_group_name: Types::string, ?preferred_backup_window: Types::string, ?preferred_maintenance_window: Types::string, ?replication_source_identifier: Types::string, ?tags: Types::tag_list_input, ?storage_encrypted: Types::boolean_optional, ?kms_key_id: Types::string, ?pre_signed_url: Types::string, ?enable_iam_database_authentication: Types::boolean_optional, ?backtrack_window: Types::long_optional, ?enable_cloudwatch_logs_exports: Types::log_type_list, ?engine_mode: Types::string, ?scaling_configuration: Types::scaling_configuration, ?deletion_protection: Types::boolean_optional, ?global_cluster_identifier: Types::string, ?enable_http_endpoint: Types::boolean_optional, ?copy_tags_to_snapshot: Types::boolean_optional, ?domain: Types::string, ?domain_iam_role_name: Types::string, ?enable_global_write_forwarding: Types::boolean_optional, ?db_cluster_instance_class: Types::string, ?allocated_storage: Types::integer_optional, ?storage_type: Types::string, ?iops: Types::integer_optional, ?publicly_accessible: Types::boolean_optional, ?auto_minor_version_upgrade: Types::boolean_optional, ?monitoring_interval: Types::integer_optional, ?monitoring_role_arn: Types::string, ?enable_performance_insights: Types::boolean_optional, ?performance_insights_kms_key_id: Types::string, ?performance_insights_retention_period: Types::integer_optional) -> DBCluster
+      def create_snapshot: (db_cluster_snapshot_identifier: Types::string, ?tags: Types::tag_list_input) -> DBClusterSnapshot
+      def delete: (?skip_final_snapshot: Types::boolean, ?final_db_snapshot_identifier: Types::string) -> DBCluster
+      def failover: (?target_db_instance_identifier: Types::string) -> DBCluster
+      def modify: (?new_db_cluster_identifier: Types::string, ?apply_immediately: Types::boolean, ?backup_retention_period: Types::integer_optional, ?db_cluster_parameter_group_name: Types::string, ?vpc_security_group_ids: Types::vpc_security_group_id_list, ?port: Types::integer_optional, ?master_user_password: Types::string, ?option_group_name: Types::string, ?preferred_backup_window: Types::string, ?preferred_maintenance_window: Types::string, ?enable_iam_database_authentication: Types::boolean_optional, ?backtrack_window: Types::long_optional, ?cloudwatch_logs_export_configuration: Types::cloudwatch_logs_export_configuration, ?engine_version: Types::string, ?allow_major_version_upgrade: Types::boolean, ?db_instance_parameter_group_name: Types::string, ?domain: Types::string, ?domain_iam_role_name: Types::string, ?scaling_configuration: Types::scaling_configuration, ?deletion_protection: Types::boolean_optional, ?enable_http_endpoint: Types::boolean_optional, ?copy_tags_to_snapshot: Types::boolean_optional, ?enable_global_write_forwarding: Types::boolean_optional, ?db_cluster_instance_class: Types::string, ?allocated_storage: Types::integer_optional, ?storage_type: Types::string, ?iops: Types::integer_optional, ?auto_minor_version_upgrade: Types::boolean_optional, ?monitoring_interval: Types::integer_optional, ?monitoring_role_arn: Types::string, ?enable_performance_insights: Types::boolean_optional, ?performance_insights_kms_key_id: Types::string, ?performance_insights_retention_period: Types::integer_optional) -> DBCluster
+      def restore: (db_cluster_identifier: Types::string, ?restore_type: Types::string, ?restore_to_time: Types::t_stamp, ?use_latest_restorable_time: Types::boolean, ?port: Types::integer_optional, ?db_subnet_group_name: Types::string, ?option_group_name: Types::string, ?vpc_security_group_ids: Types::vpc_security_group_id_list, ?tags: Types::tag_list_input, ?kms_key_id: Types::string, ?enable_iam_database_authentication: Types::boolean_optional, ?backtrack_window: Types::long_optional, ?enable_cloudwatch_logs_exports: Types::log_type_list, ?db_cluster_parameter_group_name: Types::string, ?deletion_protection: Types::boolean_optional, ?copy_tags_to_snapshot: Types::boolean_optional, ?domain: Types::string, ?domain_iam_role_name: Types::string, ?scaling_configuration: Types::scaling_configuration, ?engine_mode: Types::string, ?db_cluster_instance_class: Types::string, ?storage_type: Types::string, ?publicly_accessible: Types::boolean_optional, ?iops: Types::integer_optional) -> DBCluster
+
+      # associations
+
+      def events: (?start_time: Types::t_stamp, ?end_time: Types::t_stamp, ?duration: Types::integer_optional, ?event_categories: Types::event_categories_list, ?filters: Types::filter_list, ?max_records: Types::integer_optional, ?marker: Types::string) -> Event::Collection
+      def members: () -> DBInstance::Collection
+      def option_groups: () -> OptionGroup::Collection
+      def parameter_group: () -> DBClusterParameterGroup?
+      def snapshots: (?db_cluster_snapshot_identifier: Types::string, ?snapshot_type: Types::string, ?filters: Types::filter_list, ?max_records: Types::integer_optional, ?marker: Types::string, ?include_shared: Types::boolean, ?include_public: Types::boolean) -> DBClusterSnapshot::Collection
+      def subnet_group: () -> DBSubnetGroup?
+
+      # batch_actions
+
+      class Collection < ::Aws::Resources::Collection[DBCluster]
+      end
+    end
+  end
+end

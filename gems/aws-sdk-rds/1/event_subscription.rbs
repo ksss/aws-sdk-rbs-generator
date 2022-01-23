@@ -1,0 +1,63 @@
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the generator README.md for more information:
+# https://github.com/ksss/aws-sdk-rbs-generator/blob/main/README.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws
+  module RDS
+    class EventSubscription
+      # identifiers
+
+      def initialize: (name: String, client: Client) -> void
+      def name: () -> String
+
+      # data_attribute
+
+      def customer_aws_id: () -> Types::string
+      def sns_topic_arn: () -> Types::string
+      def status: () -> Types::string
+      def subscription_creation_time: () -> Types::string
+      def source_type: () -> Types::string
+      def source_ids_list: () -> Types::source_ids_list
+      def event_categories_list: () -> Types::event_categories_list
+      def enabled: () -> Types::boolean
+      def event_subscription_arn: () -> Types::string
+
+      # client_method
+
+      def client: () -> Client
+
+      # load_method
+
+      def load: () -> self
+      alias reload load
+
+      # data_method
+
+      def data: () -> Types::EventSubscription
+
+      def data_loaded?: () -> bool
+
+      # waiters
+
+
+      # actions
+
+      def add_subscriber: (source_identifier: Types::string) -> EventSubscription
+      def create: (sns_topic_arn: Types::string, ?source_type: Types::string, ?event_categories: Types::event_categories_list, ?source_ids: Types::source_ids_list, ?enabled: Types::boolean_optional, ?tags: Types::tag_list_input) -> EventSubscription
+      def delete: () -> EventSubscription
+      def modify: (?sns_topic_arn: Types::string, ?source_type: Types::string, ?event_categories: Types::event_categories_list, ?enabled: Types::boolean_optional) -> EventSubscription
+      def remove_subscriber: (source_identifier: Types::string) -> EventSubscription
+
+      # associations
+
+
+      # batch_actions
+
+      class Collection < ::Aws::Resources::Collection[EventSubscription]
+      end
+    end
+  end
+end

@@ -1,0 +1,56 @@
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the generator README.md for more information:
+# https://github.com/ksss/aws-sdk-rbs-generator/blob/main/README.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws
+  module RDS
+    class DBClusterParameterGroup
+      # identifiers
+
+      def initialize: (name: String, client: Client) -> void
+      def name: () -> String
+
+      # data_attribute
+
+      def db_parameter_group_family: () -> Types::string
+      def description: () -> Types::string
+      def db_cluster_parameter_group_arn: () -> Types::string
+
+      # client_method
+
+      def client: () -> Client
+
+      # load_method
+
+      def load: () -> self
+      alias reload load
+
+      # data_method
+
+      def data: () -> Types::DBClusterParameterGroup
+
+      def data_loaded?: () -> bool
+
+      # waiters
+
+
+      # actions
+
+      def create: (db_parameter_group_family: Types::string, description: Types::string, ?tags: Types::tag_list_input) -> DBClusterParameterGroup
+      def delete: () -> EmptyStructure
+      def modify: (parameters: Types::parameters_list_input) -> DBClusterParameterGroup
+      def reset: (?reset_all_parameters: Types::boolean, ?parameters: Types::parameters_list_input) -> DBClusterParameterGroup
+
+      # associations
+
+
+      # batch_actions
+
+      class Collection < ::Aws::Resources::Collection[DBClusterParameterGroup]
+      end
+    end
+  end
+end

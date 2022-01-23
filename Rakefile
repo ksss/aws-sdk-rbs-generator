@@ -26,5 +26,5 @@ task :write do |task, args|
 end
 
 task :default do
-  Rake::Task['write'].invoke("gems", "S3", "SQS", "EC2", "KMS")
+  Rake::Task['write'].invoke("gems", "S3", "SQS", "EC2", "KMS", "RDS")
 end

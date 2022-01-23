@@ -1,0 +1,50 @@
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the generator README.md for more information:
+# https://github.com/ksss/aws-sdk-rbs-generator/blob/main/README.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws
+  module RDS
+    class EventCategoryMap
+      # identifiers
+
+      def initialize: (source_type: String, client: Client) -> void
+      def source_type: () -> String
+
+      # data_attribute
+
+      def event_categories: () -> Types::event_categories_list
+
+      # client_method
+
+      def client: () -> Client
+
+      # load_method
+
+      def load: () -> self
+      alias reload load
+
+      # data_method
+
+      def data: () -> Types::EventCategoriesMap
+
+      def data_loaded?: () -> bool
+
+      # waiters
+
+
+      # actions
+
+
+      # associations
+
+
+      # batch_actions
+
+      class Collection < ::Aws::Resources::Collection[EventCategoryMap]
+      end
+    end
+  end
+end

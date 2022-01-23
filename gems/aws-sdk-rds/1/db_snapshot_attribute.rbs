@@ -1,0 +1,50 @@
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the generator README.md for more information:
+# https://github.com/ksss/aws-sdk-rbs-generator/blob/main/README.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws
+  module RDS
+    class DBSnapshotAttribute
+      # identifiers
+
+      def initialize: (snapshot_id: String, name: String, client: Client) -> void
+      def snapshot_id: () -> String
+      def name: () -> String
+
+      # data_attribute
+
+      def attribute_values: () -> Types::attribute_value_list
+
+      # client_method
+
+      def client: () -> Client
+
+      # load_method
+
+
+      # data_method
+
+      def data: () -> Types::DBSnapshotAttribute
+
+      def data_loaded?: () -> bool
+
+      # waiters
+
+
+      # actions
+
+      def modify: (?values_to_add: Types::attribute_value_list, ?values_to_remove: Types::attribute_value_list) -> Types::ModifyDBSnapshotAttributeResult
+
+      # associations
+
+
+      # batch_actions
+
+      class Collection < ::Aws::Resources::Collection[DBSnapshotAttribute]
+      end
+    end
+  end
+end
