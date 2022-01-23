@@ -1,0 +1,291 @@
+# WARNING ABOUT GENERATED CODE
+#
+# This file is generated. See the generator README.md for more information:
+# https://github.com/ksss/aws-sdk-rbs-generator/blob/main/README.md
+#
+# WARNING ABOUT GENERATED CODE
+
+module Aws
+  module KMS
+    module Types
+      type aws_account_id_type = ::String
+      type algorithm_spec = ("RSAES_PKCS1_V1_5" | "RSAES_OAEP_SHA_1" | "RSAES_OAEP_SHA_256")
+      type alias_list = ::Array[AliasListEntry]
+      class AliasListEntry
+        attr_accessor alias_name: alias_name_type
+        attr_accessor alias_arn: arn_type
+        attr_accessor target_key_id: key_id_type
+        attr_accessor creation_date: date_type
+        attr_accessor last_updated_date: date_type
+      end
+      type alias_name_type = ::String
+      type arn_type = ::String
+      type boolean_type = bool
+      class CancelKeyDeletionResponse
+        attr_accessor key_id: key_id_type
+      end
+      type ciphertext_type = ::String
+      type cloud_hsm_cluster_id_type = ::String
+      class ConnectCustomKeyStoreResponse
+      end
+      type connection_error_code_type = ("INVALID_CREDENTIALS" | "CLUSTER_NOT_FOUND" | "NETWORK_ERRORS" | "INTERNAL_ERROR" | "INSUFFICIENT_CLOUDHSM_HSMS" | "USER_LOCKED_OUT" | "USER_NOT_FOUND" | "USER_LOGGED_IN" | "SUBNET_NOT_FOUND")
+      type connection_state_type = ("CONNECTED" | "CONNECTING" | "FAILED" | "DISCONNECTED" | "DISCONNECTING")
+      class CreateCustomKeyStoreResponse
+        attr_accessor custom_key_store_id: custom_key_store_id_type
+      end
+      class CreateGrantResponse
+        attr_accessor grant_token: grant_token_type
+        attr_accessor grant_id: grant_id_type
+      end
+      class CreateKeyResponse
+        attr_accessor key_metadata: KeyMetadata
+      end
+      type custom_key_store_id_type = ::String
+      type custom_key_store_name_type = ::String
+      type custom_key_stores_list = ::Array[CustomKeyStoresListEntry]
+      class CustomKeyStoresListEntry
+        attr_accessor custom_key_store_id: custom_key_store_id_type
+        attr_accessor custom_key_store_name: custom_key_store_name_type
+        attr_accessor cloud_hsm_cluster_id: cloud_hsm_cluster_id_type
+        attr_accessor trust_anchor_certificate: trust_anchor_certificate_type
+        attr_accessor connection_state: connection_state_type
+        attr_accessor connection_error_code: connection_error_code_type
+        attr_accessor creation_date: date_type
+      end
+      type customer_master_key_spec = ("RSA_2048" | "RSA_3072" | "RSA_4096" | "ECC_NIST_P256" | "ECC_NIST_P384" | "ECC_NIST_P521" | "ECC_SECG_P256K1" | "SYMMETRIC_DEFAULT")
+      type data_key_pair_spec = ("RSA_2048" | "RSA_3072" | "RSA_4096" | "ECC_NIST_P256" | "ECC_NIST_P384" | "ECC_NIST_P521" | "ECC_SECG_P256K1")
+      type data_key_spec = ("AES_256" | "AES_128")
+      type date_type = ::Time
+      class DecryptResponse
+        attr_accessor key_id: key_id_type
+        attr_accessor plaintext: plaintext_type
+        attr_accessor encryption_algorithm: encryption_algorithm_spec
+      end
+      class DeleteCustomKeyStoreResponse
+      end
+      class DescribeCustomKeyStoresResponse
+        attr_accessor custom_key_stores: custom_key_stores_list
+        attr_accessor next_marker: marker_type
+        attr_accessor truncated: boolean_type
+      end
+      class DescribeKeyResponse
+        attr_accessor key_metadata: KeyMetadata
+      end
+      type description_type = ::String
+      class DisconnectCustomKeyStoreResponse
+      end
+      class EncryptResponse
+        attr_accessor ciphertext_blob: ciphertext_type
+        attr_accessor key_id: key_id_type
+        attr_accessor encryption_algorithm: encryption_algorithm_spec
+      end
+      type encryption_algorithm_spec = ("SYMMETRIC_DEFAULT" | "RSAES_OAEP_SHA_1" | "RSAES_OAEP_SHA_256")
+      type encryption_algorithm_spec_list = ::Array[encryption_algorithm_spec]
+      type encryption_context_key = ::String
+      type encryption_context_type = ::Hash[encryption_context_key, encryption_context_value]
+      type encryption_context_value = ::String
+      type error_message_type = ::String
+      type expiration_model_type = ("KEY_MATERIAL_EXPIRES" | "KEY_MATERIAL_DOES_NOT_EXPIRE")
+      class GenerateDataKeyPairResponse
+        attr_accessor private_key_ciphertext_blob: ciphertext_type
+        attr_accessor private_key_plaintext: plaintext_type
+        attr_accessor public_key: public_key_type
+        attr_accessor key_id: key_id_type
+        attr_accessor key_pair_spec: data_key_pair_spec
+      end
+      class GenerateDataKeyPairWithoutPlaintextResponse
+        attr_accessor private_key_ciphertext_blob: ciphertext_type
+        attr_accessor public_key: public_key_type
+        attr_accessor key_id: key_id_type
+        attr_accessor key_pair_spec: data_key_pair_spec
+      end
+      class GenerateDataKeyResponse
+        attr_accessor ciphertext_blob: ciphertext_type
+        attr_accessor plaintext: plaintext_type
+        attr_accessor key_id: key_id_type
+      end
+      class GenerateDataKeyWithoutPlaintextResponse
+        attr_accessor ciphertext_blob: ciphertext_type
+        attr_accessor key_id: key_id_type
+      end
+      class GenerateRandomResponse
+        attr_accessor plaintext: plaintext_type
+      end
+      class GetKeyPolicyResponse
+        attr_accessor policy: policy_type
+      end
+      class GetKeyRotationStatusResponse
+        attr_accessor key_rotation_enabled: boolean_type
+      end
+      class GetParametersForImportResponse
+        attr_accessor key_id: key_id_type
+        attr_accessor import_token: ciphertext_type
+        attr_accessor public_key: plaintext_type
+        attr_accessor parameters_valid_to: date_type
+      end
+      class GetPublicKeyResponse
+        attr_accessor key_id: key_id_type
+        attr_accessor public_key: public_key_type
+        attr_accessor customer_master_key_spec: customer_master_key_spec
+        attr_accessor key_spec: key_spec
+        attr_accessor key_usage: key_usage_type
+        attr_accessor encryption_algorithms: encryption_algorithm_spec_list
+        attr_accessor signing_algorithms: signing_algorithm_spec_list
+      end
+      type grant_constraints = { encryption_context_subset: encryption_context_type?, encryption_context_equals: encryption_context_type? }
+      class GrantConstraints
+        attr_accessor encryption_context_subset: encryption_context_type
+        attr_accessor encryption_context_equals: encryption_context_type
+      end
+      type grant_id_type = ::String
+      type grant_list = ::Array[GrantListEntry]
+      class GrantListEntry
+        attr_accessor key_id: key_id_type
+        attr_accessor grant_id: grant_id_type
+        attr_accessor name: grant_name_type
+        attr_accessor creation_date: date_type
+        attr_accessor grantee_principal: principal_id_type
+        attr_accessor retiring_principal: principal_id_type
+        attr_accessor issuing_account: principal_id_type
+        attr_accessor operations: grant_operation_list
+        attr_accessor constraints: GrantConstraints
+      end
+      type grant_name_type = ::String
+      type grant_operation = ("Decrypt" | "Encrypt" | "GenerateDataKey" | "GenerateDataKeyWithoutPlaintext" | "ReEncryptFrom" | "ReEncryptTo" | "Sign" | "Verify" | "GetPublicKey" | "CreateGrant" | "RetireGrant" | "DescribeKey" | "GenerateDataKeyPair" | "GenerateDataKeyPairWithoutPlaintext")
+      type grant_operation_list = ::Array[grant_operation]
+      type grant_token_list = ::Array[grant_token_type]
+      type grant_token_type = ::String
+      class ImportKeyMaterialResponse
+      end
+      type key_id_type = ::String
+      type key_list = ::Array[KeyListEntry]
+      class KeyListEntry
+        attr_accessor key_id: key_id_type
+        attr_accessor key_arn: arn_type
+      end
+      type key_manager_type = ("AWS" | "CUSTOMER")
+      class KeyMetadata
+        attr_accessor aws_account_id: aws_account_id_type
+        attr_accessor key_id: key_id_type
+        attr_accessor arn: arn_type
+        attr_accessor creation_date: date_type
+        attr_accessor enabled: boolean_type
+        attr_accessor description: description_type
+        attr_accessor key_usage: key_usage_type
+        attr_accessor key_state: key_state
+        attr_accessor deletion_date: date_type
+        attr_accessor valid_to: date_type
+        attr_accessor origin: origin_type
+        attr_accessor custom_key_store_id: custom_key_store_id_type
+        attr_accessor cloud_hsm_cluster_id: cloud_hsm_cluster_id_type
+        attr_accessor expiration_model: expiration_model_type
+        attr_accessor key_manager: key_manager_type
+        attr_accessor customer_master_key_spec: customer_master_key_spec
+        attr_accessor key_spec: key_spec
+        attr_accessor encryption_algorithms: encryption_algorithm_spec_list
+        attr_accessor signing_algorithms: signing_algorithm_spec_list
+        attr_accessor multi_region: nullable_boolean_type
+        attr_accessor multi_region_configuration: MultiRegionConfiguration
+        attr_accessor pending_deletion_window_in_days: pending_window_in_days_type
+      end
+      type key_spec = ("RSA_2048" | "RSA_3072" | "RSA_4096" | "ECC_NIST_P256" | "ECC_NIST_P384" | "ECC_NIST_P521" | "ECC_SECG_P256K1" | "SYMMETRIC_DEFAULT")
+      type key_state = ("Creating" | "Enabled" | "Disabled" | "PendingDeletion" | "PendingImport" | "PendingReplicaDeletion" | "Unavailable" | "Updating")
+      type key_store_password_type = ::String
+      type key_usage_type = ("SIGN_VERIFY" | "ENCRYPT_DECRYPT")
+      type limit_type = ::Integer
+      class ListAliasesResponse
+        attr_accessor aliases: alias_list
+        attr_accessor next_marker: marker_type
+        attr_accessor truncated: boolean_type
+      end
+      class ListGrantsResponse
+        attr_accessor grants: grant_list
+        attr_accessor next_marker: marker_type
+        attr_accessor truncated: boolean_type
+      end
+      class ListKeyPoliciesResponse
+        attr_accessor policy_names: policy_name_list
+        attr_accessor next_marker: marker_type
+        attr_accessor truncated: boolean_type
+      end
+      class ListKeysResponse
+        attr_accessor keys: key_list
+        attr_accessor next_marker: marker_type
+        attr_accessor truncated: boolean_type
+      end
+      class ListResourceTagsResponse
+        attr_accessor tags: tag_list_output
+        attr_accessor next_marker: marker_type
+        attr_accessor truncated: boolean_type
+      end
+      type marker_type = ::String
+      type message_type = ("RAW" | "DIGEST")
+      class MultiRegionConfiguration
+        attr_accessor multi_region_key_type: multi_region_key_type
+        attr_accessor primary_key: MultiRegionKey
+        attr_accessor replica_keys: multi_region_key_list
+      end
+      class MultiRegionKey
+        attr_accessor arn: arn_type
+        attr_accessor region: region_type
+      end
+      type multi_region_key_list = ::Array[MultiRegionKey]
+      type multi_region_key_type = ("PRIMARY" | "REPLICA")
+      type nullable_boolean_type = bool
+      type number_of_bytes_type = ::Integer
+      type origin_type = ("AWS_KMS" | "EXTERNAL" | "AWS_CLOUDHSM")
+      type pending_window_in_days_type = ::Integer
+      type plaintext_type = ::String
+      type policy_name_list = ::Array[policy_name_type]
+      type policy_name_type = ::String
+      type policy_type = ::String
+      type principal_id_type = ::String
+      type public_key_type = ::String
+      class ReEncryptResponse
+        attr_accessor ciphertext_blob: ciphertext_type
+        attr_accessor source_key_id: key_id_type
+        attr_accessor key_id: key_id_type
+        attr_accessor source_encryption_algorithm: encryption_algorithm_spec
+        attr_accessor destination_encryption_algorithm: encryption_algorithm_spec
+      end
+      type region_type = ::String
+      class ReplicateKeyResponse
+        attr_accessor replica_key_metadata: KeyMetadata
+        attr_accessor replica_policy: policy_type
+        attr_accessor replica_tags: tag_list_output
+      end
+      class ScheduleKeyDeletionResponse
+        attr_accessor key_id: key_id_type
+        attr_accessor deletion_date: date_type
+        attr_accessor key_state: key_state
+        attr_accessor pending_window_in_days: pending_window_in_days_type
+      end
+      class SignResponse
+        attr_accessor key_id: key_id_type
+        attr_accessor signature: ciphertext_type
+        attr_accessor signing_algorithm: signing_algorithm_spec
+      end
+      type signing_algorithm_spec = ("RSASSA_PSS_SHA_256" | "RSASSA_PSS_SHA_384" | "RSASSA_PSS_SHA_512" | "RSASSA_PKCS1_V1_5_SHA_256" | "RSASSA_PKCS1_V1_5_SHA_384" | "RSASSA_PKCS1_V1_5_SHA_512" | "ECDSA_SHA_256" | "ECDSA_SHA_384" | "ECDSA_SHA_512")
+      type signing_algorithm_spec_list = ::Array[signing_algorithm_spec]
+      type tag = { tag_key: tag_key_type, tag_value: tag_value_type }
+      class Tag
+        attr_accessor tag_key: tag_key_type
+        attr_accessor tag_value: tag_value_type
+      end
+      type tag_key_list = ::Array[tag_key_type]
+      type tag_key_type = ::String
+      type tag_list_input = ::Array[tag]
+      type tag_list_output = ::Array[Tag]
+      type tag_value_type = ::String
+      type trust_anchor_certificate_type = ::String
+      class UpdateCustomKeyStoreResponse
+      end
+      class VerifyResponse
+        attr_accessor key_id: key_id_type
+        attr_accessor signature_valid: boolean_type
+        attr_accessor signing_algorithm: signing_algorithm_spec
+      end
+      type wrapping_key_spec = ("RSA_2048")
+    end
+  end
+end
