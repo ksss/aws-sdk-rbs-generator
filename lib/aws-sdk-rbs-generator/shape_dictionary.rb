@@ -28,7 +28,8 @@ module AwsSdkRbsGenerator
       end
       @service.api.fetch("shapes").each do |key, body|
         if body.fetch("type") == "structure" && !!!body['event'] && (body['error'] || body['exception'])
-          add_shape(name: key, kind: :exception, ref: body)
+          add_shape(kind: :exception, name: key, ref: body)
+          add_shape_members(kind: :output, name: key)
         end
       end
     end
@@ -53,6 +54,11 @@ module AwsSdkRbsGenerator
 
     def deep_add_shape(kind:, name:, ref: nil)
       root_shape = add_shape(kind:, name:, ref:)
+      add_shape_members(kind:, name:)
+      root_shape
+    end
+
+    def add_shape_members(kind:, name:)
       body = shape_body(name)
       case body.fetch("type")
       when "structure"
@@ -68,7 +74,6 @@ module AwsSdkRbsGenerator
         deep_add_shape(kind:, name: key.fetch("shape"), ref: key)
         deep_add_shape(kind:, name: value.fetch("shape"), ref: value)
       end
-      root_shape
     end
 
     def add_shape(kind:, name:, ref:)

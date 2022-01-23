@@ -5,7 +5,8 @@ module AwsSdkRbsGenerator
     def initialize(shape_dictionary:)
       @list = []
       shape_dictionary.each do |_name, shapes|
-        shapes.find(&:exception?)&.tap do |shape|
+        shape = shapes.find(&:exception?)
+        if shape
           body = shape.fetch_body
           members = body[:members].map do |member_name, member_body|
             member_shape = shape_dictionary[member_body.fetch(:shape)].first or raise
