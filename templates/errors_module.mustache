@@ -2,8 +2,11 @@
 module Aws
   module {{service_name}}
     module Errors
+      class ServiceError < Aws::Errors::ServiceError
+      end
+
       {{#errors}}
-      class {{name}} < Aws::Errors::ServiceError
+      class {{name}} < ServiceError
         {{#members}}
         def {{method_name}}: () -> {{returns}}
         {{/members}}

@@ -8,23 +8,26 @@
 module Aws
   module S3
     module Errors
-      class BucketAlreadyExists < Aws::Errors::ServiceError
+      class ServiceError < Aws::Errors::ServiceError
       end
-      class BucketAlreadyOwnedByYou < Aws::Errors::ServiceError
+
+      class BucketAlreadyExists < ServiceError
       end
-      class InvalidObjectState < Aws::Errors::ServiceError
+      class BucketAlreadyOwnedByYou < ServiceError
+      end
+      class InvalidObjectState < ServiceError
         def storage_class: () -> Types::storage_class
         def access_tier: () -> Types::intelligent_tiering_access_tier
       end
-      class NoSuchBucket < Aws::Errors::ServiceError
+      class NoSuchBucket < ServiceError
       end
-      class NoSuchKey < Aws::Errors::ServiceError
+      class NoSuchKey < ServiceError
       end
-      class NoSuchUpload < Aws::Errors::ServiceError
+      class NoSuchUpload < ServiceError
       end
-      class ObjectAlreadyInActiveTierError < Aws::Errors::ServiceError
+      class ObjectAlreadyInActiveTierError < ServiceError
       end
-      class ObjectNotInActiveTierError < Aws::Errors::ServiceError
+      class ObjectNotInActiveTierError < ServiceError
       end
     end
   end

@@ -8,37 +8,40 @@
 module Aws
   module SQS
     module Errors
-      class BatchEntryIdsNotDistinct < Aws::Errors::ServiceError
+      class ServiceError < Aws::Errors::ServiceError
       end
-      class BatchRequestTooLong < Aws::Errors::ServiceError
+
+      class BatchEntryIdsNotDistinct < ServiceError
       end
-      class EmptyBatchRequest < Aws::Errors::ServiceError
+      class BatchRequestTooLong < ServiceError
       end
-      class InvalidAttributeName < Aws::Errors::ServiceError
+      class EmptyBatchRequest < ServiceError
       end
-      class InvalidBatchEntryId < Aws::Errors::ServiceError
+      class InvalidAttributeName < ServiceError
       end
-      class InvalidIdFormat < Aws::Errors::ServiceError
+      class InvalidBatchEntryId < ServiceError
       end
-      class InvalidMessageContents < Aws::Errors::ServiceError
+      class InvalidIdFormat < ServiceError
       end
-      class MessageNotInflight < Aws::Errors::ServiceError
+      class InvalidMessageContents < ServiceError
       end
-      class OverLimit < Aws::Errors::ServiceError
+      class MessageNotInflight < ServiceError
       end
-      class PurgeQueueInProgress < Aws::Errors::ServiceError
+      class OverLimit < ServiceError
       end
-      class QueueDeletedRecently < Aws::Errors::ServiceError
+      class PurgeQueueInProgress < ServiceError
       end
-      class QueueDoesNotExist < Aws::Errors::ServiceError
+      class QueueDeletedRecently < ServiceError
       end
-      class QueueNameExists < Aws::Errors::ServiceError
+      class QueueDoesNotExist < ServiceError
       end
-      class ReceiptHandleIsInvalid < Aws::Errors::ServiceError
+      class QueueNameExists < ServiceError
       end
-      class TooManyEntriesInBatchRequest < Aws::Errors::ServiceError
+      class ReceiptHandleIsInvalid < ServiceError
       end
-      class UnsupportedOperation < Aws::Errors::ServiceError
+      class TooManyEntriesInBatchRequest < ServiceError
+      end
+      class UnsupportedOperation < ServiceError
       end
     end
   end
