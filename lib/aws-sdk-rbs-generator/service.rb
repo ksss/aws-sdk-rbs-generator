@@ -12,7 +12,7 @@ module AwsSdkRbsGenerator
       @types_module = Views::TypesModule.new(shape_dictionary: @shape_dictionary)
       @errors_module = Views::ErrorsModule.new(shape_dictionary: @shape_dictionary)
       @root_resource_class = Views::RootResourceClass.new(service: self)
-      @resource_classes = @resources.fetch(:resources).map do |resource_name, resource|
+      @resource_classes = @resources.fetch(:resources, []).map do |resource_name, resource|
         Views::ResourceClass.new(service: self, shape_dictionary:, resource_name:, resource:)
       end
     end

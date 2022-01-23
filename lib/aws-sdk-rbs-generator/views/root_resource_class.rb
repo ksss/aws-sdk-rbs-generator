@@ -8,7 +8,7 @@ module AwsSdkRbsGenerator
 
       def initialize(service:)
         @service = service
-        resource = @service.resources.fetch(:service)
+        resource = @service.resources.fetch(:service, {})
         @actions = ResourceAction.build_method_signature_list(resource:, service:)
         @associations = ResourceAssociation.build_method_signature_list(resource:, service:)
       end

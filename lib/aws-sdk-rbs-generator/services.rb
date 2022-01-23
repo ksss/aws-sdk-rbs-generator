@@ -48,6 +48,8 @@ module AwsSdkRbsGenerator
           .then { File.read(_1) }
           .then { JSON.parse(_1, symbolize_names: true) }
           .then { ActiveSupport::HashWithIndifferentAccess.new(_1) }
+      else
+        {}
       end
     end
   end
