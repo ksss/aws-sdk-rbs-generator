@@ -50,7 +50,7 @@ module Aws
 
       # batch_actions
 
-      class Collection < ::Aws::Resources::Collection
+      class Collection < ::Aws::Resources::Collection[Message]
         def batch_delete!: () -> void
       end
     end

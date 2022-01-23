@@ -53,7 +53,7 @@ module Aws
 
       # batch_actions
 
-      class Collection < ::Aws::Resources::Collection
+      class Collection < ::Aws::Resources::Collection[MultipartUpload]
       end
     end
   end

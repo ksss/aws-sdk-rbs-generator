@@ -46,7 +46,7 @@ module Aws
 
       # batch_actions
 
-      class Collection < ::Aws::Resources::Collection
+      class Collection < ::Aws::Resources::Collection[BucketCors]
       end
     end
   end

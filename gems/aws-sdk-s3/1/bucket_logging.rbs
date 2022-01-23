@@ -45,7 +45,7 @@ module Aws
 
       # batch_actions
 
-      class Collection < ::Aws::Resources::Collection
+      class Collection < ::Aws::Resources::Collection[BucketLogging]
       end
     end
   end
