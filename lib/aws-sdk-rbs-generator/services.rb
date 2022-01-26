@@ -23,6 +23,7 @@ module AwsSdkRbsGenerator
         api: load_api(models),
         resources: load_resources(models),
         paginators: load_paginators(models),
+        waiters: load_waiters(models),
       )
     end
 
@@ -40,6 +41,10 @@ module AwsSdkRbsGenerator
 
     def load_paginators(models_dir)
       load_json(File.expand_path("#{models_dir}/paginators-1.json", APIS_PATH))
+    end
+
+    def load_waiters(models_dir)
+      load_json(File.expand_path("#{models_dir}/waiters-2.json", APIS_PATH))
     end
 
     def load_json(path)

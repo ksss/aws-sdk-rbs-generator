@@ -3,8 +3,9 @@
 module AwsSdkRbsGenerator
   module Views
     class ClientClass < View
-      def initialize(shape_dictionary:)
+      def initialize(shape_dictionary:, waiters:)
         @shape_dictionary = shape_dictionary
+        @waiters = Waiter.build_list(waiters:, shape_dictionary:)
       end
 
       def service_name
@@ -56,6 +57,18 @@ module AwsSdkRbsGenerator
             returns: body.dig("output", "shape")&.then { "Types::#{_1}" } || "Aws::EmptyStructure",
           )
         end
+      end
+
+      def waiters?
+        @waiters.size > 0
+      end
+
+      def waiters_first
+        [@waiters.first]
+      end
+
+      def waiters_others
+        @waiters[1..-1]
       end
     end
   end

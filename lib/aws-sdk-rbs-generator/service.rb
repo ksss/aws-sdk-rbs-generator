@@ -3,12 +3,12 @@
 module AwsSdkRbsGenerator
   class Service
     attr_reader :name, :api, :resources, :paginators, :shape_dictionary
-    def initialize(name:, api:, resources:, paginators:)
+    def initialize(name:, api:, resources:, paginators:, waiters:)
       @name = name
       @api = api
       @resources = resources
       @shape_dictionary = ShapeDictionary.new(service: self)
-      @client_class = Views::ClientClass.new(shape_dictionary: @shape_dictionary)
+      @client_class = Views::ClientClass.new(shape_dictionary: @shape_dictionary, waiters:)
       @types_module = Views::TypesModule.new(shape_dictionary: @shape_dictionary)
       @errors_module = Views::ErrorsModule.new(shape_dictionary: @shape_dictionary)
       @root_resource_class = Views::RootResourceClass.new(service: self)

@@ -54,6 +54,7 @@ module AwsSdkRbsGenerator
 
     def deep_add_shape(kind:, name:, ref: nil)
       root_shape = add_shape(kind:, name:, ref:)
+      return unless root_shape
       add_shape_members(kind:, name:)
       root_shape
     end
@@ -85,8 +86,11 @@ module AwsSdkRbsGenerator
         ref:,
       )
       if @table[name]
-        @table[name] << new_shape
-        @table[name].uniq!
+        if !@table[name].include?(new_shape)
+          @table[name] << new_shape
+        else
+          return nil
+        end
       else
         @table[name] = [new_shape]
       end

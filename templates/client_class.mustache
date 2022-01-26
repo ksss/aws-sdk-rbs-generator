@@ -6,6 +6,14 @@ module Aws
       {{#operations}}
       def {{method_name}}: ({{arguments}}) -> {{returns}}
       {{/operations}}
+      {{#waiters?}}
+      {{#waiters_first}}
+      def wait_until: ({{name}} name, {{params}} params, ?Aws::Waiters::options options) -> {{returns}}
+      {{/waiters_first}}
+      {{#waiters_others}}
+                    | ({{name}} name, {{params}} params, ?Aws::Waiters::options options) -> {{returns}}
+      {{/waiters_others}}
+      {{/waiters?}}
     end
   end
 end

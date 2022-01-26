@@ -26,6 +26,7 @@ require_relative "aws-sdk-rbs-generator/resource_client_request"
 require_relative "aws-sdk-rbs-generator/service"
 require_relative "aws-sdk-rbs-generator/services"
 require_relative "aws-sdk-rbs-generator/version"
+require_relative "aws-sdk-rbs-generator/waiter"
 
 module AwsSdkRbsGenerator
   class << self

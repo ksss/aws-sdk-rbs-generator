@@ -29,6 +29,7 @@ module AwsSdkRbsGenerator
 
         true
       end
+      alias == eql?
 
       def fetch_body
         dictionary.service.api.fetch("shapes").fetch(name)

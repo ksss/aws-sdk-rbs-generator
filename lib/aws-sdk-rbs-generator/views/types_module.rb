@@ -9,7 +9,7 @@ module AwsSdkRbsGenerator
         @shape_dictionary = shape_dictionary
         @shape_map = shape_dictionary.filter_map { |_, shapes|
           # request structure used in operations keyword argument directly
-          next if shapes.first.request
+          # next if shapes.first.request
 
           # exception should be in errors_module
           next if shapes.first.exception?

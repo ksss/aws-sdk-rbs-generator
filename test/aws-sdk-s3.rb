@@ -1,6 +1,6 @@
 require 'aws-sdk-s3'
 
-# Client
+puts '# Client'
 
 client = Aws::S3::Client.new(
   region: 'ap-test-1',
@@ -8,22 +8,31 @@ client = Aws::S3::Client.new(
 )
 
 p client.get_object(bucket: 'a', key: 'b').etag.upcase
+p client.wait_until(:bucket_exists, { bucket: 'a' })
 
-# Resource
+puts '# Resource'
 
-## Low level api
+puts '## Low level api'
+
+# @type var batches: Array[Array[Aws::S3::Object]]
+batches = [[]]
+collection = Aws::S3::Object::Collection.new(batches)
+p collection.first
+p collection.first(1).size
+p collection.size
+p collection.to_a
 
 object = Aws::S3::Object.new(bucket_name: 'a', key: 'b', client: client)
 batches = [[object]]
 collection = Aws::S3::Object::Collection.new(batches)
-p collection.first.bucket_name
-p collection.first(1).sort
+p collection.first&.bucket_name
+p collection.first(1).size
 collection.each do |obj|
   p obj.bucket_name.upcase
   p obj.key.upcase
 end
 
-## High level api
+puts '## High level api'
 
 resource = Aws::S3::Resource.new(client: client)
 p resource.bucket('a').object('b').delete.version_id.upcase
