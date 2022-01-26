@@ -20,15 +20,21 @@ module Aws
       type activity_stream_mode = ("sync" | "async")
       type activity_stream_mode_list = ::Array[string]
       type activity_stream_status = ("stopped" | "starting" | "started" | "stopping")
+      type add_role_to_db_cluster_message = { db_cluster_identifier: string, role_arn: string, feature_name: string? }
+      type add_role_to_db_instance_message = { db_instance_identifier: string, role_arn: string, feature_name: string }
+      type add_source_identifier_to_subscription_message = { subscription_name: string, source_identifier: string }
       class AddSourceIdentifierToSubscriptionResult
         attr_accessor event_subscription: EventSubscription
       end
+      type add_tags_to_resource_message = { resource_name: string, tags: tag_list_input }
       type apply_method = ("immediate" | "pending-reboot")
+      type apply_pending_maintenance_action_message = { resource_identifier: string, apply_action: string, opt_in_type: string }
       class ApplyPendingMaintenanceActionResult
         attr_accessor resource_pending_maintenance_actions: ResourcePendingMaintenanceActions
       end
       type attribute_value_list = ::Array[string]
       type auth_scheme = ("SECRETS")
+      type authorize_db_security_group_ingress_message = { db_security_group_name: string, cidrip: string?, ec2_security_group_name: string?, ec2_security_group_id: string?, ec2_security_group_owner_id: string? }
       class AuthorizeDBSecurityGroupIngressResult
         attr_accessor db_security_group: DBSecurityGroup
       end
@@ -45,9 +51,11 @@ module Aws
       end
       type available_processor_feature_list = ::Array[AvailableProcessorFeature]
       type aws_backup_recovery_point_arn = ::String
+      type backtrack_db_cluster_message = { db_cluster_identifier: string, backtrack_to: t_stamp, force: boolean_optional?, use_earliest_time_on_point_in_time_unavailable: boolean_optional? }
       type boolean = bool
       type boolean_optional = bool
       type bucket_name = ::String
+      type cancel_export_task_message = { export_task_identifier: string }
       class Certificate
         attr_accessor certificate_identifier: string
         attr_accessor certificate_type: string
@@ -83,63 +91,85 @@ module Aws
         attr_accessor session_pinning_filters: string_list
         attr_accessor init_query: string
       end
+      type copy_db_cluster_parameter_group_message = { source_db_cluster_parameter_group_identifier: string, target_db_cluster_parameter_group_identifier: string, target_db_cluster_parameter_group_description: string, tags: tag_list_input? }
       class CopyDBClusterParameterGroupResult
         attr_accessor db_cluster_parameter_group: DBClusterParameterGroup
       end
+      type copy_db_cluster_snapshot_message = { source_db_cluster_snapshot_identifier: string, target_db_cluster_snapshot_identifier: string, kms_key_id: string?, pre_signed_url: string?, copy_tags: boolean_optional?, tags: tag_list_input? }
       class CopyDBClusterSnapshotResult
         attr_accessor db_cluster_snapshot: DBClusterSnapshot
       end
+      type copy_db_parameter_group_message = { source_db_parameter_group_identifier: string, target_db_parameter_group_identifier: string, target_db_parameter_group_description: string, tags: tag_list_input? }
       class CopyDBParameterGroupResult
         attr_accessor db_parameter_group: DBParameterGroup
       end
+      type copy_db_snapshot_message = { source_db_snapshot_identifier: string, target_db_snapshot_identifier: string, kms_key_id: string?, tags: tag_list_input?, copy_tags: boolean_optional?, pre_signed_url: string?, option_group_name: string?, target_custom_availability_zone: string? }
       class CopyDBSnapshotResult
         attr_accessor db_snapshot: DBSnapshot
       end
+      type copy_option_group_message = { source_option_group_identifier: string, target_option_group_identifier: string, target_option_group_description: string, tags: tag_list_input? }
       class CopyOptionGroupResult
         attr_accessor option_group: OptionGroup
       end
+      type create_custom_availability_zone_message = { custom_availability_zone_name: string, existing_vpn_id: string?, new_vpn_tunnel_name: string?, vpn_tunnel_originator_ip: string? }
       class CreateCustomAvailabilityZoneResult
         attr_accessor custom_availability_zone: CustomAvailabilityZone
       end
+      type create_custom_db_engine_version_message = { engine: custom_engine_name, engine_version: custom_engine_version, database_installation_files_s3_bucket_name: bucket_name, database_installation_files_s3_prefix: string_255?, kms_key_id: kms_key_id_or_arn, description: description?, manifest: custom_db_engine_version_manifest, tags: tag_list_input? }
+      type create_db_cluster_endpoint_message = { db_cluster_identifier: string, db_cluster_endpoint_identifier: string, endpoint_type: string, static_members: string_list?, excluded_members: string_list?, tags: tag_list_input? }
+      type create_db_cluster_message = { availability_zones: availability_zones?, backup_retention_period: integer_optional?, character_set_name: string?, database_name: string?, db_cluster_identifier: string, db_cluster_parameter_group_name: string?, vpc_security_group_ids: vpc_security_group_id_list?, db_subnet_group_name: string?, engine: string, engine_version: string?, port: integer_optional?, master_username: string?, master_user_password: string?, option_group_name: string?, preferred_backup_window: string?, preferred_maintenance_window: string?, replication_source_identifier: string?, tags: tag_list_input?, storage_encrypted: boolean_optional?, kms_key_id: string?, pre_signed_url: string?, enable_iam_database_authentication: boolean_optional?, backtrack_window: long_optional?, enable_cloudwatch_logs_exports: log_type_list?, engine_mode: string?, scaling_configuration: scaling_configuration?, deletion_protection: boolean_optional?, global_cluster_identifier: string?, enable_http_endpoint: boolean_optional?, copy_tags_to_snapshot: boolean_optional?, domain: string?, domain_iam_role_name: string?, enable_global_write_forwarding: boolean_optional?, db_cluster_instance_class: string?, allocated_storage: integer_optional?, storage_type: string?, iops: integer_optional?, publicly_accessible: boolean_optional?, auto_minor_version_upgrade: boolean_optional?, monitoring_interval: integer_optional?, monitoring_role_arn: string?, enable_performance_insights: boolean_optional?, performance_insights_kms_key_id: string?, performance_insights_retention_period: integer_optional? }
+      type create_db_cluster_parameter_group_message = { db_cluster_parameter_group_name: string, db_parameter_group_family: string, description: string, tags: tag_list_input? }
       class CreateDBClusterParameterGroupResult
         attr_accessor db_cluster_parameter_group: DBClusterParameterGroup
       end
       class CreateDBClusterResult
         attr_accessor db_cluster: DBCluster
       end
+      type create_db_cluster_snapshot_message = { db_cluster_snapshot_identifier: string, db_cluster_identifier: string, tags: tag_list_input? }
       class CreateDBClusterSnapshotResult
         attr_accessor db_cluster_snapshot: DBClusterSnapshot
       end
+      type create_db_instance_message = { db_name: string?, db_instance_identifier: string, allocated_storage: integer_optional?, db_instance_class: string, engine: string, master_username: string?, master_user_password: string?, db_security_groups: db_security_group_name_list?, vpc_security_group_ids: vpc_security_group_id_list?, availability_zone: string?, db_subnet_group_name: string?, preferred_maintenance_window: string?, db_parameter_group_name: string?, backup_retention_period: integer_optional?, preferred_backup_window: string?, port: integer_optional?, multi_az: boolean_optional?, engine_version: string?, auto_minor_version_upgrade: boolean_optional?, license_model: string?, iops: integer_optional?, option_group_name: string?, character_set_name: string?, nchar_character_set_name: string?, publicly_accessible: boolean_optional?, tags: tag_list_input?, db_cluster_identifier: string?, storage_type: string?, tde_credential_arn: string?, tde_credential_password: string?, storage_encrypted: boolean_optional?, kms_key_id: string?, domain: string?, copy_tags_to_snapshot: boolean_optional?, monitoring_interval: integer_optional?, monitoring_role_arn: string?, domain_iam_role_name: string?, promotion_tier: integer_optional?, timezone: string?, enable_iam_database_authentication: boolean_optional?, enable_performance_insights: boolean_optional?, performance_insights_kms_key_id: string?, performance_insights_retention_period: integer_optional?, enable_cloudwatch_logs_exports: log_type_list?, processor_features: processor_feature_list_input?, deletion_protection: boolean_optional?, max_allocated_storage: integer_optional?, enable_customer_owned_ip: boolean_optional?, custom_iam_instance_profile: string?, backup_target: string? }
+      type create_db_instance_read_replica_message = { db_instance_identifier: string, source_db_instance_identifier: string, db_instance_class: string?, availability_zone: string?, port: integer_optional?, multi_az: boolean_optional?, auto_minor_version_upgrade: boolean_optional?, iops: integer_optional?, option_group_name: string?, db_parameter_group_name: string?, publicly_accessible: boolean_optional?, tags: tag_list_input?, db_subnet_group_name: string?, vpc_security_group_ids: vpc_security_group_id_list?, storage_type: string?, copy_tags_to_snapshot: boolean_optional?, monitoring_interval: integer_optional?, monitoring_role_arn: string?, kms_key_id: string?, pre_signed_url: string?, enable_iam_database_authentication: boolean_optional?, enable_performance_insights: boolean_optional?, performance_insights_kms_key_id: string?, performance_insights_retention_period: integer_optional?, enable_cloudwatch_logs_exports: log_type_list?, processor_features: processor_feature_list_input?, use_default_processor_features: boolean_optional?, deletion_protection: boolean_optional?, domain: string?, domain_iam_role_name: string?, replica_mode: replica_mode?, max_allocated_storage: integer_optional?, custom_iam_instance_profile: string? }
       class CreateDBInstanceReadReplicaResult
         attr_accessor db_instance: DBInstance
       end
       class CreateDBInstanceResult
         attr_accessor db_instance: DBInstance
       end
+      type create_db_parameter_group_message = { db_parameter_group_name: string, db_parameter_group_family: string, description: string, tags: tag_list_input? }
       class CreateDBParameterGroupResult
         attr_accessor db_parameter_group: DBParameterGroup
       end
+      type create_db_proxy_endpoint_request = { db_proxy_name: db_proxy_name, db_proxy_endpoint_name: db_proxy_endpoint_name, vpc_subnet_ids: string_list, vpc_security_group_ids: string_list?, target_role: db_proxy_endpoint_target_role?, tags: tag_list_input? }
       class CreateDBProxyEndpointResponse
         attr_accessor db_proxy_endpoint: DBProxyEndpoint
       end
+      type create_db_proxy_request = { db_proxy_name: string, engine_family: engine_family, auth: user_auth_config_list, role_arn: string, vpc_subnet_ids: string_list, vpc_security_group_ids: string_list?, require_tls: boolean?, idle_client_timeout: integer_optional?, debug_logging: boolean?, tags: tag_list_input? }
       class CreateDBProxyResponse
         attr_accessor db_proxy: DBProxy
       end
+      type create_db_security_group_message = { db_security_group_name: string, db_security_group_description: string, tags: tag_list_input? }
       class CreateDBSecurityGroupResult
         attr_accessor db_security_group: DBSecurityGroup
       end
+      type create_db_snapshot_message = { db_snapshot_identifier: string, db_instance_identifier: string, tags: tag_list_input? }
       class CreateDBSnapshotResult
         attr_accessor db_snapshot: DBSnapshot
       end
+      type create_db_subnet_group_message = { db_subnet_group_name: string, db_subnet_group_description: string, subnet_ids: subnet_identifier_list, tags: tag_list_input? }
       class CreateDBSubnetGroupResult
         attr_accessor db_subnet_group: DBSubnetGroup
       end
+      type create_event_subscription_message = { subscription_name: string, sns_topic_arn: string, source_type: string?, event_categories: event_categories_list?, source_ids: source_ids_list?, enabled: boolean_optional?, tags: tag_list_input? }
       class CreateEventSubscriptionResult
         attr_accessor event_subscription: EventSubscription
       end
+      type create_global_cluster_message = { global_cluster_identifier: string?, source_db_cluster_identifier: string?, engine: string?, engine_version: string?, deletion_protection: boolean_optional?, database_name: string?, storage_encrypted: boolean_optional? }
       class CreateGlobalClusterResult
         attr_accessor global_cluster: GlobalCluster
       end
+      type create_option_group_message = { option_group_name: string, engine_name: string, major_engine_version: string, option_group_description: string, tags: tag_list_input? }
       class CreateOptionGroupResult
         attr_accessor option_group: OptionGroup
       end
@@ -668,76 +698,135 @@ module Aws
         attr_accessor db_subnet_groups: db_subnet_groups_output
       end
       type db_subnet_groups_output = ::Array[DBSubnetGroup]
+      type delete_custom_availability_zone_message = { custom_availability_zone_id: string }
       class DeleteCustomAvailabilityZoneResult
         attr_accessor custom_availability_zone: CustomAvailabilityZone
       end
+      type delete_custom_db_engine_version_message = { engine: custom_engine_name, engine_version: custom_engine_version }
+      type delete_db_cluster_endpoint_message = { db_cluster_endpoint_identifier: string }
+      type delete_db_cluster_message = { db_cluster_identifier: string, skip_final_snapshot: boolean?, final_db_snapshot_identifier: string? }
+      type delete_db_cluster_parameter_group_message = { db_cluster_parameter_group_name: string }
       class DeleteDBClusterResult
         attr_accessor db_cluster: DBCluster
       end
+      type delete_db_cluster_snapshot_message = { db_cluster_snapshot_identifier: string }
       class DeleteDBClusterSnapshotResult
         attr_accessor db_cluster_snapshot: DBClusterSnapshot
       end
+      type delete_db_instance_automated_backup_message = { dbi_resource_id: string?, db_instance_automated_backups_arn: string? }
       class DeleteDBInstanceAutomatedBackupResult
         attr_accessor db_instance_automated_backup: DBInstanceAutomatedBackup
       end
+      type delete_db_instance_message = { db_instance_identifier: string, skip_final_snapshot: boolean?, final_db_snapshot_identifier: string?, delete_automated_backups: boolean_optional? }
       class DeleteDBInstanceResult
         attr_accessor db_instance: DBInstance
       end
+      type delete_db_parameter_group_message = { db_parameter_group_name: string }
+      type delete_db_proxy_endpoint_request = { db_proxy_endpoint_name: db_proxy_endpoint_name }
       class DeleteDBProxyEndpointResponse
         attr_accessor db_proxy_endpoint: DBProxyEndpoint
       end
+      type delete_db_proxy_request = { db_proxy_name: string }
       class DeleteDBProxyResponse
         attr_accessor db_proxy: DBProxy
       end
+      type delete_db_security_group_message = { db_security_group_name: string }
+      type delete_db_snapshot_message = { db_snapshot_identifier: string }
       class DeleteDBSnapshotResult
         attr_accessor db_snapshot: DBSnapshot
       end
+      type delete_db_subnet_group_message = { db_subnet_group_name: string }
+      type delete_event_subscription_message = { subscription_name: string }
       class DeleteEventSubscriptionResult
         attr_accessor event_subscription: EventSubscription
       end
+      type delete_global_cluster_message = { global_cluster_identifier: string }
       class DeleteGlobalClusterResult
         attr_accessor global_cluster: GlobalCluster
       end
+      type delete_installation_media_message = { installation_media_id: string }
+      type delete_option_group_message = { option_group_name: string }
+      type deregister_db_proxy_targets_request = { db_proxy_name: string, target_group_name: string?, db_instance_identifiers: string_list?, db_cluster_identifiers: string_list? }
       class DeregisterDBProxyTargetsResponse
       end
+      type describe_account_attributes_message = ::Hash[untyped, untyped]
+      type describe_certificates_message = { certificate_identifier: string?, filters: filter_list?, max_records: integer_optional?, marker: string? }
+      type describe_custom_availability_zones_message = { custom_availability_zone_id: string?, filters: filter_list?, max_records: integer_optional?, marker: string? }
+      type describe_db_cluster_backtracks_message = { db_cluster_identifier: string, backtrack_identifier: string?, filters: filter_list?, max_records: integer_optional?, marker: string? }
+      type describe_db_cluster_endpoints_message = { db_cluster_identifier: string?, db_cluster_endpoint_identifier: string?, filters: filter_list?, max_records: integer_optional?, marker: string? }
+      type describe_db_cluster_parameter_groups_message = { db_cluster_parameter_group_name: string?, filters: filter_list?, max_records: integer_optional?, marker: string? }
+      type describe_db_cluster_parameters_message = { db_cluster_parameter_group_name: string, source: string?, filters: filter_list?, max_records: integer_optional?, marker: string? }
+      type describe_db_cluster_snapshot_attributes_message = { db_cluster_snapshot_identifier: string }
       class DescribeDBClusterSnapshotAttributesResult
         attr_accessor db_cluster_snapshot_attributes_result: DBClusterSnapshotAttributesResult
       end
+      type describe_db_cluster_snapshots_message = { db_cluster_identifier: string?, db_cluster_snapshot_identifier: string?, snapshot_type: string?, filters: filter_list?, max_records: integer_optional?, marker: string?, include_shared: boolean?, include_public: boolean? }
+      type describe_db_clusters_message = { db_cluster_identifier: string?, filters: filter_list?, max_records: integer_optional?, marker: string?, include_shared: boolean? }
+      type describe_db_engine_versions_message = { engine: string?, engine_version: string?, db_parameter_group_family: string?, filters: filter_list?, max_records: integer_optional?, marker: string?, default_only: boolean?, list_supported_character_sets: boolean_optional?, list_supported_timezones: boolean_optional?, include_all: boolean_optional? }
+      type describe_db_instance_automated_backups_message = { dbi_resource_id: string?, db_instance_identifier: string?, filters: filter_list?, max_records: integer_optional?, marker: string?, db_instance_automated_backups_arn: string? }
+      type describe_db_instances_message = { db_instance_identifier: string?, filters: filter_list?, max_records: integer_optional?, marker: string? }
       class DescribeDBLogFilesDetails
         attr_accessor log_file_name: string
         attr_accessor last_written: long
         attr_accessor size: long
       end
       type describe_db_log_files_list = ::Array[DescribeDBLogFilesDetails]
+      type describe_db_log_files_message = { db_instance_identifier: string, filename_contains: string?, file_last_written: long?, file_size: long?, filters: filter_list?, max_records: integer_optional?, marker: string? }
       class DescribeDBLogFilesResponse
         attr_accessor describe_db_log_files: describe_db_log_files_list
         attr_accessor marker: string
       end
+      type describe_db_parameter_groups_message = { db_parameter_group_name: string?, filters: filter_list?, max_records: integer_optional?, marker: string? }
+      type describe_db_parameters_message = { db_parameter_group_name: string, source: string?, filters: filter_list?, max_records: integer_optional?, marker: string? }
+      type describe_db_proxies_request = { db_proxy_name: string?, filters: filter_list?, marker: string?, max_records: max_records? }
       class DescribeDBProxiesResponse
         attr_accessor db_proxies: db_proxy_list
         attr_accessor marker: string
       end
+      type describe_db_proxy_endpoints_request = { db_proxy_name: db_proxy_name?, db_proxy_endpoint_name: db_proxy_endpoint_name?, filters: filter_list?, marker: string?, max_records: max_records? }
       class DescribeDBProxyEndpointsResponse
         attr_accessor db_proxy_endpoints: db_proxy_endpoint_list
         attr_accessor marker: string
       end
+      type describe_db_proxy_target_groups_request = { db_proxy_name: string, target_group_name: string?, filters: filter_list?, marker: string?, max_records: max_records? }
       class DescribeDBProxyTargetGroupsResponse
         attr_accessor target_groups: target_group_list
         attr_accessor marker: string
       end
+      type describe_db_proxy_targets_request = { db_proxy_name: string, target_group_name: string?, filters: filter_list?, marker: string?, max_records: max_records? }
       class DescribeDBProxyTargetsResponse
         attr_accessor targets: target_list
         attr_accessor marker: string
       end
+      type describe_db_security_groups_message = { db_security_group_name: string?, filters: filter_list?, max_records: integer_optional?, marker: string? }
+      type describe_db_snapshot_attributes_message = { db_snapshot_identifier: string }
       class DescribeDBSnapshotAttributesResult
         attr_accessor db_snapshot_attributes_result: DBSnapshotAttributesResult
       end
+      type describe_db_snapshots_message = { db_instance_identifier: string?, db_snapshot_identifier: string?, snapshot_type: string?, filters: filter_list?, max_records: integer_optional?, marker: string?, include_shared: boolean?, include_public: boolean?, dbi_resource_id: string? }
+      type describe_db_subnet_groups_message = { db_subnet_group_name: string?, filters: filter_list?, max_records: integer_optional?, marker: string? }
+      type describe_engine_default_cluster_parameters_message = { db_parameter_group_family: string, filters: filter_list?, max_records: integer_optional?, marker: string? }
       class DescribeEngineDefaultClusterParametersResult
         attr_accessor engine_defaults: EngineDefaults
       end
+      type describe_engine_default_parameters_message = { db_parameter_group_family: string, filters: filter_list?, max_records: integer_optional?, marker: string? }
       class DescribeEngineDefaultParametersResult
         attr_accessor engine_defaults: EngineDefaults
       end
+      type describe_event_categories_message = { source_type: string?, filters: filter_list? }
+      type describe_event_subscriptions_message = { subscription_name: string?, filters: filter_list?, max_records: integer_optional?, marker: string? }
+      type describe_events_message = { source_identifier: string?, source_type: source_type?, start_time: t_stamp?, end_time: t_stamp?, duration: integer_optional?, event_categories: event_categories_list?, filters: filter_list?, max_records: integer_optional?, marker: string? }
+      type describe_export_tasks_message = { export_task_identifier: string?, source_arn: string?, filters: filter_list?, marker: string?, max_records: max_records? }
+      type describe_global_clusters_message = { global_cluster_identifier: string?, filters: filter_list?, max_records: integer_optional?, marker: string? }
+      type describe_installation_media_message = { installation_media_id: string?, filters: filter_list?, max_records: integer_optional?, marker: string? }
+      type describe_option_group_options_message = { engine_name: string, major_engine_version: string?, filters: filter_list?, max_records: integer_optional?, marker: string? }
+      type describe_option_groups_message = { option_group_name: string?, filters: filter_list?, marker: string?, max_records: integer_optional?, engine_name: string?, major_engine_version: string? }
+      type describe_orderable_db_instance_options_message = { engine: string, engine_version: string?, db_instance_class: string?, license_model: string?, availability_zone_group: string?, vpc: boolean_optional?, filters: filter_list?, max_records: integer_optional?, marker: string? }
+      type describe_pending_maintenance_actions_message = { resource_identifier: string?, filters: filter_list?, marker: string?, max_records: integer_optional? }
+      type describe_reserved_db_instances_message = { reserved_db_instance_id: string?, reserved_db_instances_offering_id: string?, db_instance_class: string?, duration: string?, product_description: string?, offering_type: string?, multi_az: boolean_optional?, lease_id: string?, filters: filter_list?, max_records: integer_optional?, marker: string? }
+      type describe_reserved_db_instances_offerings_message = { reserved_db_instances_offering_id: string?, db_instance_class: string?, duration: string?, product_description: string?, offering_type: string?, multi_az: boolean_optional?, filters: filter_list?, max_records: integer_optional?, marker: string? }
+      type describe_source_regions_message = { region_name: string?, max_records: integer_optional?, marker: string?, filters: filter_list? }
+      type describe_valid_db_instance_modifications_message = { db_instance_identifier: string }
       class DescribeValidDBInstanceModificationsResult
         attr_accessor valid_db_instance_modifications_message: ValidDBInstanceModificationsMessage
       end
@@ -761,6 +850,7 @@ module Aws
         attr_accessor marker: string
         attr_accessor additional_data_pending: boolean
       end
+      type download_db_log_file_portion_message = { db_instance_identifier: string, log_file_name: string, marker: string?, number_of_lines: integer? }
       class EC2SecurityGroup
         attr_accessor status: string
         attr_accessor ec2_security_group_name: string
@@ -841,9 +931,11 @@ module Aws
         attr_accessor marker: string
         attr_accessor export_tasks: export_tasks_list_output
       end
+      type failover_db_cluster_message = { db_cluster_identifier: string, target_db_instance_identifier: string? }
       class FailoverDBClusterResult
         attr_accessor db_cluster: DBCluster
       end
+      type failover_global_cluster_message = { global_cluster_identifier: global_cluster_identifier, target_db_cluster_identifier: db_cluster_identifier }
       class FailoverGlobalClusterResult
         attr_accessor global_cluster: GlobalCluster
       end
@@ -889,6 +981,7 @@ module Aws
         attr_accessor cidrip: string
       end
       type ip_range_list = ::Array[IPRange]
+      type import_installation_media_message = { custom_availability_zone_id: string, engine: string, engine_version: string, engine_installation_media_path: string, os_installation_media_path: string }
       class InstallationMedia
         attr_accessor installation_media_id: string
         attr_accessor custom_availability_zone_id: string
@@ -911,6 +1004,7 @@ module Aws
       type integer_optional = ::Integer
       type key_list = ::Array[string]
       type kms_key_id_or_arn = ::String
+      type list_tags_for_resource_message = { resource_name: string, filters: filter_list? }
       type log_type_list = ::Array[string]
       type long = ::Integer
       type long_optional = ::Integer
@@ -920,42 +1014,60 @@ module Aws
         attr_accessor minimum_engine_version: string
       end
       type minimum_engine_version_per_allowed_value_list = ::Array[MinimumEngineVersionPerAllowedValue]
+      type modify_certificates_message = { certificate_identifier: string?, remove_customer_override: boolean_optional? }
       class ModifyCertificatesResult
         attr_accessor certificate: Certificate
       end
+      type modify_current_db_cluster_capacity_message = { db_cluster_identifier: string, capacity: integer_optional?, seconds_before_timeout: integer_optional?, timeout_action: string? }
+      type modify_custom_db_engine_version_message = { engine: custom_engine_name, engine_version: custom_engine_version, description: description?, status: custom_engine_version_status? }
+      type modify_db_cluster_endpoint_message = { db_cluster_endpoint_identifier: string, endpoint_type: string?, static_members: string_list?, excluded_members: string_list? }
+      type modify_db_cluster_message = { db_cluster_identifier: string, new_db_cluster_identifier: string?, apply_immediately: boolean?, backup_retention_period: integer_optional?, db_cluster_parameter_group_name: string?, vpc_security_group_ids: vpc_security_group_id_list?, port: integer_optional?, master_user_password: string?, option_group_name: string?, preferred_backup_window: string?, preferred_maintenance_window: string?, enable_iam_database_authentication: boolean_optional?, backtrack_window: long_optional?, cloudwatch_logs_export_configuration: cloudwatch_logs_export_configuration?, engine_version: string?, allow_major_version_upgrade: boolean?, db_instance_parameter_group_name: string?, domain: string?, domain_iam_role_name: string?, scaling_configuration: scaling_configuration?, deletion_protection: boolean_optional?, enable_http_endpoint: boolean_optional?, copy_tags_to_snapshot: boolean_optional?, enable_global_write_forwarding: boolean_optional?, db_cluster_instance_class: string?, allocated_storage: integer_optional?, storage_type: string?, iops: integer_optional?, auto_minor_version_upgrade: boolean_optional?, monitoring_interval: integer_optional?, monitoring_role_arn: string?, enable_performance_insights: boolean_optional?, performance_insights_kms_key_id: string?, performance_insights_retention_period: integer_optional? }
+      type modify_db_cluster_parameter_group_message = { db_cluster_parameter_group_name: string, parameters: parameters_list_input }
       class ModifyDBClusterResult
         attr_accessor db_cluster: DBCluster
       end
+      type modify_db_cluster_snapshot_attribute_message = { db_cluster_snapshot_identifier: string, attribute_name: string, values_to_add: attribute_value_list?, values_to_remove: attribute_value_list? }
       class ModifyDBClusterSnapshotAttributeResult
         attr_accessor db_cluster_snapshot_attributes_result: DBClusterSnapshotAttributesResult
       end
+      type modify_db_instance_message = { db_instance_identifier: string, allocated_storage: integer_optional?, db_instance_class: string?, db_subnet_group_name: string?, db_security_groups: db_security_group_name_list?, vpc_security_group_ids: vpc_security_group_id_list?, apply_immediately: boolean?, master_user_password: string?, db_parameter_group_name: string?, backup_retention_period: integer_optional?, preferred_backup_window: string?, preferred_maintenance_window: string?, multi_az: boolean_optional?, engine_version: string?, allow_major_version_upgrade: boolean?, auto_minor_version_upgrade: boolean_optional?, license_model: string?, iops: integer_optional?, option_group_name: string?, new_db_instance_identifier: string?, storage_type: string?, tde_credential_arn: string?, tde_credential_password: string?, ca_certificate_identifier: string?, domain: string?, copy_tags_to_snapshot: boolean_optional?, monitoring_interval: integer_optional?, db_port_number: integer_optional?, publicly_accessible: boolean_optional?, monitoring_role_arn: string?, domain_iam_role_name: string?, promotion_tier: integer_optional?, enable_iam_database_authentication: boolean_optional?, enable_performance_insights: boolean_optional?, performance_insights_kms_key_id: string?, performance_insights_retention_period: integer_optional?, cloudwatch_logs_export_configuration: cloudwatch_logs_export_configuration?, processor_features: processor_feature_list_input?, use_default_processor_features: boolean_optional?, deletion_protection: boolean_optional?, max_allocated_storage: integer_optional?, certificate_rotation_restart: boolean_optional?, replica_mode: replica_mode?, enable_customer_owned_ip: boolean_optional?, aws_backup_recovery_point_arn: aws_backup_recovery_point_arn?, automation_mode: automation_mode?, resume_full_automation_mode_minutes: integer_optional? }
       class ModifyDBInstanceResult
         attr_accessor db_instance: DBInstance
       end
+      type modify_db_parameter_group_message = { db_parameter_group_name: string, parameters: parameters_list_input }
+      type modify_db_proxy_endpoint_request = { db_proxy_endpoint_name: db_proxy_endpoint_name, new_db_proxy_endpoint_name: db_proxy_endpoint_name?, vpc_security_group_ids: string_list? }
       class ModifyDBProxyEndpointResponse
         attr_accessor db_proxy_endpoint: DBProxyEndpoint
       end
+      type modify_db_proxy_request = { db_proxy_name: string, new_db_proxy_name: string?, auth: user_auth_config_list?, require_tls: boolean_optional?, idle_client_timeout: integer_optional?, debug_logging: boolean_optional?, role_arn: string?, security_groups: string_list? }
       class ModifyDBProxyResponse
         attr_accessor db_proxy: DBProxy
       end
+      type modify_db_proxy_target_group_request = { target_group_name: string, db_proxy_name: string, connection_pool_config: connection_pool_configuration?, new_name: string? }
       class ModifyDBProxyTargetGroupResponse
         attr_accessor db_proxy_target_group: DBProxyTargetGroup
       end
+      type modify_db_snapshot_attribute_message = { db_snapshot_identifier: string, attribute_name: string, values_to_add: attribute_value_list?, values_to_remove: attribute_value_list? }
       class ModifyDBSnapshotAttributeResult
         attr_accessor db_snapshot_attributes_result: DBSnapshotAttributesResult
       end
+      type modify_db_snapshot_message = { db_snapshot_identifier: string, engine_version: string?, option_group_name: string? }
       class ModifyDBSnapshotResult
         attr_accessor db_snapshot: DBSnapshot
       end
+      type modify_db_subnet_group_message = { db_subnet_group_name: string, db_subnet_group_description: string?, subnet_ids: subnet_identifier_list }
       class ModifyDBSubnetGroupResult
         attr_accessor db_subnet_group: DBSubnetGroup
       end
+      type modify_event_subscription_message = { subscription_name: string, sns_topic_arn: string?, source_type: string?, event_categories: event_categories_list?, enabled: boolean_optional? }
       class ModifyEventSubscriptionResult
         attr_accessor event_subscription: EventSubscription
       end
+      type modify_global_cluster_message = { global_cluster_identifier: string?, new_global_cluster_identifier: string?, deletion_protection: boolean_optional?, engine_version: string?, allow_major_version_upgrade: boolean_optional? }
       class ModifyGlobalClusterResult
         attr_accessor global_cluster: GlobalCluster
       end
+      type modify_option_group_message = { option_group_name: string, options_to_include: option_configuration_list?, options_to_remove: option_names_list?, apply_immediately: boolean? }
       class ModifyOptionGroupResult
         attr_accessor option_group: OptionGroup
       end
@@ -1149,12 +1261,15 @@ module Aws
       type processor_feature = { name: string?, value: string? }
       type processor_feature_list_output = ::Array[ProcessorFeature]
       type processor_feature_list_input = ::Array[processor_feature]
+      type promote_read_replica_db_cluster_message = { db_cluster_identifier: string }
       class PromoteReadReplicaDBClusterResult
         attr_accessor db_cluster: DBCluster
       end
+      type promote_read_replica_message = { db_instance_identifier: string, backup_retention_period: integer_optional?, preferred_backup_window: string? }
       class PromoteReadReplicaResult
         attr_accessor db_instance: DBInstance
       end
+      type purchase_reserved_db_instances_offering_message = { reserved_db_instances_offering_id: string, reserved_db_instance_id: string?, db_instance_count: integer_optional?, tags: tag_list_input? }
       class PurchaseReservedDBInstancesOfferingResult
         attr_accessor reserved_db_instance: ReservedDBInstance
       end
@@ -1168,9 +1283,11 @@ module Aws
       type read_replica_db_instance_identifier_list = ::Array[string]
       type read_replica_identifier_list = ::Array[string]
       type readers_arn_list = ::Array[string]
+      type reboot_db_cluster_message = { db_cluster_identifier: string }
       class RebootDBClusterResult
         attr_accessor db_cluster: DBCluster
       end
+      type reboot_db_instance_message = { db_instance_identifier: string, force_failover: boolean_optional? }
       class RebootDBInstanceResult
         attr_accessor db_instance: DBInstance
       end
@@ -1179,15 +1296,21 @@ module Aws
         attr_accessor recurring_charge_frequency: string
       end
       type recurring_charge_list = ::Array[RecurringCharge]
+      type register_db_proxy_targets_request = { db_proxy_name: string, target_group_name: string?, db_instance_identifiers: string_list?, db_cluster_identifiers: string_list? }
       class RegisterDBProxyTargetsResponse
         attr_accessor db_proxy_targets: target_list
       end
+      type remove_from_global_cluster_message = { global_cluster_identifier: string?, db_cluster_identifier: string? }
       class RemoveFromGlobalClusterResult
         attr_accessor global_cluster: GlobalCluster
       end
+      type remove_role_from_db_cluster_message = { db_cluster_identifier: string, role_arn: string, feature_name: string? }
+      type remove_role_from_db_instance_message = { db_instance_identifier: string, role_arn: string, feature_name: string }
+      type remove_source_identifier_from_subscription_message = { subscription_name: string, source_identifier: string }
       class RemoveSourceIdentifierFromSubscriptionResult
         attr_accessor event_subscription: EventSubscription
       end
+      type remove_tags_from_resource_message = { resource_name: string, tag_keys: key_list }
       type replica_mode = ("open-read-only" | "mounted")
       class ReservedDBInstance
         attr_accessor reserved_db_instance_id: string
@@ -1229,25 +1352,33 @@ module Aws
         attr_accessor marker: string
         attr_accessor reserved_db_instances_offerings: reserved_db_instances_offering_list
       end
+      type reset_db_cluster_parameter_group_message = { db_cluster_parameter_group_name: string, reset_all_parameters: boolean?, parameters: parameters_list_input? }
+      type reset_db_parameter_group_message = { db_parameter_group_name: string, reset_all_parameters: boolean?, parameters: parameters_list_input? }
       class ResourcePendingMaintenanceActions
         attr_accessor resource_identifier: string
         attr_accessor pending_maintenance_action_details: pending_maintenance_action_details
       end
+      type restore_db_cluster_from_s3_message = { availability_zones: availability_zones?, backup_retention_period: integer_optional?, character_set_name: string?, database_name: string?, db_cluster_identifier: string, db_cluster_parameter_group_name: string?, vpc_security_group_ids: vpc_security_group_id_list?, db_subnet_group_name: string?, engine: string, engine_version: string?, port: integer_optional?, master_username: string, master_user_password: string, option_group_name: string?, preferred_backup_window: string?, preferred_maintenance_window: string?, tags: tag_list_input?, storage_encrypted: boolean_optional?, kms_key_id: string?, enable_iam_database_authentication: boolean_optional?, source_engine: string, source_engine_version: string, s3_bucket_name: string, s3_prefix: string?, s3_ingestion_role_arn: string, backtrack_window: long_optional?, enable_cloudwatch_logs_exports: log_type_list?, deletion_protection: boolean_optional?, copy_tags_to_snapshot: boolean_optional?, domain: string?, domain_iam_role_name: string? }
       class RestoreDBClusterFromS3Result
         attr_accessor db_cluster: DBCluster
       end
+      type restore_db_cluster_from_snapshot_message = { availability_zones: availability_zones?, db_cluster_identifier: string, snapshot_identifier: string, engine: string, engine_version: string?, port: integer_optional?, db_subnet_group_name: string?, database_name: string?, option_group_name: string?, vpc_security_group_ids: vpc_security_group_id_list?, tags: tag_list_input?, kms_key_id: string?, enable_iam_database_authentication: boolean_optional?, backtrack_window: long_optional?, enable_cloudwatch_logs_exports: log_type_list?, engine_mode: string?, scaling_configuration: scaling_configuration?, db_cluster_parameter_group_name: string?, deletion_protection: boolean_optional?, copy_tags_to_snapshot: boolean_optional?, domain: string?, domain_iam_role_name: string?, db_cluster_instance_class: string?, storage_type: string?, iops: integer_optional?, publicly_accessible: boolean_optional? }
       class RestoreDBClusterFromSnapshotResult
         attr_accessor db_cluster: DBCluster
       end
+      type restore_db_cluster_to_point_in_time_message = { db_cluster_identifier: string, restore_type: string?, source_db_cluster_identifier: string, restore_to_time: t_stamp?, use_latest_restorable_time: boolean?, port: integer_optional?, db_subnet_group_name: string?, option_group_name: string?, vpc_security_group_ids: vpc_security_group_id_list?, tags: tag_list_input?, kms_key_id: string?, enable_iam_database_authentication: boolean_optional?, backtrack_window: long_optional?, enable_cloudwatch_logs_exports: log_type_list?, db_cluster_parameter_group_name: string?, deletion_protection: boolean_optional?, copy_tags_to_snapshot: boolean_optional?, domain: string?, domain_iam_role_name: string?, scaling_configuration: scaling_configuration?, engine_mode: string?, db_cluster_instance_class: string?, storage_type: string?, publicly_accessible: boolean_optional?, iops: integer_optional? }
       class RestoreDBClusterToPointInTimeResult
         attr_accessor db_cluster: DBCluster
       end
+      type restore_db_instance_from_db_snapshot_message = { db_instance_identifier: string, db_snapshot_identifier: string, db_instance_class: string?, port: integer_optional?, availability_zone: string?, db_subnet_group_name: string?, multi_az: boolean_optional?, publicly_accessible: boolean_optional?, auto_minor_version_upgrade: boolean_optional?, license_model: string?, db_name: string?, engine: string?, iops: integer_optional?, option_group_name: string?, tags: tag_list_input?, storage_type: string?, tde_credential_arn: string?, tde_credential_password: string?, vpc_security_group_ids: vpc_security_group_id_list?, domain: string?, copy_tags_to_snapshot: boolean_optional?, domain_iam_role_name: string?, enable_iam_database_authentication: boolean_optional?, enable_cloudwatch_logs_exports: log_type_list?, processor_features: processor_feature_list_input?, use_default_processor_features: boolean_optional?, db_parameter_group_name: string?, deletion_protection: boolean_optional?, enable_customer_owned_ip: boolean_optional?, custom_iam_instance_profile: string?, backup_target: string? }
       class RestoreDBInstanceFromDBSnapshotResult
         attr_accessor db_instance: DBInstance
       end
+      type restore_db_instance_from_s3_message = { db_name: string?, db_instance_identifier: string, allocated_storage: integer_optional?, db_instance_class: string, engine: string, master_username: string?, master_user_password: string?, db_security_groups: db_security_group_name_list?, vpc_security_group_ids: vpc_security_group_id_list?, availability_zone: string?, db_subnet_group_name: string?, preferred_maintenance_window: string?, db_parameter_group_name: string?, backup_retention_period: integer_optional?, preferred_backup_window: string?, port: integer_optional?, multi_az: boolean_optional?, engine_version: string?, auto_minor_version_upgrade: boolean_optional?, license_model: string?, iops: integer_optional?, option_group_name: string?, publicly_accessible: boolean_optional?, tags: tag_list_input?, storage_type: string?, storage_encrypted: boolean_optional?, kms_key_id: string?, copy_tags_to_snapshot: boolean_optional?, monitoring_interval: integer_optional?, monitoring_role_arn: string?, enable_iam_database_authentication: boolean_optional?, source_engine: string, source_engine_version: string, s3_bucket_name: string, s3_prefix: string?, s3_ingestion_role_arn: string, enable_performance_insights: boolean_optional?, performance_insights_kms_key_id: string?, performance_insights_retention_period: integer_optional?, enable_cloudwatch_logs_exports: log_type_list?, processor_features: processor_feature_list_input?, use_default_processor_features: boolean_optional?, deletion_protection: boolean_optional?, max_allocated_storage: integer_optional? }
       class RestoreDBInstanceFromS3Result
         attr_accessor db_instance: DBInstance
       end
+      type restore_db_instance_to_point_in_time_message = { source_db_instance_identifier: string?, target_db_instance_identifier: string, restore_time: t_stamp?, use_latest_restorable_time: boolean?, db_instance_class: string?, port: integer_optional?, availability_zone: string?, db_subnet_group_name: string?, multi_az: boolean_optional?, publicly_accessible: boolean_optional?, auto_minor_version_upgrade: boolean_optional?, license_model: string?, db_name: string?, engine: string?, iops: integer_optional?, option_group_name: string?, copy_tags_to_snapshot: boolean_optional?, tags: tag_list_input?, storage_type: string?, tde_credential_arn: string?, tde_credential_password: string?, vpc_security_group_ids: vpc_security_group_id_list?, domain: string?, domain_iam_role_name: string?, enable_iam_database_authentication: boolean_optional?, enable_cloudwatch_logs_exports: log_type_list?, processor_features: processor_feature_list_input?, use_default_processor_features: boolean_optional?, db_parameter_group_name: string?, deletion_protection: boolean_optional?, source_dbi_resource_id: string?, max_allocated_storage: integer_optional?, source_db_instance_automated_backups_arn: string?, enable_customer_owned_ip: boolean_optional?, custom_iam_instance_profile: string?, backup_target: string? }
       class RestoreDBInstanceToPointInTimeResult
         attr_accessor db_instance: DBInstance
       end
@@ -1255,6 +1386,7 @@ module Aws
         attr_accessor earliest_time: t_stamp
         attr_accessor latest_time: t_stamp
       end
+      type revoke_db_security_group_ingress_message = { db_security_group_name: string, cidrip: string?, ec2_security_group_name: string?, ec2_security_group_id: string?, ec2_security_group_owner_id: string? }
       class RevokeDBSecurityGroupIngressResult
         attr_accessor db_security_group: DBSecurityGroup
       end
@@ -1280,6 +1412,7 @@ module Aws
         attr_accessor source_regions: source_region_list
       end
       type source_type = ("db-instance" | "db-parameter-group" | "db-security-group" | "db-snapshot" | "db-cluster" | "db-cluster-snapshot" | "custom-engine-version" | "db-proxy")
+      type start_activity_stream_request = { resource_arn: string, mode: activity_stream_mode, kms_key_id: string, apply_immediately: boolean_optional?, engine_native_audit_fields_included: boolean_optional? }
       class StartActivityStreamResponse
         attr_accessor kms_key_id: string
         attr_accessor kinesis_stream_name: string
@@ -1288,26 +1421,34 @@ module Aws
         attr_accessor apply_immediately: boolean
         attr_accessor engine_native_audit_fields_included: boolean_optional
       end
+      type start_db_cluster_message = { db_cluster_identifier: string }
       class StartDBClusterResult
         attr_accessor db_cluster: DBCluster
       end
+      type start_db_instance_automated_backups_replication_message = { source_db_instance_arn: string, backup_retention_period: integer_optional?, kms_key_id: string?, pre_signed_url: string? }
       class StartDBInstanceAutomatedBackupsReplicationResult
         attr_accessor db_instance_automated_backup: DBInstanceAutomatedBackup
       end
+      type start_db_instance_message = { db_instance_identifier: string }
       class StartDBInstanceResult
         attr_accessor db_instance: DBInstance
       end
+      type start_export_task_message = { export_task_identifier: string, source_arn: string, s3_bucket_name: string, iam_role_arn: string, kms_key_id: string, s3_prefix: string?, export_only: string_list? }
+      type stop_activity_stream_request = { resource_arn: string, apply_immediately: boolean_optional? }
       class StopActivityStreamResponse
         attr_accessor kms_key_id: string
         attr_accessor kinesis_stream_name: string
         attr_accessor status: activity_stream_status
       end
+      type stop_db_cluster_message = { db_cluster_identifier: string }
       class StopDBClusterResult
         attr_accessor db_cluster: DBCluster
       end
+      type stop_db_instance_automated_backups_replication_message = { source_db_instance_arn: string }
       class StopDBInstanceAutomatedBackupsReplicationResult
         attr_accessor db_instance_automated_backup: DBInstanceAutomatedBackup
       end
+      type stop_db_instance_message = { db_instance_identifier: string, db_snapshot_identifier: string? }
       class StopDBInstanceResult
         attr_accessor db_instance: DBInstance
       end

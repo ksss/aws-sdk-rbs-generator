@@ -26,21 +26,27 @@ module Aws
       type accelerator_total_memory_mi_b_request = { min: integer?, max: integer? }
       type accelerator_type = ("gpu" | "fpga" | "inference")
       type accelerator_type_set = ::Array[accelerator_type]
+      type accept_reserved_instances_exchange_quote_request = { dry_run: boolean?, reserved_instance_ids: reserved_instance_id_set, target_configurations: target_configuration_request_set? }
       class AcceptReservedInstancesExchangeQuoteResult
         attr_accessor exchange_id: string
       end
+      type accept_transit_gateway_multicast_domain_associations_request = { transit_gateway_multicast_domain_id: transit_gateway_multicast_domain_id?, transit_gateway_attachment_id: transit_gateway_attachment_id?, subnet_ids: value_string_list?, dry_run: boolean? }
       class AcceptTransitGatewayMulticastDomainAssociationsResult
         attr_accessor associations: TransitGatewayMulticastDomainAssociations
       end
+      type accept_transit_gateway_peering_attachment_request = { transit_gateway_attachment_id: transit_gateway_attachment_id, dry_run: boolean? }
       class AcceptTransitGatewayPeeringAttachmentResult
         attr_accessor transit_gateway_peering_attachment: TransitGatewayPeeringAttachment
       end
+      type accept_transit_gateway_vpc_attachment_request = { transit_gateway_attachment_id: transit_gateway_attachment_id, dry_run: boolean? }
       class AcceptTransitGatewayVpcAttachmentResult
         attr_accessor transit_gateway_vpc_attachment: TransitGatewayVpcAttachment
       end
+      type accept_vpc_endpoint_connections_request = { dry_run: boolean?, service_id: vpc_endpoint_service_id, vpc_endpoint_ids: vpc_endpoint_id_list }
       class AcceptVpcEndpointConnectionsResult
         attr_accessor unsuccessful: unsuccessful_item_set
       end
+      type accept_vpc_peering_connection_request = { dry_run: boolean?, vpc_peering_connection_id: vpc_peering_connection_id? }
       class AcceptVpcPeeringConnectionResult
         attr_accessor vpc_peering_connection: VpcPeeringConnection
       end
@@ -109,10 +115,12 @@ module Aws
       type address_list = ::Array[Address]
       type address_max_results = ::Integer
       type address_set_output = ::Array[AddressAttribute]
+      type advertise_byoip_cidr_request = { cidr: string, dry_run: boolean? }
       class AdvertiseByoipCidrResult
         attr_accessor byoip_cidr: ByoipCidr
       end
       type affinity = ("default" | "host")
+      type allocate_address_request = { domain: domain_type?, address: public_ip_address?, public_ipv_4_pool: ipv_4_pool_ec2_id?, network_border_group: string?, customer_owned_ipv_4_pool: string?, dry_run: boolean?, tag_specifications: tag_specification_list_input? }
       class AllocateAddressResult
         attr_accessor public_ip: string
         attr_accessor allocation_id: string
@@ -123,9 +131,11 @@ module Aws
         attr_accessor customer_owned_ipv_4_pool: string
         attr_accessor carrier_ip: string
       end
+      type allocate_hosts_request = { auto_placement: auto_placement?, availability_zone: string, client_token: string?, instance_type: string?, instance_family: string?, quantity: integer, tag_specifications: tag_specification_list_input?, host_recovery: host_recovery? }
       class AllocateHostsResult
         attr_accessor host_ids: response_host_id_list
       end
+      type allocate_ipam_pool_cidr_request = { dry_run: boolean?, ipam_pool_id: ipam_pool_id, cidr: string?, netmask_length: integer?, client_token: string?, description: string?, preview_next_cidr: boolean?, disallowed_cidrs: ipam_pool_allocation_disallowed_cidrs? }
       class AllocateIpamPoolCidrResult
         attr_accessor ipam_pool_allocation: IpamPoolAllocation
       end
@@ -198,6 +208,7 @@ module Aws
       end
       type analysis_status = ("running" | "succeeded" | "failed")
       type appliance_mode_support_value = ("enable" | "disable")
+      type apply_security_groups_to_client_vpn_target_network_request = { client_vpn_endpoint_id: client_vpn_endpoint_id, vpc_id: vpc_id, security_group_ids: client_vpn_security_group_id_set, dry_run: boolean? }
       class ApplySecurityGroupsToClientVpnTargetNetworkResult
         attr_accessor security_group_ids: client_vpn_security_group_id_set
       end
@@ -206,11 +217,13 @@ module Aws
       type architecture_type_set = ::Array[architecture_type]
       type architecture_values = ("i386" | "x86_64" | "arm64" | "x86_64_mac")
       type arn_list = ::Array[resource_arn]
+      type assign_ipv_6_addresses_request = { ipv_6_address_count: integer?, ipv_6_addresses: ipv_6_address_list?, ipv_6_prefix_count: integer?, ipv_6_prefixes: ip_prefix_list?, network_interface_id: network_interface_id }
       class AssignIpv6AddressesResult
         attr_accessor assigned_ipv_6_addresses: ipv_6_address_list
         attr_accessor assigned_ipv_6_prefixes: ip_prefix_list
         attr_accessor network_interface_id: string
       end
+      type assign_private_ip_addresses_request = { allow_reassignment: boolean?, network_interface_id: network_interface_id, private_ip_addresses: private_ip_address_string_list?, secondary_private_ip_address_count: integer?, ipv_4_prefixes: ip_prefix_list?, ipv_4_prefix_count: integer? }
       class AssignPrivateIpAddressesResult
         attr_accessor network_interface_id: string
         attr_accessor assigned_private_ip_addresses: assigned_private_ip_address_list
@@ -220,42 +233,54 @@ module Aws
         attr_accessor private_ip_address: string
       end
       type assigned_private_ip_address_list = ::Array[AssignedPrivateIpAddress]
+      type associate_address_request = { allocation_id: allocation_id?, instance_id: instance_id?, public_ip: string?, allow_reassociation: boolean?, dry_run: boolean?, network_interface_id: network_interface_id?, private_ip_address: string? }
       class AssociateAddressResult
         attr_accessor association_id: string
       end
+      type associate_client_vpn_target_network_request = { client_vpn_endpoint_id: client_vpn_endpoint_id, subnet_id: subnet_id, client_token: string?, dry_run: boolean? }
       class AssociateClientVpnTargetNetworkResult
         attr_accessor association_id: string
         attr_accessor status: AssociationStatus
       end
+      type associate_dhcp_options_request = { dhcp_options_id: defaulting_dhcp_options_id, vpc_id: vpc_id, dry_run: boolean? }
+      type associate_enclave_certificate_iam_role_request = { certificate_arn: resource_arn?, role_arn: resource_arn?, dry_run: boolean? }
       class AssociateEnclaveCertificateIamRoleResult
         attr_accessor certificate_s3_bucket_name: string
         attr_accessor certificate_s3_object_key: string
         attr_accessor encryption_kms_key_id: string
       end
+      type associate_iam_instance_profile_request = { iam_instance_profile: iam_instance_profile_specification, instance_id: instance_id }
       class AssociateIamInstanceProfileResult
         attr_accessor iam_instance_profile_association: IamInstanceProfileAssociation
       end
+      type associate_instance_event_window_request = { dry_run: boolean?, instance_event_window_id: instance_event_window_id, association_target: instance_event_window_association_request }
       class AssociateInstanceEventWindowResult
         attr_accessor instance_event_window: InstanceEventWindow
       end
+      type associate_route_table_request = { dry_run: boolean?, route_table_id: route_table_id, subnet_id: subnet_id?, gateway_id: route_gateway_id? }
       class AssociateRouteTableResult
         attr_accessor association_id: string
         attr_accessor association_state: RouteTableAssociationState
       end
+      type associate_subnet_cidr_block_request = { ipv_6_cidr_block: string, subnet_id: subnet_id }
       class AssociateSubnetCidrBlockResult
         attr_accessor ipv_6_cidr_block_association: SubnetIpv6CidrBlockAssociation
         attr_accessor subnet_id: string
       end
+      type associate_transit_gateway_multicast_domain_request = { transit_gateway_multicast_domain_id: transit_gateway_multicast_domain_id?, transit_gateway_attachment_id: transit_gateway_attachment_id?, subnet_ids: transit_gateway_subnet_id_list?, dry_run: boolean? }
       class AssociateTransitGatewayMulticastDomainResult
         attr_accessor associations: TransitGatewayMulticastDomainAssociations
       end
+      type associate_transit_gateway_route_table_request = { transit_gateway_route_table_id: transit_gateway_route_table_id, transit_gateway_attachment_id: transit_gateway_attachment_id, dry_run: boolean? }
       class AssociateTransitGatewayRouteTableResult
         attr_accessor association: TransitGatewayAssociation
       end
+      type associate_trunk_interface_request = { branch_interface_id: network_interface_id, trunk_interface_id: network_interface_id, vlan_id: integer?, gre_key: integer?, client_token: string?, dry_run: boolean? }
       class AssociateTrunkInterfaceResult
         attr_accessor interface_association: TrunkInterfaceAssociation
         attr_accessor client_token: string
       end
+      type associate_vpc_cidr_block_request = { amazon_provided_ipv_6_cidr_block: boolean?, cidr_block: string?, vpc_id: vpc_id, ipv_6_cidr_block_network_border_group: string?, ipv_6_pool: ipv_6_pool_ec2_id?, ipv_6_cidr_block: string?, ipv_4_ipam_pool_id: ipam_pool_id?, ipv_4_netmask_length: netmask_length?, ipv_6_ipam_pool_id: ipam_pool_id?, ipv_6_netmask_length: netmask_length? }
       class AssociateVpcCidrBlockResult
         attr_accessor ipv_6_cidr_block_association: VpcIpv6CidrBlockAssociation
         attr_accessor cidr_block_association: VpcCidrBlockAssociation
@@ -282,13 +307,18 @@ module Aws
       type association_status_code = ("associating" | "associated" | "association-failed" | "disassociating" | "disassociated")
       type athena_integration = { integration_result_s3_destination_arn: string, partition_load_frequency: partition_load_frequency, partition_start_date: millisecond_date_time?, partition_end_date: millisecond_date_time? }
       type athena_integrations_set = ::Array[athena_integration]
+      type attach_classic_link_vpc_request = { dry_run: boolean?, groups: group_id_string_list, instance_id: instance_id, vpc_id: vpc_id }
       class AttachClassicLinkVpcResult
         attr_accessor return: boolean
       end
+      type attach_internet_gateway_request = { dry_run: boolean?, internet_gateway_id: internet_gateway_id, vpc_id: vpc_id }
+      type attach_network_interface_request = { device_index: integer, dry_run: boolean?, instance_id: instance_id, network_interface_id: network_interface_id, network_card_index: integer? }
       class AttachNetworkInterfaceResult
         attr_accessor attachment_id: string
         attr_accessor network_card_index: integer
       end
+      type attach_volume_request = { device: string, instance_id: instance_id, volume_id: volume_id, dry_run: boolean? }
+      type attach_vpn_gateway_request = { vpc_id: vpc_id, vpn_gateway_id: vpn_gateway_id, dry_run: boolean? }
       class AttachVpnGatewayResult
         attr_accessor vpc_attachment: VpcAttachment
       end
@@ -310,13 +340,16 @@ module Aws
         attr_accessor status: ClientVpnAuthorizationRuleStatus
       end
       type authorization_rule_set = ::Array[AuthorizationRule]
+      type authorize_client_vpn_ingress_request = { client_vpn_endpoint_id: client_vpn_endpoint_id, target_network_cidr: string, access_group_id: string?, authorize_all_groups: boolean?, description: string?, client_token: string?, dry_run: boolean? }
       class AuthorizeClientVpnIngressResult
         attr_accessor status: ClientVpnAuthorizationRuleStatus
       end
+      type authorize_security_group_egress_request = { dry_run: boolean?, group_id: security_group_id, ip_permissions: ip_permission_list_input?, tag_specifications: tag_specification_list_input?, cidr_ip: string?, from_port: integer?, ip_protocol: string?, to_port: integer?, source_security_group_name: string?, source_security_group_owner_id: string? }
       class AuthorizeSecurityGroupEgressResult
         attr_accessor return: boolean
         attr_accessor security_group_rules: security_group_rule_list
       end
+      type authorize_security_group_ingress_request = { cidr_ip: string?, from_port: integer?, group_id: security_group_id?, group_name: security_group_name?, ip_permissions: ip_permission_list_input?, ip_protocol: string?, source_security_group_name: string?, source_security_group_owner_id: string?, to_port: integer?, dry_run: boolean?, tag_specifications: tag_specification_list_input? }
       class AuthorizeSecurityGroupIngressResult
         attr_accessor return: boolean
         attr_accessor security_group_rules: security_group_rule_list
@@ -384,6 +417,7 @@ module Aws
       type boxed_double = ::Float
       type bundle_id = ::String
       type bundle_id_string_list = ::Array[bundle_id]
+      type bundle_instance_request = { instance_id: instance_id, storage: storage, dry_run: boolean? }
       class BundleInstanceResult
         attr_accessor bundle_task: BundleTask
       end
@@ -414,6 +448,7 @@ module Aws
       type byoip_cidr_set_output = ::Array[ByoipCidr]
       type byoip_cidr_state = ("advertised" | "deprovisioned" | "failed-deprovision" | "failed-provision" | "pending-deprovision" | "pending-provision" | "provisioned" | "provisioned-not-publicly-advertisable")
       type cancel_batch_error_code = ("fleetRequestIdDoesNotExist" | "fleetRequestIdMalformed" | "fleetRequestNotInCancellableState" | "unexpectedError")
+      type cancel_bundle_task_request = { bundle_id: bundle_id, dry_run: boolean? }
       class CancelBundleTaskResult
         attr_accessor bundle_task: BundleTask
       end
@@ -423,18 +458,24 @@ module Aws
       end
       type cancel_capacity_reservation_fleet_error_code = ::String
       type cancel_capacity_reservation_fleet_error_message = ::String
+      type cancel_capacity_reservation_fleets_request = { dry_run: boolean?, capacity_reservation_fleet_ids: capacity_reservation_fleet_id_set }
       class CancelCapacityReservationFleetsResult
         attr_accessor successful_fleet_cancellations: capacity_reservation_fleet_cancellation_state_set
         attr_accessor failed_fleet_cancellations: failed_capacity_reservation_fleet_cancellation_result_set
       end
+      type cancel_capacity_reservation_request = { capacity_reservation_id: capacity_reservation_id, dry_run: boolean? }
       class CancelCapacityReservationResult
         attr_accessor return: boolean
       end
+      type cancel_conversion_request = { conversion_task_id: conversion_task_id, dry_run: boolean?, reason_message: string? }
+      type cancel_export_task_request = { export_task_id: export_vm_task_id }
+      type cancel_import_task_request = { cancel_reason: string?, dry_run: boolean?, import_task_id: import_task_id? }
       class CancelImportTaskResult
         attr_accessor import_task_id: string
         attr_accessor previous_state: string
         attr_accessor state: string
       end
+      type cancel_reserved_instances_listing_request = { reserved_instances_listing_id: reserved_instances_listing_id }
       class CancelReservedInstancesListingResult
         attr_accessor reserved_instances_listings: reserved_instances_listing_list
       end
@@ -447,6 +488,7 @@ module Aws
         attr_accessor spot_fleet_request_id: string
       end
       type cancel_spot_fleet_requests_error_set = ::Array[CancelSpotFleetRequestsErrorItem]
+      type cancel_spot_fleet_requests_request = { dry_run: boolean?, spot_fleet_request_ids: spot_fleet_request_id_list, terminate_instances: boolean }
       class CancelSpotFleetRequestsResponse
         attr_accessor successful_fleet_requests: cancel_spot_fleet_requests_success_set
         attr_accessor unsuccessful_fleet_requests: cancel_spot_fleet_requests_error_set
@@ -458,6 +500,7 @@ module Aws
       end
       type cancel_spot_fleet_requests_success_set = ::Array[CancelSpotFleetRequestsSuccessItem]
       type cancel_spot_instance_request_state = ("active" | "open" | "closed" | "cancelled" | "completed")
+      type cancel_spot_instance_requests_request = { dry_run: boolean?, spot_instance_request_ids: spot_instance_request_id_list }
       class CancelSpotInstanceRequestsResult
         attr_accessor cancelled_spot_instance_requests: cancelled_spot_instance_request_list
       end
@@ -709,6 +752,7 @@ module Aws
       type coip_pool_id_set = ::Array[coip_pool_id]
       type coip_pool_max_results = ::Integer
       type coip_pool_set = ::Array[CoipPool]
+      type confirm_product_instance_request = { instance_id: instance_id, product_code: string, dry_run: boolean? }
       class ConfirmProductInstanceResult
         attr_accessor owner_id: string
         attr_accessor return: boolean
@@ -747,12 +791,15 @@ module Aws
       end
       type conversion_task_id = ::String
       type conversion_task_state = ("active" | "cancelling" | "cancelled" | "completed")
+      type copy_fpga_image_request = { dry_run: boolean?, source_fpga_image_id: string, description: string?, name: string?, source_region: string, client_token: string? }
       class CopyFpgaImageResult
         attr_accessor fpga_image_id: string
       end
+      type copy_image_request = { client_token: string?, description: string?, encrypted: boolean?, kms_key_id: kms_key_id?, name: string, source_image_id: string, source_region: string, destination_outpost_arn: string?, dry_run: boolean? }
       class CopyImageResult
         attr_accessor image_id: string
       end
+      type copy_snapshot_request = { description: string?, destination_outpost_arn: string?, destination_region: string?, encrypted: boolean?, kms_key_id: kms_key_id?, presigned_url: string?, source_region: string, source_snapshot_id: string, tag_specifications: tag_specification_list_input?, dry_run: boolean? }
       class CopySnapshotResult
         attr_accessor snapshot_id: string
         attr_accessor tags: tag_list_output
@@ -768,6 +815,7 @@ module Aws
         attr_accessor threads_per_core: integer
       end
       type cpu_options_request = { core_count: integer?, threads_per_core: integer? }
+      type create_capacity_reservation_fleet_request = { allocation_strategy: string?, client_token: string?, instance_type_specifications: reservation_fleet_instance_specification_list, tenancy: fleet_capacity_reservation_tenancy?, total_target_capacity: integer, end_date: millisecond_date_time?, instance_match_criteria: fleet_instance_match_criteria?, tag_specifications: tag_specification_list_input?, dry_run: boolean? }
       class CreateCapacityReservationFleetResult
         attr_accessor capacity_reservation_fleet_id: capacity_reservation_fleet_id
         attr_accessor state: capacity_reservation_fleet_state
@@ -781,32 +829,41 @@ module Aws
         attr_accessor fleet_capacity_reservations: fleet_capacity_reservation_set
         attr_accessor tags: tag_list_output
       end
+      type create_capacity_reservation_request = { client_token: string?, instance_type: string, instance_platform: capacity_reservation_instance_platform, availability_zone: string?, availability_zone_id: string?, tenancy: capacity_reservation_tenancy?, instance_count: integer, ebs_optimized: boolean?, ephemeral_storage: boolean?, end_date: date_time?, end_date_type: end_date_type?, instance_match_criteria: instance_match_criteria?, tag_specifications: tag_specification_list_input?, dry_run: boolean?, outpost_arn: outpost_arn?, placement_group_arn: placement_group_arn? }
       class CreateCapacityReservationResult
         attr_accessor capacity_reservation: CapacityReservation
       end
+      type create_carrier_gateway_request = { vpc_id: vpc_id, tag_specifications: tag_specification_list_input?, dry_run: boolean?, client_token: string? }
       class CreateCarrierGatewayResult
         attr_accessor carrier_gateway: CarrierGateway
       end
+      type create_client_vpn_endpoint_request = { client_cidr_block: string, server_certificate_arn: string, authentication_options: client_vpn_authentication_request_list, connection_log_options: connection_log_options, dns_servers: value_string_list?, transport_protocol: transport_protocol?, vpn_port: integer?, description: string?, split_tunnel: boolean?, dry_run: boolean?, client_token: string?, tag_specifications: tag_specification_list_input?, security_group_ids: client_vpn_security_group_id_set?, vpc_id: vpc_id?, self_service_portal: self_service_portal?, client_connect_options: client_connect_options?, session_timeout_hours: integer?, client_login_banner_options: client_login_banner_options? }
       class CreateClientVpnEndpointResult
         attr_accessor client_vpn_endpoint_id: string
         attr_accessor status: ClientVpnEndpointStatus
         attr_accessor dns_name: string
       end
+      type create_client_vpn_route_request = { client_vpn_endpoint_id: client_vpn_endpoint_id, destination_cidr_block: string, target_vpc_subnet_id: subnet_id, description: string?, client_token: string?, dry_run: boolean? }
       class CreateClientVpnRouteResult
         attr_accessor status: ClientVpnRouteStatus
       end
+      type create_customer_gateway_request = { bgp_asn: integer, public_ip: string?, certificate_arn: string?, type: gateway_type, tag_specifications: tag_specification_list_input?, device_name: string?, dry_run: boolean? }
       class CreateCustomerGatewayResult
         attr_accessor customer_gateway: CustomerGateway
       end
+      type create_default_subnet_request = { availability_zone: string, dry_run: boolean?, ipv_6_native: boolean? }
       class CreateDefaultSubnetResult
         attr_accessor subnet: Subnet
       end
+      type create_default_vpc_request = { dry_run: boolean? }
       class CreateDefaultVpcResult
         attr_accessor vpc: Vpc
       end
+      type create_dhcp_options_request = { dhcp_configurations: new_dhcp_configuration_list, tag_specifications: tag_specification_list_input?, dry_run: boolean? }
       class CreateDhcpOptionsResult
         attr_accessor dhcp_options: DhcpOptions
       end
+      type create_egress_only_internet_gateway_request = { client_token: string?, dry_run: boolean?, vpc_id: vpc_id, tag_specifications: tag_specification_list_input? }
       class CreateEgressOnlyInternetGatewayResult
         attr_accessor client_token: string
         attr_accessor egress_only_internet_gateway: EgressOnlyInternetGateway
@@ -826,161 +883,212 @@ module Aws
         attr_accessor platform: platform_values
       end
       type create_fleet_instances_set = ::Array[CreateFleetInstance]
+      type create_fleet_request = { dry_run: boolean?, client_token: string?, spot_options: spot_options_request?, on_demand_options: on_demand_options_request?, excess_capacity_termination_policy: fleet_excess_capacity_termination_policy?, launch_template_configs: fleet_launch_template_config_list_request, target_capacity_specification: target_capacity_specification_request, terminate_instances_with_expiration: boolean?, type: fleet_type?, valid_from: date_time?, valid_until: date_time?, replace_unhealthy_instances: boolean?, tag_specifications: tag_specification_list_input?, context: string? }
       class CreateFleetResult
         attr_accessor fleet_id: fleet_id
         attr_accessor errors: create_fleet_errors_set
         attr_accessor instances: create_fleet_instances_set
       end
+      type create_flow_logs_request = { dry_run: boolean?, client_token: string?, deliver_logs_permission_arn: string?, log_group_name: string?, resource_ids: flow_log_resource_ids, resource_type: flow_logs_resource_type, traffic_type: traffic_type, log_destination_type: log_destination_type?, log_destination: string?, log_format: string?, tag_specifications: tag_specification_list_input?, max_aggregation_interval: integer?, destination_options: destination_options_request? }
       class CreateFlowLogsResult
         attr_accessor client_token: string
         attr_accessor flow_log_ids: value_string_list
         attr_accessor unsuccessful: unsuccessful_item_set
       end
+      type create_fpga_image_request = { dry_run: boolean?, input_storage_location: storage_location, logs_storage_location: storage_location?, description: string?, name: string?, client_token: string?, tag_specifications: tag_specification_list_input? }
       class CreateFpgaImageResult
         attr_accessor fpga_image_id: string
         attr_accessor fpga_image_global_id: string
       end
+      type create_image_request = { block_device_mappings: block_device_mapping_request_list_input?, description: string?, dry_run: boolean?, instance_id: instance_id, name: string, no_reboot: boolean?, tag_specifications: tag_specification_list_input? }
       class CreateImageResult
         attr_accessor image_id: string
       end
+      type create_instance_event_window_request = { dry_run: boolean?, name: string?, time_ranges: instance_event_window_time_range_request_set?, cron_expression: instance_event_window_cron_expression?, tag_specifications: tag_specification_list_input? }
       class CreateInstanceEventWindowResult
         attr_accessor instance_event_window: InstanceEventWindow
       end
+      type create_instance_export_task_request = { description: string?, export_to_s3_task: export_to_s3_task_specification, instance_id: instance_id, target_environment: export_environment, tag_specifications: tag_specification_list_input? }
       class CreateInstanceExportTaskResult
         attr_accessor export_task: ExportTask
       end
+      type create_internet_gateway_request = { tag_specifications: tag_specification_list_input?, dry_run: boolean? }
       class CreateInternetGatewayResult
         attr_accessor internet_gateway: InternetGateway
       end
+      type create_ipam_pool_request = { dry_run: boolean?, ipam_scope_id: ipam_scope_id, locale: string?, source_ipam_pool_id: ipam_pool_id?, description: string?, address_family: address_family?, auto_import: boolean?, publicly_advertisable: boolean?, allocation_min_netmask_length: ipam_netmask_length?, allocation_max_netmask_length: ipam_netmask_length?, allocation_default_netmask_length: ipam_netmask_length?, allocation_resource_tags: request_ipam_resource_tag_list_input?, tag_specifications: tag_specification_list_input?, client_token: string?, aws_service: ipam_pool_aws_service? }
       class CreateIpamPoolResult
         attr_accessor ipam_pool: IpamPool
       end
+      type create_ipam_request = { dry_run: boolean?, description: string?, operating_regions: add_ipam_operating_region_set?, tag_specifications: tag_specification_list_input?, client_token: string? }
       class CreateIpamResult
         attr_accessor ipam: Ipam
       end
+      type create_ipam_scope_request = { dry_run: boolean?, ipam_id: ipam_id, description: string?, tag_specifications: tag_specification_list_input?, client_token: string? }
       class CreateIpamScopeResult
         attr_accessor ipam_scope: IpamScope
       end
+      type create_key_pair_request = { key_name: string, dry_run: boolean?, key_type: key_type?, tag_specifications: tag_specification_list_input? }
+      type create_launch_template_request = { dry_run: boolean?, client_token: string?, launch_template_name: launch_template_name, version_description: version_description?, launch_template_data: request_launch_template_data, tag_specifications: tag_specification_list_input? }
       class CreateLaunchTemplateResult
         attr_accessor launch_template: LaunchTemplate
         attr_accessor warning: ValidationWarning
       end
+      type create_launch_template_version_request = { dry_run: boolean?, client_token: string?, launch_template_id: launch_template_id?, launch_template_name: launch_template_name?, source_version: string?, version_description: version_description?, launch_template_data: request_launch_template_data }
       class CreateLaunchTemplateVersionResult
         attr_accessor launch_template_version: LaunchTemplateVersion
         attr_accessor warning: ValidationWarning
       end
+      type create_local_gateway_route_request = { destination_cidr_block: string, local_gateway_route_table_id: local_gateway_routetable_id, local_gateway_virtual_interface_group_id: local_gateway_virtual_interface_group_id, dry_run: boolean? }
       class CreateLocalGatewayRouteResult
         attr_accessor route: LocalGatewayRoute
       end
+      type create_local_gateway_route_table_vpc_association_request = { local_gateway_route_table_id: local_gateway_routetable_id, vpc_id: vpc_id, tag_specifications: tag_specification_list_input?, dry_run: boolean? }
       class CreateLocalGatewayRouteTableVpcAssociationResult
         attr_accessor local_gateway_route_table_vpc_association: LocalGatewayRouteTableVpcAssociation
       end
+      type create_managed_prefix_list_request = { dry_run: boolean?, prefix_list_name: string, entries: add_prefix_list_entries?, max_entries: integer, tag_specifications: tag_specification_list_input?, address_family: string, client_token: string? }
       class CreateManagedPrefixListResult
         attr_accessor prefix_list: ManagedPrefixList
       end
+      type create_nat_gateway_request = { allocation_id: allocation_id?, client_token: string?, dry_run: boolean?, subnet_id: subnet_id, tag_specifications: tag_specification_list_input?, connectivity_type: connectivity_type? }
       class CreateNatGatewayResult
         attr_accessor client_token: string
         attr_accessor nat_gateway: NatGateway
       end
+      type create_network_acl_entry_request = { cidr_block: string?, dry_run: boolean?, egress: boolean, icmp_type_code: icmp_type_code?, ipv_6_cidr_block: string?, network_acl_id: network_acl_id, port_range: port_range?, protocol: string, rule_action: rule_action, rule_number: integer }
+      type create_network_acl_request = { dry_run: boolean?, vpc_id: vpc_id, tag_specifications: tag_specification_list_input? }
       class CreateNetworkAclResult
         attr_accessor network_acl: NetworkAcl
       end
+      type create_network_insights_access_scope_request = { match_paths: access_scope_path_list_request?, exclude_paths: access_scope_path_list_request?, client_token: string, tag_specifications: tag_specification_list_input?, dry_run: boolean? }
       class CreateNetworkInsightsAccessScopeResult
         attr_accessor network_insights_access_scope: NetworkInsightsAccessScope
         attr_accessor network_insights_access_scope_content: NetworkInsightsAccessScopeContent
       end
+      type create_network_insights_path_request = { source_ip: ip_address?, destination_ip: ip_address?, source: network_insights_resource_id, destination: network_insights_resource_id, protocol: protocol, destination_port: port?, tag_specifications: tag_specification_list_input?, dry_run: boolean?, client_token: string }
       class CreateNetworkInsightsPathResult
         attr_accessor network_insights_path: NetworkInsightsPath
       end
+      type create_network_interface_permission_request = { network_interface_id: network_interface_id, aws_account_id: string?, aws_service: string?, permission: interface_permission_type, dry_run: boolean? }
       class CreateNetworkInterfacePermissionResult
         attr_accessor interface_permission: NetworkInterfacePermission
       end
+      type create_network_interface_request = { description: string?, dry_run: boolean?, groups: security_group_id_string_list?, ipv_6_address_count: integer?, ipv_6_addresses: instance_ipv_6_address_list_input?, private_ip_address: string?, private_ip_addresses: private_ip_address_specification_list_input?, secondary_private_ip_address_count: integer?, ipv_4_prefixes: ipv_4_prefix_list_input?, ipv_4_prefix_count: integer?, ipv_6_prefixes: ipv_6_prefix_list_input?, ipv_6_prefix_count: integer?, interface_type: network_interface_creation_type?, subnet_id: subnet_id, tag_specifications: tag_specification_list_input?, client_token: string? }
       class CreateNetworkInterfaceResult
         attr_accessor network_interface: NetworkInterface
         attr_accessor client_token: string
       end
+      type create_placement_group_request = { dry_run: boolean?, group_name: string?, strategy: placement_strategy?, partition_count: integer?, tag_specifications: tag_specification_list_input? }
       class CreatePlacementGroupResult
         attr_accessor placement_group: PlacementGroup
       end
+      type create_public_ipv_4_pool_request = { dry_run: boolean?, tag_specifications: tag_specification_list_input? }
       class CreatePublicIpv4PoolResult
         attr_accessor pool_id: ipv_4_pool_ec2_id
       end
+      type create_replace_root_volume_task_request = { instance_id: instance_id, snapshot_id: snapshot_id?, client_token: string?, dry_run: boolean?, tag_specifications: tag_specification_list_input? }
       class CreateReplaceRootVolumeTaskResult
         attr_accessor replace_root_volume_task: ReplaceRootVolumeTask
       end
+      type create_reserved_instances_listing_request = { client_token: string, instance_count: integer, price_schedules: price_schedule_specification_list, reserved_instances_id: reservation_id }
       class CreateReservedInstancesListingResult
         attr_accessor reserved_instances_listings: reserved_instances_listing_list
       end
+      type create_restore_image_task_request = { bucket: string, object_key: string, name: string?, tag_specifications: tag_specification_list_input?, dry_run: boolean? }
       class CreateRestoreImageTaskResult
         attr_accessor image_id: string
       end
+      type create_route_request = { destination_cidr_block: string?, destination_ipv_6_cidr_block: string?, destination_prefix_list_id: prefix_list_resource_id?, dry_run: boolean?, vpc_endpoint_id: vpc_endpoint_id?, egress_only_internet_gateway_id: egress_only_internet_gateway_id?, gateway_id: route_gateway_id?, instance_id: instance_id?, nat_gateway_id: nat_gateway_id?, transit_gateway_id: transit_gateway_id?, local_gateway_id: local_gateway_id?, carrier_gateway_id: carrier_gateway_id?, network_interface_id: network_interface_id?, route_table_id: route_table_id, vpc_peering_connection_id: vpc_peering_connection_id?, core_network_arn: core_network_arn? }
       class CreateRouteResult
         attr_accessor return: boolean
       end
+      type create_route_table_request = { dry_run: boolean?, vpc_id: vpc_id, tag_specifications: tag_specification_list_input? }
       class CreateRouteTableResult
         attr_accessor route_table: RouteTable
       end
+      type create_security_group_request = { description: string, group_name: string, vpc_id: vpc_id?, tag_specifications: tag_specification_list_input?, dry_run: boolean? }
       class CreateSecurityGroupResult
         attr_accessor group_id: string
         attr_accessor tags: tag_list_output
       end
+      type create_snapshot_request = { description: string?, outpost_arn: string?, volume_id: volume_id, tag_specifications: tag_specification_list_input?, dry_run: boolean? }
+      type create_snapshots_request = { description: string?, instance_specification: instance_specification, outpost_arn: string?, tag_specifications: tag_specification_list_input?, dry_run: boolean?, copy_tags_from_source: copy_tags_from_source? }
       class CreateSnapshotsResult
         attr_accessor snapshots: snapshot_set
       end
+      type create_spot_datafeed_subscription_request = { bucket: string, dry_run: boolean?, prefix: string? }
       class CreateSpotDatafeedSubscriptionResult
         attr_accessor spot_datafeed_subscription: SpotDatafeedSubscription
       end
+      type create_store_image_task_request = { image_id: image_id, bucket: string, s3_object_tags: s3_object_tag_list?, dry_run: boolean? }
       class CreateStoreImageTaskResult
         attr_accessor object_key: string
       end
+      type create_subnet_cidr_reservation_request = { tag_specifications: tag_specification_list_input?, subnet_id: subnet_id, cidr: string, reservation_type: subnet_cidr_reservation_type, description: string?, dry_run: boolean? }
       class CreateSubnetCidrReservationResult
         attr_accessor subnet_cidr_reservation: SubnetCidrReservation
       end
+      type create_subnet_request = { tag_specifications: tag_specification_list_input?, availability_zone: string?, availability_zone_id: string?, cidr_block: string?, ipv_6_cidr_block: string?, outpost_arn: string?, vpc_id: vpc_id, dry_run: boolean?, ipv_6_native: boolean? }
       class CreateSubnetResult
         attr_accessor subnet: Subnet
       end
+      type create_tags_request = { dry_run: boolean?, resources: resource_id_list, tags: tag_list_input }
+      type create_traffic_mirror_filter_request = { description: string?, tag_specifications: tag_specification_list_input?, dry_run: boolean?, client_token: string? }
       class CreateTrafficMirrorFilterResult
         attr_accessor traffic_mirror_filter: TrafficMirrorFilter
         attr_accessor client_token: string
       end
+      type create_traffic_mirror_filter_rule_request = { traffic_mirror_filter_id: traffic_mirror_filter_id, traffic_direction: traffic_direction, rule_number: integer, rule_action: traffic_mirror_rule_action, destination_port_range: traffic_mirror_port_range_request?, source_port_range: traffic_mirror_port_range_request?, protocol: integer?, destination_cidr_block: string, source_cidr_block: string, description: string?, dry_run: boolean?, client_token: string? }
       class CreateTrafficMirrorFilterRuleResult
         attr_accessor traffic_mirror_filter_rule: TrafficMirrorFilterRule
         attr_accessor client_token: string
       end
+      type create_traffic_mirror_session_request = { network_interface_id: network_interface_id, traffic_mirror_target_id: traffic_mirror_target_id, traffic_mirror_filter_id: traffic_mirror_filter_id, packet_length: integer?, session_number: integer, virtual_network_id: integer?, description: string?, tag_specifications: tag_specification_list_input?, dry_run: boolean?, client_token: string? }
       class CreateTrafficMirrorSessionResult
         attr_accessor traffic_mirror_session: TrafficMirrorSession
         attr_accessor client_token: string
       end
+      type create_traffic_mirror_target_request = { network_interface_id: network_interface_id?, network_load_balancer_arn: string?, description: string?, tag_specifications: tag_specification_list_input?, dry_run: boolean?, client_token: string? }
       class CreateTrafficMirrorTargetResult
         attr_accessor traffic_mirror_target: TrafficMirrorTarget
         attr_accessor client_token: string
       end
+      type create_transit_gateway_connect_peer_request = { transit_gateway_attachment_id: transit_gateway_attachment_id, transit_gateway_address: string?, peer_address: string, bgp_options: transit_gateway_connect_request_bgp_options?, inside_cidr_blocks: inside_cidr_blocks_string_list, tag_specifications: tag_specification_list_input?, dry_run: boolean? }
       class CreateTransitGatewayConnectPeerResult
         attr_accessor transit_gateway_connect_peer: TransitGatewayConnectPeer
       end
+      type create_transit_gateway_connect_request = { transport_transit_gateway_attachment_id: transit_gateway_attachment_id, options: create_transit_gateway_connect_request_options, tag_specifications: tag_specification_list_input?, dry_run: boolean? }
       type create_transit_gateway_connect_request_options = { protocol: protocol_value }
       class CreateTransitGatewayConnectResult
         attr_accessor transit_gateway_connect: TransitGatewayConnect
       end
+      type create_transit_gateway_multicast_domain_request = { transit_gateway_id: transit_gateway_id, options: create_transit_gateway_multicast_domain_request_options?, tag_specifications: tag_specification_list_input?, dry_run: boolean? }
       type create_transit_gateway_multicast_domain_request_options = { igmpv_2_support: igmpv_2_support_value?, static_sources_support: static_sources_support_value?, auto_accept_shared_associations: auto_accept_shared_associations_value? }
       class CreateTransitGatewayMulticastDomainResult
         attr_accessor transit_gateway_multicast_domain: TransitGatewayMulticastDomain
       end
+      type create_transit_gateway_peering_attachment_request = { transit_gateway_id: transit_gateway_id, peer_transit_gateway_id: transit_association_gateway_id, peer_account_id: string, peer_region: string, tag_specifications: tag_specification_list_input?, dry_run: boolean? }
       class CreateTransitGatewayPeeringAttachmentResult
         attr_accessor transit_gateway_peering_attachment: TransitGatewayPeeringAttachment
       end
+      type create_transit_gateway_prefix_list_reference_request = { transit_gateway_route_table_id: transit_gateway_route_table_id, prefix_list_id: prefix_list_resource_id, transit_gateway_attachment_id: transit_gateway_attachment_id?, blackhole: boolean?, dry_run: boolean? }
       class CreateTransitGatewayPrefixListReferenceResult
         attr_accessor transit_gateway_prefix_list_reference: TransitGatewayPrefixListReference
       end
+      type create_transit_gateway_request = { description: string?, options: transit_gateway_request_options?, tag_specifications: tag_specification_list_input?, dry_run: boolean? }
       class CreateTransitGatewayResult
         attr_accessor transit_gateway: TransitGateway
       end
+      type create_transit_gateway_route_request = { destination_cidr_block: string, transit_gateway_route_table_id: transit_gateway_route_table_id, transit_gateway_attachment_id: transit_gateway_attachment_id?, blackhole: boolean?, dry_run: boolean? }
       class CreateTransitGatewayRouteResult
         attr_accessor route: TransitGatewayRoute
       end
+      type create_transit_gateway_route_table_request = { transit_gateway_id: transit_gateway_id, tag_specifications: tag_specification_list_input?, dry_run: boolean? }
       class CreateTransitGatewayRouteTableResult
         attr_accessor transit_gateway_route_table: TransitGatewayRouteTable
       end
+      type create_transit_gateway_vpc_attachment_request = { transit_gateway_id: transit_gateway_id, vpc_id: vpc_id, subnet_ids: transit_gateway_subnet_id_list, options: create_transit_gateway_vpc_attachment_request_options?, tag_specifications: tag_specification_list_input?, dry_run: boolean? }
       type create_transit_gateway_vpc_attachment_request_options = { dns_support: dns_support_value?, ipv_6_support: ipv_6_support_value?, appliance_mode_support: appliance_mode_support_value? }
       class CreateTransitGatewayVpcAttachmentResult
         attr_accessor transit_gateway_vpc_attachment: TransitGatewayVpcAttachment
@@ -993,27 +1101,36 @@ module Aws
       type create_volume_permission_list_output = ::Array[CreateVolumePermission]
       type create_volume_permission_list_input = ::Array[create_volume_permission]
       type create_volume_permission_modifications = { add: create_volume_permission_list_input?, remove: create_volume_permission_list_input? }
+      type create_volume_request = { availability_zone: string, encrypted: boolean?, iops: integer?, kms_key_id: kms_key_id?, outpost_arn: string?, size: integer?, snapshot_id: snapshot_id?, volume_type: volume_type?, dry_run: boolean?, tag_specifications: tag_specification_list_input?, multi_attach_enabled: boolean?, throughput: integer?, client_token: string? }
+      type create_vpc_endpoint_connection_notification_request = { dry_run: boolean?, service_id: vpc_endpoint_service_id?, vpc_endpoint_id: vpc_endpoint_id?, connection_notification_arn: string, connection_events: value_string_list, client_token: string? }
       class CreateVpcEndpointConnectionNotificationResult
         attr_accessor connection_notification: ConnectionNotification
         attr_accessor client_token: string
       end
+      type create_vpc_endpoint_request = { dry_run: boolean?, vpc_endpoint_type: vpc_endpoint_type?, vpc_id: vpc_id, service_name: string, policy_document: string?, route_table_ids: vpc_endpoint_route_table_id_list?, subnet_ids: vpc_endpoint_subnet_id_list?, security_group_ids: vpc_endpoint_security_group_id_list?, client_token: string?, private_dns_enabled: boolean?, tag_specifications: tag_specification_list_input? }
       class CreateVpcEndpointResult
         attr_accessor vpc_endpoint: VpcEndpoint
         attr_accessor client_token: string
       end
+      type create_vpc_endpoint_service_configuration_request = { dry_run: boolean?, acceptance_required: boolean?, private_dns_name: string?, network_load_balancer_arns: value_string_list?, gateway_load_balancer_arns: value_string_list?, client_token: string?, tag_specifications: tag_specification_list_input? }
       class CreateVpcEndpointServiceConfigurationResult
         attr_accessor service_configuration: ServiceConfiguration
         attr_accessor client_token: string
       end
+      type create_vpc_peering_connection_request = { dry_run: boolean?, peer_owner_id: string?, peer_vpc_id: string?, vpc_id: vpc_id?, peer_region: string?, tag_specifications: tag_specification_list_input? }
       class CreateVpcPeeringConnectionResult
         attr_accessor vpc_peering_connection: VpcPeeringConnection
       end
+      type create_vpc_request = { cidr_block: string?, amazon_provided_ipv_6_cidr_block: boolean?, ipv_6_pool: ipv_6_pool_ec2_id?, ipv_6_cidr_block: string?, ipv_4_ipam_pool_id: ipam_pool_id?, ipv_4_netmask_length: netmask_length?, ipv_6_ipam_pool_id: ipam_pool_id?, ipv_6_netmask_length: netmask_length?, dry_run: boolean?, instance_tenancy: tenancy?, ipv_6_cidr_block_network_border_group: string?, tag_specifications: tag_specification_list_input? }
       class CreateVpcResult
         attr_accessor vpc: Vpc
       end
+      type create_vpn_connection_request = { customer_gateway_id: customer_gateway_id, type: string, vpn_gateway_id: vpn_gateway_id?, transit_gateway_id: transit_gateway_id?, dry_run: boolean?, options: vpn_connection_options_specification?, tag_specifications: tag_specification_list_input? }
       class CreateVpnConnectionResult
         attr_accessor vpn_connection: VpnConnection
       end
+      type create_vpn_connection_route_request = { destination_cidr_block: string, vpn_connection_id: vpn_connection_id }
+      type create_vpn_gateway_request = { availability_zone: string?, type: gateway_type, tag_specifications: tag_specification_list_input?, amazon_side_asn: long?, dry_run: boolean? }
       class CreateVpnGatewayResult
         attr_accessor vpn_gateway: VpnGateway
       end
@@ -1048,15 +1165,21 @@ module Aws
       type default_route_table_propagation_value = ("enable" | "disable")
       type default_target_capacity_type = ("spot" | "on-demand")
       type defaulting_dhcp_options_id = ::String
+      type delete_carrier_gateway_request = { carrier_gateway_id: carrier_gateway_id, dry_run: boolean? }
       class DeleteCarrierGatewayResult
         attr_accessor carrier_gateway: CarrierGateway
       end
+      type delete_client_vpn_endpoint_request = { client_vpn_endpoint_id: client_vpn_endpoint_id, dry_run: boolean? }
       class DeleteClientVpnEndpointResult
         attr_accessor status: ClientVpnEndpointStatus
       end
+      type delete_client_vpn_route_request = { client_vpn_endpoint_id: client_vpn_endpoint_id, target_vpc_subnet_id: subnet_id?, destination_cidr_block: string, dry_run: boolean? }
       class DeleteClientVpnRouteResult
         attr_accessor status: ClientVpnRouteStatus
       end
+      type delete_customer_gateway_request = { customer_gateway_id: customer_gateway_id, dry_run: boolean? }
+      type delete_dhcp_options_request = { dhcp_options_id: dhcp_options_id, dry_run: boolean? }
+      type delete_egress_only_internet_gateway_request = { dry_run: boolean?, egress_only_internet_gateway_id: egress_only_internet_gateway_id }
       class DeleteEgressOnlyInternetGatewayResult
         attr_accessor return_code: boolean
       end
@@ -1076,31 +1199,42 @@ module Aws
         attr_accessor fleet_id: fleet_id
       end
       type delete_fleet_success_set = ::Array[DeleteFleetSuccessItem]
+      type delete_fleets_request = { dry_run: boolean?, fleet_ids: fleet_id_set, terminate_instances: boolean }
       class DeleteFleetsResult
         attr_accessor successful_fleet_deletions: delete_fleet_success_set
         attr_accessor unsuccessful_fleet_deletions: delete_fleet_error_set
       end
+      type delete_flow_logs_request = { dry_run: boolean?, flow_log_ids: flow_log_id_list }
       class DeleteFlowLogsResult
         attr_accessor unsuccessful: unsuccessful_item_set
       end
+      type delete_fpga_image_request = { dry_run: boolean?, fpga_image_id: fpga_image_id }
       class DeleteFpgaImageResult
         attr_accessor return: boolean
       end
+      type delete_instance_event_window_request = { dry_run: boolean?, force_delete: boolean?, instance_event_window_id: instance_event_window_id }
       class DeleteInstanceEventWindowResult
         attr_accessor instance_event_window_state: InstanceEventWindowStateChange
       end
+      type delete_internet_gateway_request = { dry_run: boolean?, internet_gateway_id: internet_gateway_id }
+      type delete_ipam_pool_request = { dry_run: boolean?, ipam_pool_id: ipam_pool_id }
       class DeleteIpamPoolResult
         attr_accessor ipam_pool: IpamPool
       end
+      type delete_ipam_request = { dry_run: boolean?, ipam_id: ipam_id }
       class DeleteIpamResult
         attr_accessor ipam: Ipam
       end
+      type delete_ipam_scope_request = { dry_run: boolean?, ipam_scope_id: ipam_scope_id }
       class DeleteIpamScopeResult
         attr_accessor ipam_scope: IpamScope
       end
+      type delete_key_pair_request = { key_name: key_pair_name?, key_pair_id: key_pair_id?, dry_run: boolean? }
+      type delete_launch_template_request = { dry_run: boolean?, launch_template_id: launch_template_id?, launch_template_name: launch_template_name? }
       class DeleteLaunchTemplateResult
         attr_accessor launch_template: LaunchTemplate
       end
+      type delete_launch_template_versions_request = { dry_run: boolean?, launch_template_id: launch_template_id?, launch_template_name: launch_template_name?, versions: version_string_list }
       class DeleteLaunchTemplateVersionsResponseErrorItem
         attr_accessor launch_template_id: string
         attr_accessor launch_template_name: string
@@ -1118,33 +1252,47 @@ module Aws
         attr_accessor successfully_deleted_launch_template_versions: delete_launch_template_versions_response_success_set
         attr_accessor unsuccessfully_deleted_launch_template_versions: delete_launch_template_versions_response_error_set
       end
+      type delete_local_gateway_route_request = { destination_cidr_block: string, local_gateway_route_table_id: local_gateway_routetable_id, dry_run: boolean? }
       class DeleteLocalGatewayRouteResult
         attr_accessor route: LocalGatewayRoute
       end
+      type delete_local_gateway_route_table_vpc_association_request = { local_gateway_route_table_vpc_association_id: local_gateway_route_table_vpc_association_id, dry_run: boolean? }
       class DeleteLocalGatewayRouteTableVpcAssociationResult
         attr_accessor local_gateway_route_table_vpc_association: LocalGatewayRouteTableVpcAssociation
       end
+      type delete_managed_prefix_list_request = { dry_run: boolean?, prefix_list_id: prefix_list_resource_id }
       class DeleteManagedPrefixListResult
         attr_accessor prefix_list: ManagedPrefixList
       end
+      type delete_nat_gateway_request = { dry_run: boolean?, nat_gateway_id: nat_gateway_id }
       class DeleteNatGatewayResult
         attr_accessor nat_gateway_id: string
       end
+      type delete_network_acl_entry_request = { dry_run: boolean?, egress: boolean, network_acl_id: network_acl_id, rule_number: integer }
+      type delete_network_acl_request = { dry_run: boolean?, network_acl_id: network_acl_id }
+      type delete_network_insights_access_scope_analysis_request = { network_insights_access_scope_analysis_id: network_insights_access_scope_analysis_id, dry_run: boolean? }
       class DeleteNetworkInsightsAccessScopeAnalysisResult
         attr_accessor network_insights_access_scope_analysis_id: network_insights_access_scope_analysis_id
       end
+      type delete_network_insights_access_scope_request = { dry_run: boolean?, network_insights_access_scope_id: network_insights_access_scope_id }
       class DeleteNetworkInsightsAccessScopeResult
         attr_accessor network_insights_access_scope_id: network_insights_access_scope_id
       end
+      type delete_network_insights_analysis_request = { dry_run: boolean?, network_insights_analysis_id: network_insights_analysis_id }
       class DeleteNetworkInsightsAnalysisResult
         attr_accessor network_insights_analysis_id: network_insights_analysis_id
       end
+      type delete_network_insights_path_request = { dry_run: boolean?, network_insights_path_id: network_insights_path_id }
       class DeleteNetworkInsightsPathResult
         attr_accessor network_insights_path_id: network_insights_path_id
       end
+      type delete_network_interface_permission_request = { network_interface_permission_id: network_interface_permission_id, force: boolean?, dry_run: boolean? }
       class DeleteNetworkInterfacePermissionResult
         attr_accessor return: boolean
       end
+      type delete_network_interface_request = { dry_run: boolean?, network_interface_id: network_interface_id }
+      type delete_placement_group_request = { dry_run: boolean?, group_name: placement_group_name }
+      type delete_public_ipv_4_pool_request = { dry_run: boolean?, pool_id: ipv_4_pool_ec2_id }
       class DeletePublicIpv4PoolResult
         attr_accessor return_value: boolean
       end
@@ -1154,189 +1302,252 @@ module Aws
       end
       type delete_queued_reserved_instances_error_code = ("reserved-instances-id-invalid" | "reserved-instances-not-in-queued-state" | "unexpected-error")
       type delete_queued_reserved_instances_id_list = ::Array[reservation_id]
+      type delete_queued_reserved_instances_request = { dry_run: boolean?, reserved_instances_ids: delete_queued_reserved_instances_id_list }
       class DeleteQueuedReservedInstancesResult
         attr_accessor successful_queued_purchase_deletions: successful_queued_purchase_deletion_set
         attr_accessor failed_queued_purchase_deletions: failed_queued_purchase_deletion_set
       end
+      type delete_route_request = { destination_cidr_block: string?, destination_ipv_6_cidr_block: string?, destination_prefix_list_id: prefix_list_resource_id?, dry_run: boolean?, route_table_id: route_table_id }
+      type delete_route_table_request = { dry_run: boolean?, route_table_id: route_table_id }
+      type delete_security_group_request = { group_id: security_group_id?, group_name: security_group_name?, dry_run: boolean? }
+      type delete_snapshot_request = { snapshot_id: snapshot_id, dry_run: boolean? }
+      type delete_spot_datafeed_subscription_request = { dry_run: boolean? }
+      type delete_subnet_cidr_reservation_request = { subnet_cidr_reservation_id: subnet_cidr_reservation_id, dry_run: boolean? }
       class DeleteSubnetCidrReservationResult
         attr_accessor deleted_subnet_cidr_reservation: SubnetCidrReservation
       end
+      type delete_subnet_request = { subnet_id: subnet_id, dry_run: boolean? }
+      type delete_tags_request = { dry_run: boolean?, resources: resource_id_list, tags: tag_list_input? }
+      type delete_traffic_mirror_filter_request = { traffic_mirror_filter_id: traffic_mirror_filter_id, dry_run: boolean? }
       class DeleteTrafficMirrorFilterResult
         attr_accessor traffic_mirror_filter_id: string
       end
+      type delete_traffic_mirror_filter_rule_request = { traffic_mirror_filter_rule_id: traffic_mirror_filter_rule_id, dry_run: boolean? }
       class DeleteTrafficMirrorFilterRuleResult
         attr_accessor traffic_mirror_filter_rule_id: string
       end
+      type delete_traffic_mirror_session_request = { traffic_mirror_session_id: traffic_mirror_session_id, dry_run: boolean? }
       class DeleteTrafficMirrorSessionResult
         attr_accessor traffic_mirror_session_id: string
       end
+      type delete_traffic_mirror_target_request = { traffic_mirror_target_id: traffic_mirror_target_id, dry_run: boolean? }
       class DeleteTrafficMirrorTargetResult
         attr_accessor traffic_mirror_target_id: string
       end
+      type delete_transit_gateway_connect_peer_request = { transit_gateway_connect_peer_id: transit_gateway_connect_peer_id, dry_run: boolean? }
       class DeleteTransitGatewayConnectPeerResult
         attr_accessor transit_gateway_connect_peer: TransitGatewayConnectPeer
       end
+      type delete_transit_gateway_connect_request = { transit_gateway_attachment_id: transit_gateway_attachment_id, dry_run: boolean? }
       class DeleteTransitGatewayConnectResult
         attr_accessor transit_gateway_connect: TransitGatewayConnect
       end
+      type delete_transit_gateway_multicast_domain_request = { transit_gateway_multicast_domain_id: transit_gateway_multicast_domain_id, dry_run: boolean? }
       class DeleteTransitGatewayMulticastDomainResult
         attr_accessor transit_gateway_multicast_domain: TransitGatewayMulticastDomain
       end
+      type delete_transit_gateway_peering_attachment_request = { transit_gateway_attachment_id: transit_gateway_attachment_id, dry_run: boolean? }
       class DeleteTransitGatewayPeeringAttachmentResult
         attr_accessor transit_gateway_peering_attachment: TransitGatewayPeeringAttachment
       end
+      type delete_transit_gateway_prefix_list_reference_request = { transit_gateway_route_table_id: transit_gateway_route_table_id, prefix_list_id: prefix_list_resource_id, dry_run: boolean? }
       class DeleteTransitGatewayPrefixListReferenceResult
         attr_accessor transit_gateway_prefix_list_reference: TransitGatewayPrefixListReference
       end
+      type delete_transit_gateway_request = { transit_gateway_id: transit_gateway_id, dry_run: boolean? }
       class DeleteTransitGatewayResult
         attr_accessor transit_gateway: TransitGateway
       end
+      type delete_transit_gateway_route_request = { transit_gateway_route_table_id: transit_gateway_route_table_id, destination_cidr_block: string, dry_run: boolean? }
       class DeleteTransitGatewayRouteResult
         attr_accessor route: TransitGatewayRoute
       end
+      type delete_transit_gateway_route_table_request = { transit_gateway_route_table_id: transit_gateway_route_table_id, dry_run: boolean? }
       class DeleteTransitGatewayRouteTableResult
         attr_accessor transit_gateway_route_table: TransitGatewayRouteTable
       end
+      type delete_transit_gateway_vpc_attachment_request = { transit_gateway_attachment_id: transit_gateway_attachment_id, dry_run: boolean? }
       class DeleteTransitGatewayVpcAttachmentResult
         attr_accessor transit_gateway_vpc_attachment: TransitGatewayVpcAttachment
       end
+      type delete_volume_request = { volume_id: volume_id, dry_run: boolean? }
+      type delete_vpc_endpoint_connection_notifications_request = { dry_run: boolean?, connection_notification_ids: connection_notification_ids_list }
       class DeleteVpcEndpointConnectionNotificationsResult
         attr_accessor unsuccessful: unsuccessful_item_set
       end
+      type delete_vpc_endpoint_service_configurations_request = { dry_run: boolean?, service_ids: vpc_endpoint_service_id_list }
       class DeleteVpcEndpointServiceConfigurationsResult
         attr_accessor unsuccessful: unsuccessful_item_set
       end
+      type delete_vpc_endpoints_request = { dry_run: boolean?, vpc_endpoint_ids: vpc_endpoint_id_list }
       class DeleteVpcEndpointsResult
         attr_accessor unsuccessful: unsuccessful_item_set
       end
+      type delete_vpc_peering_connection_request = { dry_run: boolean?, vpc_peering_connection_id: vpc_peering_connection_id }
       class DeleteVpcPeeringConnectionResult
         attr_accessor return: boolean
       end
+      type delete_vpc_request = { vpc_id: vpc_id, dry_run: boolean? }
+      type delete_vpn_connection_request = { vpn_connection_id: vpn_connection_id, dry_run: boolean? }
+      type delete_vpn_connection_route_request = { destination_cidr_block: string, vpn_connection_id: vpn_connection_id }
+      type delete_vpn_gateway_request = { vpn_gateway_id: vpn_gateway_id, dry_run: boolean? }
+      type deprovision_byoip_cidr_request = { cidr: string, dry_run: boolean? }
       class DeprovisionByoipCidrResult
         attr_accessor byoip_cidr: ByoipCidr
       end
+      type deprovision_ipam_pool_cidr_request = { dry_run: boolean?, ipam_pool_id: ipam_pool_id, cidr: string? }
       class DeprovisionIpamPoolCidrResult
         attr_accessor ipam_pool_cidr: IpamPoolCidr
       end
+      type deprovision_public_ipv_4_pool_cidr_request = { dry_run: boolean?, pool_id: ipv_4_pool_ec2_id, cidr: string }
       class DeprovisionPublicIpv4PoolCidrResult
         attr_accessor pool_id: ipv_4_pool_ec2_id
         attr_accessor deprovisioned_addresses: deprovisioned_address_set
       end
       type deprovisioned_address_set = ::Array[string]
+      type deregister_image_request = { image_id: image_id, dry_run: boolean? }
+      type deregister_instance_event_notification_attributes_request = { dry_run: boolean?, instance_tag_attribute: deregister_instance_tag_attribute_request? }
       class DeregisterInstanceEventNotificationAttributesResult
         attr_accessor instance_tag_attribute: InstanceTagNotificationAttribute
       end
       type deregister_instance_tag_attribute_request = { include_all_tags_of_instance: boolean?, instance_tag_keys: instance_tag_key_set? }
+      type deregister_transit_gateway_multicast_group_members_request = { transit_gateway_multicast_domain_id: transit_gateway_multicast_domain_id?, group_ip_address: string?, network_interface_ids: transit_gateway_network_interface_id_list?, dry_run: boolean? }
       class DeregisterTransitGatewayMulticastGroupMembersResult
         attr_accessor deregistered_multicast_group_members: TransitGatewayMulticastDeregisteredGroupMembers
       end
+      type deregister_transit_gateway_multicast_group_sources_request = { transit_gateway_multicast_domain_id: transit_gateway_multicast_domain_id?, group_ip_address: string?, network_interface_ids: transit_gateway_network_interface_id_list?, dry_run: boolean? }
       class DeregisterTransitGatewayMulticastGroupSourcesResult
         attr_accessor deregistered_multicast_group_sources: TransitGatewayMulticastDeregisteredGroupSources
       end
+      type describe_account_attributes_request = { attribute_names: account_attribute_name_string_list?, dry_run: boolean? }
       class DescribeAccountAttributesResult
         attr_accessor account_attributes: account_attribute_list
       end
+      type describe_addresses_attribute_request = { allocation_ids: allocation_ids?, attribute: address_attribute_name?, next_token: next_token?, max_results: address_max_results?, dry_run: boolean? }
       class DescribeAddressesAttributeResult
         attr_accessor addresses: address_set_output
         attr_accessor next_token: next_token
       end
+      type describe_addresses_request = { filters: filter_list?, public_ips: public_ip_string_list?, allocation_ids: allocation_id_list?, dry_run: boolean? }
       class DescribeAddressesResult
         attr_accessor addresses: address_list
       end
+      type describe_aggregate_id_format_request = { dry_run: boolean? }
       class DescribeAggregateIdFormatResult
         attr_accessor use_long_ids_aggregated: boolean
         attr_accessor statuses: id_format_list
       end
+      type describe_availability_zones_request = { filters: filter_list?, zone_names: zone_name_string_list?, zone_ids: zone_id_string_list?, all_availability_zones: boolean?, dry_run: boolean? }
       class DescribeAvailabilityZonesResult
         attr_accessor availability_zones: availability_zone_list
       end
+      type describe_bundle_tasks_request = { bundle_ids: bundle_id_string_list?, filters: filter_list?, dry_run: boolean? }
       class DescribeBundleTasksResult
         attr_accessor bundle_tasks: bundle_task_list_output
       end
       type describe_byoip_cidrs_max_results = ::Integer
+      type describe_byoip_cidrs_request = { dry_run: boolean?, max_results: describe_byoip_cidrs_max_results, next_token: next_token? }
       class DescribeByoipCidrsResult
         attr_accessor byoip_cidrs: byoip_cidr_set_output
         attr_accessor next_token: string
       end
       type describe_capacity_reservation_fleets_max_results = ::Integer
+      type describe_capacity_reservation_fleets_request = { capacity_reservation_fleet_ids: capacity_reservation_fleet_id_set?, next_token: string?, max_results: describe_capacity_reservation_fleets_max_results?, filters: filter_list?, dry_run: boolean? }
       class DescribeCapacityReservationFleetsResult
         attr_accessor capacity_reservation_fleets: capacity_reservation_fleet_set
         attr_accessor next_token: string
       end
       type describe_capacity_reservations_max_results = ::Integer
+      type describe_capacity_reservations_request = { capacity_reservation_ids: capacity_reservation_id_set?, next_token: string?, max_results: describe_capacity_reservations_max_results?, filters: filter_list?, dry_run: boolean? }
       class DescribeCapacityReservationsResult
         attr_accessor next_token: string
         attr_accessor capacity_reservations: capacity_reservation_set_output
       end
+      type describe_carrier_gateways_request = { carrier_gateway_ids: carrier_gateway_id_set?, filters: filter_list?, max_results: carrier_gateway_max_results?, next_token: string?, dry_run: boolean? }
       class DescribeCarrierGatewaysResult
         attr_accessor carrier_gateways: carrier_gateway_set_output
         attr_accessor next_token: string
       end
       type describe_classic_link_instances_max_results = ::Integer
+      type describe_classic_link_instances_request = { filters: filter_list?, dry_run: boolean?, instance_ids: instance_id_string_list?, max_results: describe_classic_link_instances_max_results?, next_token: string? }
       class DescribeClassicLinkInstancesResult
         attr_accessor instances: classic_link_instance_list
         attr_accessor next_token: string
       end
       type describe_client_vpn_authorization_rules_max_results = ::Integer
+      type describe_client_vpn_authorization_rules_request = { client_vpn_endpoint_id: client_vpn_endpoint_id, dry_run: boolean?, next_token: next_token?, filters: filter_list?, max_results: describe_client_vpn_authorization_rules_max_results? }
       class DescribeClientVpnAuthorizationRulesResult
         attr_accessor authorization_rules: authorization_rule_set
         attr_accessor next_token: next_token
       end
       type describe_client_vpn_connections_max_results = ::Integer
+      type describe_client_vpn_connections_request = { client_vpn_endpoint_id: client_vpn_endpoint_id, filters: filter_list?, next_token: next_token?, max_results: describe_client_vpn_connections_max_results?, dry_run: boolean? }
       class DescribeClientVpnConnectionsResult
         attr_accessor connections: client_vpn_connection_set
         attr_accessor next_token: next_token
       end
       type describe_client_vpn_endpoint_max_results = ::Integer
+      type describe_client_vpn_endpoints_request = { client_vpn_endpoint_ids: client_vpn_endpoint_id_list?, max_results: describe_client_vpn_endpoint_max_results?, next_token: next_token?, filters: filter_list?, dry_run: boolean? }
       class DescribeClientVpnEndpointsResult
         attr_accessor client_vpn_endpoints: endpoint_set
         attr_accessor next_token: next_token
       end
       type describe_client_vpn_routes_max_results = ::Integer
+      type describe_client_vpn_routes_request = { client_vpn_endpoint_id: client_vpn_endpoint_id, filters: filter_list?, max_results: describe_client_vpn_routes_max_results?, next_token: next_token?, dry_run: boolean? }
       class DescribeClientVpnRoutesResult
         attr_accessor routes: client_vpn_route_set
         attr_accessor next_token: next_token
       end
       type describe_client_vpn_target_networks_max_results = ::Integer
+      type describe_client_vpn_target_networks_request = { client_vpn_endpoint_id: client_vpn_endpoint_id, association_ids: value_string_list?, max_results: describe_client_vpn_target_networks_max_results?, next_token: next_token?, filters: filter_list?, dry_run: boolean? }
       class DescribeClientVpnTargetNetworksResult
         attr_accessor client_vpn_target_networks: target_network_set
         attr_accessor next_token: next_token
       end
+      type describe_coip_pools_request = { pool_ids: coip_pool_id_set?, filters: filter_list?, max_results: coip_pool_max_results?, next_token: string?, dry_run: boolean? }
       class DescribeCoipPoolsResult
         attr_accessor coip_pools: coip_pool_set
         attr_accessor next_token: string
       end
       type describe_conversion_task_list_output = ::Array[ConversionTask]
+      type describe_conversion_tasks_request = { conversion_task_ids: conversion_id_string_list?, dry_run: boolean? }
       class DescribeConversionTasksResult
         attr_accessor conversion_tasks: describe_conversion_task_list_output
       end
+      type describe_customer_gateways_request = { customer_gateway_ids: customer_gateway_id_string_list?, filters: filter_list?, dry_run: boolean? }
       class DescribeCustomerGatewaysResult
         attr_accessor customer_gateways: customer_gateway_list_output
       end
       type describe_dhcp_options_max_results = ::Integer
+      type describe_dhcp_options_request = { dhcp_options_ids: dhcp_options_id_string_list?, filters: filter_list?, dry_run: boolean?, next_token: string?, max_results: describe_dhcp_options_max_results? }
       class DescribeDhcpOptionsResult
         attr_accessor dhcp_options: dhcp_options_list_output
         attr_accessor next_token: string
       end
       type describe_egress_only_internet_gateways_max_results = ::Integer
+      type describe_egress_only_internet_gateways_request = { dry_run: boolean?, egress_only_internet_gateway_ids: egress_only_internet_gateway_id_list?, max_results: describe_egress_only_internet_gateways_max_results?, next_token: string?, filters: filter_list? }
       class DescribeEgressOnlyInternetGatewaysResult
         attr_accessor egress_only_internet_gateways: egress_only_internet_gateway_list_output
         attr_accessor next_token: string
       end
       type describe_elastic_gpus_max_results = ::Integer
+      type describe_elastic_gpus_request = { elastic_gpu_ids: elastic_gpu_id_set?, dry_run: boolean?, filters: filter_list?, max_results: describe_elastic_gpus_max_results?, next_token: string? }
       class DescribeElasticGpusResult
         attr_accessor elastic_gpu_set: elastic_gpu_set
         attr_accessor max_results: integer
         attr_accessor next_token: string
       end
       type describe_export_image_tasks_max_results = ::Integer
+      type describe_export_image_tasks_request = { dry_run: boolean?, filters: filter_list?, export_image_task_ids: export_image_task_id_list?, max_results: describe_export_image_tasks_max_results?, next_token: next_token? }
       class DescribeExportImageTasksResult
         attr_accessor export_image_tasks: export_image_task_list
         attr_accessor next_token: next_token
       end
+      type describe_export_tasks_request = { export_task_ids: export_task_id_string_list?, filters: filter_list? }
       class DescribeExportTasksResult
         attr_accessor export_tasks: export_task_list_output
       end
+      type describe_fast_launch_images_request = { image_ids: fast_launch_image_id_list?, filters: filter_list?, max_results: describe_fast_launch_images_request_max_results?, next_token: next_token?, dry_run: boolean? }
       type describe_fast_launch_images_request_max_results = ::Integer
       class DescribeFastLaunchImagesResult
         attr_accessor fast_launch_images: describe_fast_launch_images_success_set
@@ -1369,6 +1580,7 @@ module Aws
       end
       type describe_fast_snapshot_restore_success_set = ::Array[DescribeFastSnapshotRestoreSuccessItem]
       type describe_fast_snapshot_restores_max_results = ::Integer
+      type describe_fast_snapshot_restores_request = { filters: filter_list?, max_results: describe_fast_snapshot_restores_max_results?, next_token: next_token?, dry_run: boolean? }
       class DescribeFastSnapshotRestoresResult
         attr_accessor fast_snapshot_restores: describe_fast_snapshot_restore_success_set
         attr_accessor next_token: next_token
@@ -1379,6 +1591,7 @@ module Aws
         attr_accessor error_code: string
         attr_accessor error_message: string
       end
+      type describe_fleet_history_request = { dry_run: boolean?, event_type: fleet_event_type?, max_results: integer?, next_token: string?, fleet_id: fleet_id, start_time: date_time }
       class DescribeFleetHistoryResult
         attr_accessor history_records: history_record_set
         attr_accessor last_evaluated_time: date_time
@@ -1386,6 +1599,7 @@ module Aws
         attr_accessor fleet_id: fleet_id
         attr_accessor start_time: date_time
       end
+      type describe_fleet_instances_request = { dry_run: boolean?, max_results: integer?, next_token: string?, fleet_id: fleet_id, filters: filter_list? }
       class DescribeFleetInstancesResult
         attr_accessor active_instances: active_instance_set
         attr_accessor next_token: string
@@ -1400,177 +1614,222 @@ module Aws
         attr_accessor platform: platform_values
       end
       type describe_fleets_instances_set = ::Array[DescribeFleetsInstances]
+      type describe_fleets_request = { dry_run: boolean?, max_results: integer?, next_token: string?, fleet_ids: fleet_id_set?, filters: filter_list? }
       class DescribeFleetsResult
         attr_accessor next_token: string
         attr_accessor fleets: fleet_set
       end
+      type describe_flow_logs_request = { dry_run: boolean?, filter: filter_list?, flow_log_ids: flow_log_id_list?, max_results: integer?, next_token: string? }
       class DescribeFlowLogsResult
         attr_accessor flow_logs: flow_log_set
         attr_accessor next_token: string
       end
+      type describe_fpga_image_attribute_request = { dry_run: boolean?, fpga_image_id: fpga_image_id, attribute: fpga_image_attribute_name }
       class DescribeFpgaImageAttributeResult
         attr_accessor fpga_image_attribute: FpgaImageAttribute
       end
       type describe_fpga_images_max_results = ::Integer
+      type describe_fpga_images_request = { dry_run: boolean?, fpga_image_ids: fpga_image_id_list?, owners: owner_string_list?, filters: filter_list?, next_token: next_token?, max_results: describe_fpga_images_max_results? }
       class DescribeFpgaImagesResult
         attr_accessor fpga_images: fpga_image_list
         attr_accessor next_token: next_token
       end
+      type describe_host_reservation_offerings_request = { filter: filter_list?, max_duration: integer?, max_results: describe_host_reservations_max_results?, min_duration: integer?, next_token: string?, offering_id: offering_id? }
       class DescribeHostReservationOfferingsResult
         attr_accessor next_token: string
         attr_accessor offering_set: host_offering_set
       end
       type describe_host_reservations_max_results = ::Integer
+      type describe_host_reservations_request = { filter: filter_list?, host_reservation_id_set: host_reservation_id_set?, max_results: integer?, next_token: string? }
       class DescribeHostReservationsResult
         attr_accessor host_reservation_set: host_reservation_set
         attr_accessor next_token: string
       end
+      type describe_hosts_request = { filter: filter_list?, host_ids: request_host_id_list?, max_results: integer?, next_token: string? }
       class DescribeHostsResult
         attr_accessor hosts: host_list
         attr_accessor next_token: string
       end
       type describe_iam_instance_profile_associations_max_results = ::Integer
+      type describe_iam_instance_profile_associations_request = { association_ids: association_id_list?, filters: filter_list?, max_results: describe_iam_instance_profile_associations_max_results?, next_token: next_token? }
       class DescribeIamInstanceProfileAssociationsResult
         attr_accessor iam_instance_profile_associations: iam_instance_profile_association_set_output
         attr_accessor next_token: next_token
       end
+      type describe_id_format_request = { resource: string? }
       class DescribeIdFormatResult
         attr_accessor statuses: id_format_list
       end
+      type describe_identity_id_format_request = { principal_arn: string, resource: string? }
       class DescribeIdentityIdFormatResult
         attr_accessor statuses: id_format_list
       end
+      type describe_image_attribute_request = { attribute: image_attribute_name, image_id: image_id, dry_run: boolean? }
+      type describe_images_request = { executable_users: executable_by_string_list?, filters: filter_list?, image_ids: image_id_string_list?, owners: owner_string_list?, include_deprecated: boolean?, dry_run: boolean? }
       class DescribeImagesResult
         attr_accessor images: image_list
       end
+      type describe_import_image_tasks_request = { dry_run: boolean?, filters: filter_list?, import_task_ids: import_task_id_list?, max_results: integer?, next_token: string? }
       class DescribeImportImageTasksResult
         attr_accessor import_image_tasks: import_image_task_list
         attr_accessor next_token: string
       end
+      type describe_import_snapshot_tasks_request = { dry_run: boolean?, filters: filter_list?, import_task_ids: import_snapshot_task_id_list?, max_results: integer?, next_token: string? }
       class DescribeImportSnapshotTasksResult
         attr_accessor import_snapshot_tasks: import_snapshot_task_list
         attr_accessor next_token: string
       end
+      type describe_instance_attribute_request = { attribute: instance_attribute_name, dry_run: boolean?, instance_id: instance_id }
       type describe_instance_credit_specifications_max_results = ::Integer
+      type describe_instance_credit_specifications_request = { dry_run: boolean?, filters: filter_list?, instance_ids: instance_id_string_list?, max_results: describe_instance_credit_specifications_max_results?, next_token: string? }
       class DescribeInstanceCreditSpecificationsResult
         attr_accessor instance_credit_specifications: instance_credit_specification_list
         attr_accessor next_token: string
       end
+      type describe_instance_event_notification_attributes_request = { dry_run: boolean? }
       class DescribeInstanceEventNotificationAttributesResult
         attr_accessor instance_tag_attribute: InstanceTagNotificationAttribute
       end
+      type describe_instance_event_windows_request = { dry_run: boolean?, instance_event_window_ids: instance_event_window_id_set?, filters: filter_list?, max_results: result_range?, next_token: string? }
       class DescribeInstanceEventWindowsResult
         attr_accessor instance_event_windows: instance_event_window_set_output
         attr_accessor next_token: string
       end
+      type describe_instance_status_request = { filters: filter_list?, instance_ids: instance_id_string_list?, max_results: integer?, next_token: string?, dry_run: boolean?, include_all_instances: boolean? }
       class DescribeInstanceStatusResult
         attr_accessor instance_statuses: instance_status_list
         attr_accessor next_token: string
       end
+      type describe_instance_type_offerings_request = { dry_run: boolean?, location_type: location_type?, filters: filter_list?, max_results: dito_max_results?, next_token: next_token? }
       class DescribeInstanceTypeOfferingsResult
         attr_accessor instance_type_offerings: instance_type_offerings_list
         attr_accessor next_token: next_token
       end
+      type describe_instance_types_request = { dry_run: boolean?, instance_types: request_instance_type_list?, filters: filter_list?, max_results: dit_max_results?, next_token: next_token? }
       class DescribeInstanceTypesResult
         attr_accessor instance_types: instance_type_info_list
         attr_accessor next_token: next_token
       end
+      type describe_instances_request = { filters: filter_list?, instance_ids: instance_id_string_list?, dry_run: boolean?, max_results: integer?, next_token: string? }
       class DescribeInstancesResult
         attr_accessor reservations: reservation_list_output
         attr_accessor next_token: string
       end
       type describe_internet_gateways_max_results = ::Integer
+      type describe_internet_gateways_request = { filters: filter_list?, dry_run: boolean?, internet_gateway_ids: internet_gateway_id_list?, next_token: string?, max_results: describe_internet_gateways_max_results? }
       class DescribeInternetGatewaysResult
         attr_accessor internet_gateways: internet_gateway_list_output
         attr_accessor next_token: string
       end
+      type describe_ipam_pools_request = { dry_run: boolean?, filters: filter_list?, max_results: ipam_max_results?, next_token: next_token?, ipam_pool_ids: value_string_list? }
       class DescribeIpamPoolsResult
         attr_accessor next_token: next_token
         attr_accessor ipam_pools: ipam_pool_set_output
       end
+      type describe_ipam_scopes_request = { dry_run: boolean?, filters: filter_list?, max_results: ipam_max_results?, next_token: next_token?, ipam_scope_ids: value_string_list? }
       class DescribeIpamScopesResult
         attr_accessor next_token: next_token
         attr_accessor ipam_scopes: ipam_scope_set_output
       end
+      type describe_ipams_request = { dry_run: boolean?, filters: filter_list?, max_results: ipam_max_results?, next_token: next_token?, ipam_ids: value_string_list? }
       class DescribeIpamsResult
         attr_accessor next_token: next_token
         attr_accessor ipams: ipam_set_output
       end
+      type describe_ipv_6_pools_request = { pool_ids: ipv_6_pool_id_list?, next_token: next_token?, max_results: ipv_6_pool_max_results?, dry_run: boolean?, filters: filter_list? }
       class DescribeIpv6PoolsResult
         attr_accessor ipv_6_pools: ipv_6_pool_set
         attr_accessor next_token: next_token
       end
+      type describe_key_pairs_request = { filters: filter_list?, key_names: key_name_string_list?, key_pair_ids: key_pair_id_string_list?, dry_run: boolean? }
       class DescribeKeyPairsResult
         attr_accessor key_pairs: key_pair_list
       end
+      type describe_launch_template_versions_request = { dry_run: boolean?, launch_template_id: launch_template_id?, launch_template_name: launch_template_name?, versions: version_string_list?, min_version: string?, max_version: string?, next_token: string?, max_results: integer?, filters: filter_list? }
       class DescribeLaunchTemplateVersionsResult
         attr_accessor launch_template_versions: launch_template_version_set_output
         attr_accessor next_token: string
       end
       type describe_launch_templates_max_results = ::Integer
+      type describe_launch_templates_request = { dry_run: boolean?, launch_template_ids: launch_template_id_string_list?, launch_template_names: launch_template_name_string_list?, filters: filter_list?, next_token: string?, max_results: describe_launch_templates_max_results? }
       class DescribeLaunchTemplatesResult
         attr_accessor launch_templates: launch_template_set_output
         attr_accessor next_token: string
       end
+      type describe_local_gateway_route_table_virtual_interface_group_associations_request = { local_gateway_route_table_virtual_interface_group_association_ids: local_gateway_route_table_virtual_interface_group_association_id_set?, filters: filter_list?, max_results: local_gateway_max_results?, next_token: string?, dry_run: boolean? }
       class DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult
         attr_accessor local_gateway_route_table_virtual_interface_group_associations: local_gateway_route_table_virtual_interface_group_association_set
         attr_accessor next_token: string
       end
+      type describe_local_gateway_route_table_vpc_associations_request = { local_gateway_route_table_vpc_association_ids: local_gateway_route_table_vpc_association_id_set?, filters: filter_list?, max_results: local_gateway_max_results?, next_token: string?, dry_run: boolean? }
       class DescribeLocalGatewayRouteTableVpcAssociationsResult
         attr_accessor local_gateway_route_table_vpc_associations: local_gateway_route_table_vpc_association_set_output
         attr_accessor next_token: string
       end
+      type describe_local_gateway_route_tables_request = { local_gateway_route_table_ids: local_gateway_route_table_id_set?, filters: filter_list?, max_results: local_gateway_max_results?, next_token: string?, dry_run: boolean? }
       class DescribeLocalGatewayRouteTablesResult
         attr_accessor local_gateway_route_tables: local_gateway_route_table_set
         attr_accessor next_token: string
       end
+      type describe_local_gateway_virtual_interface_groups_request = { local_gateway_virtual_interface_group_ids: local_gateway_virtual_interface_group_id_set?, filters: filter_list?, max_results: local_gateway_max_results?, next_token: string?, dry_run: boolean? }
       class DescribeLocalGatewayVirtualInterfaceGroupsResult
         attr_accessor local_gateway_virtual_interface_groups: local_gateway_virtual_interface_group_set
         attr_accessor next_token: string
       end
+      type describe_local_gateway_virtual_interfaces_request = { local_gateway_virtual_interface_ids: local_gateway_virtual_interface_id_set?, filters: filter_list?, max_results: local_gateway_max_results?, next_token: string?, dry_run: boolean? }
       class DescribeLocalGatewayVirtualInterfacesResult
         attr_accessor local_gateway_virtual_interfaces: local_gateway_virtual_interface_set
         attr_accessor next_token: string
       end
+      type describe_local_gateways_request = { local_gateway_ids: local_gateway_id_set?, filters: filter_list?, max_results: local_gateway_max_results?, next_token: string?, dry_run: boolean? }
       class DescribeLocalGatewaysResult
         attr_accessor local_gateways: local_gateway_set
         attr_accessor next_token: string
       end
+      type describe_managed_prefix_lists_request = { dry_run: boolean?, filters: filter_list?, max_results: prefix_list_max_results?, next_token: next_token?, prefix_list_ids: value_string_list? }
       class DescribeManagedPrefixListsResult
         attr_accessor next_token: next_token
         attr_accessor prefix_lists: managed_prefix_list_set_output
       end
       type describe_moving_addresses_max_results = ::Integer
+      type describe_moving_addresses_request = { filters: filter_list?, dry_run: boolean?, max_results: describe_moving_addresses_max_results?, next_token: string?, public_ips: value_string_list? }
       class DescribeMovingAddressesResult
         attr_accessor moving_address_statuses: moving_address_status_set
         attr_accessor next_token: string
       end
       type describe_nat_gateways_max_results = ::Integer
+      type describe_nat_gateways_request = { dry_run: boolean?, filter: filter_list?, max_results: describe_nat_gateways_max_results?, nat_gateway_ids: nat_gateway_id_string_list?, next_token: string? }
       class DescribeNatGatewaysResult
         attr_accessor nat_gateways: nat_gateway_list_output
         attr_accessor next_token: string
       end
       type describe_network_acls_max_results = ::Integer
+      type describe_network_acls_request = { filters: filter_list?, dry_run: boolean?, network_acl_ids: network_acl_id_string_list?, next_token: string?, max_results: describe_network_acls_max_results? }
       class DescribeNetworkAclsResult
         attr_accessor network_acls: network_acl_list_output
         attr_accessor next_token: string
       end
+      type describe_network_insights_access_scope_analyses_request = { network_insights_access_scope_analysis_ids: network_insights_access_scope_analysis_id_list?, network_insights_access_scope_id: network_insights_access_scope_id?, analysis_start_time_begin: millisecond_date_time?, analysis_start_time_end: millisecond_date_time?, filters: filter_list?, max_results: network_insights_max_results?, dry_run: boolean?, next_token: next_token? }
       class DescribeNetworkInsightsAccessScopeAnalysesResult
         attr_accessor network_insights_access_scope_analyses: network_insights_access_scope_analysis_list_output
         attr_accessor next_token: string
       end
+      type describe_network_insights_access_scopes_request = { network_insights_access_scope_ids: network_insights_access_scope_id_list?, filters: filter_list?, max_results: network_insights_max_results?, dry_run: boolean?, next_token: next_token? }
       class DescribeNetworkInsightsAccessScopesResult
         attr_accessor network_insights_access_scopes: network_insights_access_scope_list_output
         attr_accessor next_token: string
       end
+      type describe_network_insights_analyses_request = { network_insights_analysis_ids: network_insights_analysis_id_list?, network_insights_path_id: network_insights_path_id?, analysis_start_time: millisecond_date_time?, analysis_end_time: millisecond_date_time?, filters: filter_list?, max_results: network_insights_max_results?, dry_run: boolean?, next_token: next_token? }
       class DescribeNetworkInsightsAnalysesResult
         attr_accessor network_insights_analyses: network_insights_analysis_list_output
         attr_accessor next_token: string
       end
+      type describe_network_insights_paths_request = { network_insights_path_ids: network_insights_path_id_list?, filters: filter_list?, max_results: network_insights_max_results?, dry_run: boolean?, next_token: next_token? }
       class DescribeNetworkInsightsPathsResult
         attr_accessor network_insights_paths: network_insights_path_list_output
         attr_accessor next_token: string
       end
+      type describe_network_interface_attribute_request = { attribute: network_interface_attribute?, dry_run: boolean?, network_interface_id: network_interface_id }
       class DescribeNetworkInterfaceAttributeResult
         attr_accessor attachment: NetworkInterfaceAttachment
         attr_accessor description: AttributeValue
@@ -1579,104 +1838,128 @@ module Aws
         attr_accessor source_dest_check: AttributeBooleanValue
       end
       type describe_network_interface_permissions_max_results = ::Integer
+      type describe_network_interface_permissions_request = { network_interface_permission_ids: network_interface_permission_id_list?, filters: filter_list?, next_token: string?, max_results: describe_network_interface_permissions_max_results? }
       class DescribeNetworkInterfacePermissionsResult
         attr_accessor network_interface_permissions: network_interface_permission_list_output
         attr_accessor next_token: string
       end
       type describe_network_interfaces_max_results = ::Integer
+      type describe_network_interfaces_request = { filters: filter_list?, dry_run: boolean?, network_interface_ids: network_interface_id_list?, next_token: string?, max_results: describe_network_interfaces_max_results? }
       class DescribeNetworkInterfacesResult
         attr_accessor network_interfaces: network_interface_list_output
         attr_accessor next_token: string
       end
+      type describe_placement_groups_request = { filters: filter_list?, dry_run: boolean?, group_names: placement_group_string_list?, group_ids: placement_group_id_string_list? }
       class DescribePlacementGroupsResult
         attr_accessor placement_groups: placement_group_list_output
       end
+      type describe_prefix_lists_request = { dry_run: boolean?, filters: filter_list?, max_results: integer?, next_token: string?, prefix_list_ids: prefix_list_resource_id_string_list? }
       class DescribePrefixListsResult
         attr_accessor next_token: string
         attr_accessor prefix_lists: prefix_list_set
       end
       type describe_principal_id_format_max_results = ::Integer
+      type describe_principal_id_format_request = { dry_run: boolean?, resources: resource_list?, max_results: describe_principal_id_format_max_results?, next_token: string? }
       class DescribePrincipalIdFormatResult
         attr_accessor principals: principal_id_format_list
         attr_accessor next_token: string
       end
+      type describe_public_ipv_4_pools_request = { pool_ids: public_ipv_4_pool_id_string_list?, next_token: next_token?, max_results: pool_max_results?, filters: filter_list? }
       class DescribePublicIpv4PoolsResult
         attr_accessor public_ipv_4_pools: public_ipv_4_pool_set
         attr_accessor next_token: string
       end
+      type describe_regions_request = { filters: filter_list?, region_names: region_name_string_list?, dry_run: boolean?, all_regions: boolean? }
       class DescribeRegionsResult
         attr_accessor regions: region_list
       end
       type describe_replace_root_volume_tasks_max_results = ::Integer
+      type describe_replace_root_volume_tasks_request = { replace_root_volume_task_ids: replace_root_volume_task_ids?, filters: filter_list?, max_results: describe_replace_root_volume_tasks_max_results?, next_token: next_token?, dry_run: boolean? }
       class DescribeReplaceRootVolumeTasksResult
         attr_accessor replace_root_volume_tasks: replace_root_volume_tasks_output
         attr_accessor next_token: string
       end
+      type describe_reserved_instances_listings_request = { filters: filter_list?, reserved_instances_id: reservation_id?, reserved_instances_listing_id: reserved_instances_listing_id? }
       class DescribeReservedInstancesListingsResult
         attr_accessor reserved_instances_listings: reserved_instances_listing_list
       end
+      type describe_reserved_instances_modifications_request = { filters: filter_list?, reserved_instances_modification_ids: reserved_instances_modification_id_string_list?, next_token: string? }
       class DescribeReservedInstancesModificationsResult
         attr_accessor next_token: string
         attr_accessor reserved_instances_modifications: reserved_instances_modification_list
       end
+      type describe_reserved_instances_offerings_request = { availability_zone: string?, filters: filter_list?, include_marketplace: boolean?, instance_type: instance_type?, max_duration: long?, max_instance_count: integer?, min_duration: long?, offering_class: offering_class_type?, product_description: ri_product_description?, reserved_instances_offering_ids: reserved_instances_offering_id_string_list?, dry_run: boolean?, instance_tenancy: tenancy?, max_results: integer?, next_token: string?, offering_type: offering_type_values? }
       class DescribeReservedInstancesOfferingsResult
         attr_accessor reserved_instances_offerings: reserved_instances_offering_list
         attr_accessor next_token: string
       end
+      type describe_reserved_instances_request = { filters: filter_list?, offering_class: offering_class_type?, reserved_instances_ids: reserved_instances_id_string_list?, dry_run: boolean?, offering_type: offering_type_values? }
       class DescribeReservedInstancesResult
         attr_accessor reserved_instances: reserved_instances_list
       end
       type describe_route_tables_max_results = ::Integer
+      type describe_route_tables_request = { filters: filter_list?, dry_run: boolean?, route_table_ids: route_table_id_string_list?, next_token: string?, max_results: describe_route_tables_max_results? }
       class DescribeRouteTablesResult
         attr_accessor route_tables: route_table_list_output
         attr_accessor next_token: string
       end
       type describe_scheduled_instance_availability_max_results = ::Integer
+      type describe_scheduled_instance_availability_request = { dry_run: boolean?, filters: filter_list?, first_slot_start_time_range: slot_date_time_range_request, max_results: describe_scheduled_instance_availability_max_results?, max_slot_duration_in_hours: integer?, min_slot_duration_in_hours: integer?, next_token: string?, recurrence: scheduled_instance_recurrence_request }
       class DescribeScheduledInstanceAvailabilityResult
         attr_accessor next_token: string
         attr_accessor scheduled_instance_availability_set: scheduled_instance_availability_set
       end
+      type describe_scheduled_instances_request = { dry_run: boolean?, filters: filter_list?, max_results: integer?, next_token: string?, scheduled_instance_ids: scheduled_instance_id_request_set?, slot_start_time_range: slot_start_time_range_request? }
       class DescribeScheduledInstancesResult
         attr_accessor next_token: string
         attr_accessor scheduled_instance_set: scheduled_instance_set
       end
+      type describe_security_group_references_request = { dry_run: boolean?, group_id: group_ids }
       class DescribeSecurityGroupReferencesResult
         attr_accessor security_group_reference_set: security_group_references
       end
       type describe_security_group_rules_max_results = ::Integer
+      type describe_security_group_rules_request = { filters: filter_list?, security_group_rule_ids: security_group_rule_id_list?, dry_run: boolean?, next_token: string?, max_results: describe_security_group_rules_max_results? }
       class DescribeSecurityGroupRulesResult
         attr_accessor security_group_rules: security_group_rule_list
         attr_accessor next_token: string
       end
       type describe_security_groups_max_results = ::Integer
+      type describe_security_groups_request = { filters: filter_list?, group_ids: group_id_string_list?, group_names: group_name_string_list?, dry_run: boolean?, next_token: string?, max_results: describe_security_groups_max_results? }
       class DescribeSecurityGroupsResult
         attr_accessor security_groups: security_group_list
         attr_accessor next_token: string
       end
+      type describe_snapshot_attribute_request = { attribute: snapshot_attribute_name, snapshot_id: snapshot_id, dry_run: boolean? }
       class DescribeSnapshotAttributeResult
         attr_accessor create_volume_permissions: create_volume_permission_list_output
         attr_accessor product_codes: product_code_list
         attr_accessor snapshot_id: string
       end
       type describe_snapshot_tier_status_max_results = ::Integer
+      type describe_snapshot_tier_status_request = { filters: filter_list?, dry_run: boolean?, next_token: string?, max_results: describe_snapshot_tier_status_max_results? }
       class DescribeSnapshotTierStatusResult
         attr_accessor snapshot_tier_statuses: snapshot_tier_status_set
         attr_accessor next_token: string
       end
+      type describe_snapshots_request = { filters: filter_list?, max_results: integer?, next_token: string?, owner_ids: owner_string_list?, restorable_by_user_ids: restorable_by_string_list?, snapshot_ids: snapshot_id_string_list?, dry_run: boolean? }
       class DescribeSnapshotsResult
         attr_accessor snapshots: snapshot_list_output
         attr_accessor next_token: string
       end
+      type describe_spot_datafeed_subscription_request = { dry_run: boolean? }
       class DescribeSpotDatafeedSubscriptionResult
         attr_accessor spot_datafeed_subscription: SpotDatafeedSubscription
       end
       type describe_spot_fleet_instances_max_results = ::Integer
+      type describe_spot_fleet_instances_request = { dry_run: boolean?, max_results: describe_spot_fleet_instances_max_results?, next_token: string?, spot_fleet_request_id: spot_fleet_request_id }
       class DescribeSpotFleetInstancesResponse
         attr_accessor active_instances: active_instance_set
         attr_accessor next_token: string
         attr_accessor spot_fleet_request_id: string
       end
       type describe_spot_fleet_request_history_max_results = ::Integer
+      type describe_spot_fleet_request_history_request = { dry_run: boolean?, event_type: event_type?, max_results: describe_spot_fleet_request_history_max_results?, next_token: string?, spot_fleet_request_id: spot_fleet_request_id, start_time: date_time }
       class DescribeSpotFleetRequestHistoryResponse
         attr_accessor history_records: history_records
         attr_accessor last_evaluated_time: date_time
@@ -1684,104 +1967,128 @@ module Aws
         attr_accessor spot_fleet_request_id: string
         attr_accessor start_time: date_time
       end
+      type describe_spot_fleet_requests_request = { dry_run: boolean?, max_results: integer?, next_token: string?, spot_fleet_request_ids: spot_fleet_request_id_list? }
       class DescribeSpotFleetRequestsResponse
         attr_accessor next_token: string
         attr_accessor spot_fleet_request_configs: spot_fleet_request_config_set
       end
+      type describe_spot_instance_requests_request = { filters: filter_list?, dry_run: boolean?, spot_instance_request_ids: spot_instance_request_id_list?, next_token: string?, max_results: integer? }
       class DescribeSpotInstanceRequestsResult
         attr_accessor spot_instance_requests: spot_instance_request_list
         attr_accessor next_token: string
       end
+      type describe_spot_price_history_request = { filters: filter_list?, availability_zone: string?, dry_run: boolean?, end_time: date_time?, instance_types: instance_type_list?, max_results: integer?, next_token: string?, product_descriptions: product_description_list?, start_time: date_time? }
       class DescribeSpotPriceHistoryResult
         attr_accessor next_token: string
         attr_accessor spot_price_history: spot_price_history_list
       end
       type describe_stale_security_groups_max_results = ::Integer
       type describe_stale_security_groups_next_token = ::String
+      type describe_stale_security_groups_request = { dry_run: boolean?, max_results: describe_stale_security_groups_max_results?, next_token: describe_stale_security_groups_next_token?, vpc_id: vpc_id }
       class DescribeStaleSecurityGroupsResult
         attr_accessor next_token: string
         attr_accessor stale_security_group_set: stale_security_group_set
       end
+      type describe_store_image_tasks_request = { image_ids: image_id_list?, dry_run: boolean?, filters: filter_list?, next_token: string?, max_results: describe_store_image_tasks_request_max_results? }
       type describe_store_image_tasks_request_max_results = ::Integer
       class DescribeStoreImageTasksResult
         attr_accessor store_image_task_results: store_image_task_result_set
         attr_accessor next_token: string
       end
       type describe_subnets_max_results = ::Integer
+      type describe_subnets_request = { filters: filter_list?, subnet_ids: subnet_id_string_list?, dry_run: boolean?, next_token: string?, max_results: describe_subnets_max_results? }
       class DescribeSubnetsResult
         attr_accessor subnets: subnet_list_output
         attr_accessor next_token: string
       end
+      type describe_tags_request = { dry_run: boolean?, filters: filter_list?, max_results: integer?, next_token: string? }
       class DescribeTagsResult
         attr_accessor next_token: string
         attr_accessor tags: tag_description_list
       end
+      type describe_traffic_mirror_filters_request = { traffic_mirror_filter_ids: traffic_mirror_filter_id_list?, dry_run: boolean?, filters: filter_list?, max_results: traffic_mirroring_max_results?, next_token: next_token? }
       class DescribeTrafficMirrorFiltersResult
         attr_accessor traffic_mirror_filters: traffic_mirror_filter_set_output
         attr_accessor next_token: string
       end
+      type describe_traffic_mirror_sessions_request = { traffic_mirror_session_ids: traffic_mirror_session_id_list?, dry_run: boolean?, filters: filter_list?, max_results: traffic_mirroring_max_results?, next_token: next_token? }
       class DescribeTrafficMirrorSessionsResult
         attr_accessor traffic_mirror_sessions: traffic_mirror_session_set_output
         attr_accessor next_token: string
       end
+      type describe_traffic_mirror_targets_request = { traffic_mirror_target_ids: traffic_mirror_target_id_list?, dry_run: boolean?, filters: filter_list?, max_results: traffic_mirroring_max_results?, next_token: next_token? }
       class DescribeTrafficMirrorTargetsResult
         attr_accessor traffic_mirror_targets: traffic_mirror_target_set_output
         attr_accessor next_token: string
       end
+      type describe_transit_gateway_attachments_request = { transit_gateway_attachment_ids: transit_gateway_attachment_id_string_list?, filters: filter_list?, max_results: transit_gateway_max_results?, next_token: string?, dry_run: boolean? }
       class DescribeTransitGatewayAttachmentsResult
         attr_accessor transit_gateway_attachments: transit_gateway_attachment_list
         attr_accessor next_token: string
       end
+      type describe_transit_gateway_connect_peers_request = { transit_gateway_connect_peer_ids: transit_gateway_connect_peer_id_string_list?, filters: filter_list?, max_results: transit_gateway_max_results?, next_token: string?, dry_run: boolean? }
       class DescribeTransitGatewayConnectPeersResult
         attr_accessor transit_gateway_connect_peers: transit_gateway_connect_peer_list_output
         attr_accessor next_token: string
       end
+      type describe_transit_gateway_connects_request = { transit_gateway_attachment_ids: transit_gateway_attachment_id_string_list?, filters: filter_list?, max_results: transit_gateway_max_results?, next_token: string?, dry_run: boolean? }
       class DescribeTransitGatewayConnectsResult
         attr_accessor transit_gateway_connects: transit_gateway_connect_list_output
         attr_accessor next_token: string
       end
+      type describe_transit_gateway_multicast_domains_request = { transit_gateway_multicast_domain_ids: transit_gateway_multicast_domain_id_string_list?, filters: filter_list?, max_results: transit_gateway_max_results?, next_token: string?, dry_run: boolean? }
       class DescribeTransitGatewayMulticastDomainsResult
         attr_accessor transit_gateway_multicast_domains: transit_gateway_multicast_domain_list_output
         attr_accessor next_token: string
       end
+      type describe_transit_gateway_peering_attachments_request = { transit_gateway_attachment_ids: transit_gateway_attachment_id_string_list?, filters: filter_list?, max_results: transit_gateway_max_results?, next_token: string?, dry_run: boolean? }
       class DescribeTransitGatewayPeeringAttachmentsResult
         attr_accessor transit_gateway_peering_attachments: transit_gateway_peering_attachment_list_output
         attr_accessor next_token: string
       end
+      type describe_transit_gateway_route_tables_request = { transit_gateway_route_table_ids: transit_gateway_route_table_id_string_list?, filters: filter_list?, max_results: transit_gateway_max_results?, next_token: string?, dry_run: boolean? }
       class DescribeTransitGatewayRouteTablesResult
         attr_accessor transit_gateway_route_tables: transit_gateway_route_table_list_output
         attr_accessor next_token: string
       end
+      type describe_transit_gateway_vpc_attachments_request = { transit_gateway_attachment_ids: transit_gateway_attachment_id_string_list?, filters: filter_list?, max_results: transit_gateway_max_results?, next_token: string?, dry_run: boolean? }
       class DescribeTransitGatewayVpcAttachmentsResult
         attr_accessor transit_gateway_vpc_attachments: transit_gateway_vpc_attachment_list_output
         attr_accessor next_token: string
       end
+      type describe_transit_gateways_request = { transit_gateway_ids: transit_gateway_id_string_list?, filters: filter_list?, max_results: transit_gateway_max_results?, next_token: string?, dry_run: boolean? }
       class DescribeTransitGatewaysResult
         attr_accessor transit_gateways: transit_gateway_list_output
         attr_accessor next_token: string
       end
       type describe_trunk_interface_associations_max_results = ::Integer
+      type describe_trunk_interface_associations_request = { association_ids: trunk_interface_association_id_list?, dry_run: boolean?, filters: filter_list?, next_token: string?, max_results: describe_trunk_interface_associations_max_results? }
       class DescribeTrunkInterfaceAssociationsResult
         attr_accessor interface_associations: trunk_interface_association_list_output
         attr_accessor next_token: string
       end
+      type describe_volume_attribute_request = { attribute: volume_attribute_name, volume_id: volume_id, dry_run: boolean? }
       class DescribeVolumeAttributeResult
         attr_accessor auto_enable_io: AttributeBooleanValue
         attr_accessor product_codes: product_code_list
         attr_accessor volume_id: string
       end
+      type describe_volume_status_request = { filters: filter_list?, max_results: integer?, next_token: string?, volume_ids: volume_id_string_list?, dry_run: boolean? }
       class DescribeVolumeStatusResult
         attr_accessor next_token: string
         attr_accessor volume_statuses: volume_status_list
       end
+      type describe_volumes_modifications_request = { dry_run: boolean?, volume_ids: volume_id_string_list?, filters: filter_list?, next_token: string?, max_results: integer? }
       class DescribeVolumesModificationsResult
         attr_accessor volumes_modifications: volume_modification_list_output
         attr_accessor next_token: string
       end
+      type describe_volumes_request = { filters: filter_list?, volume_ids: volume_id_string_list?, dry_run: boolean?, max_results: integer?, next_token: string? }
       class DescribeVolumesResult
         attr_accessor volumes: volume_list_output
         attr_accessor next_token: string
       end
+      type describe_vpc_attribute_request = { attribute: vpc_attribute_name, vpc_id: vpc_id, dry_run: boolean? }
       class DescribeVpcAttributeResult
         attr_accessor vpc_id: string
         attr_accessor enable_dns_hostnames: AttributeBooleanValue
@@ -1789,51 +2096,63 @@ module Aws
       end
       type describe_vpc_classic_link_dns_support_max_results = ::Integer
       type describe_vpc_classic_link_dns_support_next_token = ::String
+      type describe_vpc_classic_link_dns_support_request = { max_results: describe_vpc_classic_link_dns_support_max_results?, next_token: describe_vpc_classic_link_dns_support_next_token?, vpc_ids: vpc_classic_link_id_list? }
       class DescribeVpcClassicLinkDnsSupportResult
         attr_accessor next_token: describe_vpc_classic_link_dns_support_next_token
         attr_accessor vpcs: classic_link_dns_support_list
       end
+      type describe_vpc_classic_link_request = { filters: filter_list?, dry_run: boolean?, vpc_ids: vpc_classic_link_id_list? }
       class DescribeVpcClassicLinkResult
         attr_accessor vpcs: vpc_classic_link_list
       end
+      type describe_vpc_endpoint_connection_notifications_request = { dry_run: boolean?, connection_notification_id: connection_notification_id?, filters: filter_list?, max_results: integer?, next_token: string? }
       class DescribeVpcEndpointConnectionNotificationsResult
         attr_accessor connection_notification_set: connection_notification_set_output
         attr_accessor next_token: string
       end
+      type describe_vpc_endpoint_connections_request = { dry_run: boolean?, filters: filter_list?, max_results: integer?, next_token: string? }
       class DescribeVpcEndpointConnectionsResult
         attr_accessor vpc_endpoint_connections: vpc_endpoint_connection_set
         attr_accessor next_token: string
       end
+      type describe_vpc_endpoint_service_configurations_request = { dry_run: boolean?, service_ids: vpc_endpoint_service_id_list?, filters: filter_list?, max_results: integer?, next_token: string? }
       class DescribeVpcEndpointServiceConfigurationsResult
         attr_accessor service_configurations: service_configuration_set_output
         attr_accessor next_token: string
       end
+      type describe_vpc_endpoint_service_permissions_request = { dry_run: boolean?, service_id: vpc_endpoint_service_id, filters: filter_list?, max_results: integer?, next_token: string? }
       class DescribeVpcEndpointServicePermissionsResult
         attr_accessor allowed_principals: allowed_principal_set
         attr_accessor next_token: string
       end
+      type describe_vpc_endpoint_services_request = { dry_run: boolean?, service_names: value_string_list?, filters: filter_list?, max_results: integer?, next_token: string? }
       class DescribeVpcEndpointServicesResult
         attr_accessor service_names: value_string_list
         attr_accessor service_details: service_detail_set
         attr_accessor next_token: string
       end
+      type describe_vpc_endpoints_request = { dry_run: boolean?, vpc_endpoint_ids: vpc_endpoint_id_list?, filters: filter_list?, max_results: integer?, next_token: string? }
       class DescribeVpcEndpointsResult
         attr_accessor vpc_endpoints: vpc_endpoint_set_output
         attr_accessor next_token: string
       end
       type describe_vpc_peering_connections_max_results = ::Integer
+      type describe_vpc_peering_connections_request = { filters: filter_list?, dry_run: boolean?, vpc_peering_connection_ids: vpc_peering_connection_id_list?, next_token: string?, max_results: describe_vpc_peering_connections_max_results? }
       class DescribeVpcPeeringConnectionsResult
         attr_accessor vpc_peering_connections: vpc_peering_connection_list_output
         attr_accessor next_token: string
       end
       type describe_vpcs_max_results = ::Integer
+      type describe_vpcs_request = { filters: filter_list?, vpc_ids: vpc_id_string_list?, dry_run: boolean?, next_token: string?, max_results: describe_vpcs_max_results? }
       class DescribeVpcsResult
         attr_accessor vpcs: vpc_list_output
         attr_accessor next_token: string
       end
+      type describe_vpn_connections_request = { filters: filter_list?, vpn_connection_ids: vpn_connection_id_string_list?, dry_run: boolean? }
       class DescribeVpnConnectionsResult
         attr_accessor vpn_connections: vpn_connection_list_output
       end
+      type describe_vpn_gateways_request = { filters: filter_list?, vpn_gateway_ids: vpn_gateway_id_string_list?, dry_run: boolean? }
       class DescribeVpnGatewaysResult
         attr_accessor vpn_gateways: vpn_gateway_list_output
       end
@@ -1844,9 +2163,14 @@ module Aws
         attr_accessor hive_compatible_partitions: boolean
         attr_accessor per_hour_partition: boolean
       end
+      type detach_classic_link_vpc_request = { dry_run: boolean?, instance_id: instance_id, vpc_id: vpc_id }
       class DetachClassicLinkVpcResult
         attr_accessor return: boolean
       end
+      type detach_internet_gateway_request = { dry_run: boolean?, internet_gateway_id: internet_gateway_id, vpc_id: vpc_id }
+      type detach_network_interface_request = { attachment_id: network_interface_attachment_id, dry_run: boolean?, force: boolean? }
+      type detach_volume_request = { device: string?, force: boolean?, instance_id: instance_id?, volume_id: volume_id, dry_run: boolean? }
+      type detach_vpn_gateway_request = { vpc_id: vpc_id, vpn_gateway_id: vpn_gateway_id, dry_run: boolean? }
       type device_type = ("ebs" | "instance-store")
       class DhcpConfiguration
         attr_accessor key: string
@@ -1867,9 +2191,11 @@ module Aws
         attr_accessor directory_id: string
       end
       type directory_service_authentication_request = { directory_id: string? }
+      type disable_ebs_encryption_by_default_request = { dry_run: boolean? }
       class DisableEbsEncryptionByDefaultResult
         attr_accessor ebs_encryption_by_default: boolean
       end
+      type disable_fast_launch_request = { image_id: image_id, force: boolean?, dry_run: boolean? }
       class DisableFastLaunchResult
         attr_accessor image_id: image_id
         attr_accessor resource_type: fast_launch_resource_type
@@ -1909,55 +2235,74 @@ module Aws
         attr_accessor disabled_time: millisecond_date_time
       end
       type disable_fast_snapshot_restore_success_set = ::Array[DisableFastSnapshotRestoreSuccessItem]
+      type disable_fast_snapshot_restores_request = { availability_zones: availability_zone_string_list, source_snapshot_ids: snapshot_id_string_list, dry_run: boolean? }
       class DisableFastSnapshotRestoresResult
         attr_accessor successful: disable_fast_snapshot_restore_success_set
         attr_accessor unsuccessful: disable_fast_snapshot_restore_error_set
       end
+      type disable_image_deprecation_request = { image_id: image_id, dry_run: boolean? }
       class DisableImageDeprecationResult
         attr_accessor return: boolean
       end
+      type disable_ipam_organization_admin_account_request = { dry_run: boolean?, delegated_admin_account_id: string }
       class DisableIpamOrganizationAdminAccountResult
         attr_accessor success: boolean
       end
+      type disable_serial_console_access_request = { dry_run: boolean? }
       class DisableSerialConsoleAccessResult
         attr_accessor serial_console_access_enabled: boolean
       end
+      type disable_transit_gateway_route_table_propagation_request = { transit_gateway_route_table_id: transit_gateway_route_table_id, transit_gateway_attachment_id: transit_gateway_attachment_id, dry_run: boolean? }
       class DisableTransitGatewayRouteTablePropagationResult
         attr_accessor propagation: TransitGatewayPropagation
       end
+      type disable_vgw_route_propagation_request = { gateway_id: vpn_gateway_id, route_table_id: route_table_id, dry_run: boolean? }
+      type disable_vpc_classic_link_dns_support_request = { vpc_id: vpc_id? }
       class DisableVpcClassicLinkDnsSupportResult
         attr_accessor return: boolean
       end
+      type disable_vpc_classic_link_request = { dry_run: boolean?, vpc_id: vpc_id }
       class DisableVpcClassicLinkResult
         attr_accessor return: boolean
       end
+      type disassociate_address_request = { association_id: elastic_ip_association_id?, public_ip: string?, dry_run: boolean? }
+      type disassociate_client_vpn_target_network_request = { client_vpn_endpoint_id: client_vpn_endpoint_id, association_id: client_vpn_association_id, dry_run: boolean? }
       class DisassociateClientVpnTargetNetworkResult
         attr_accessor association_id: string
         attr_accessor status: AssociationStatus
       end
+      type disassociate_enclave_certificate_iam_role_request = { certificate_arn: resource_arn?, role_arn: resource_arn?, dry_run: boolean? }
       class DisassociateEnclaveCertificateIamRoleResult
         attr_accessor return: boolean
       end
+      type disassociate_iam_instance_profile_request = { association_id: iam_instance_profile_association_id }
       class DisassociateIamInstanceProfileResult
         attr_accessor iam_instance_profile_association: IamInstanceProfileAssociation
       end
+      type disassociate_instance_event_window_request = { dry_run: boolean?, instance_event_window_id: instance_event_window_id, association_target: instance_event_window_disassociation_request }
       class DisassociateInstanceEventWindowResult
         attr_accessor instance_event_window: InstanceEventWindow
       end
+      type disassociate_route_table_request = { association_id: route_table_association_id, dry_run: boolean? }
+      type disassociate_subnet_cidr_block_request = { association_id: subnet_cidr_association_id }
       class DisassociateSubnetCidrBlockResult
         attr_accessor ipv_6_cidr_block_association: SubnetIpv6CidrBlockAssociation
         attr_accessor subnet_id: string
       end
+      type disassociate_transit_gateway_multicast_domain_request = { transit_gateway_multicast_domain_id: transit_gateway_multicast_domain_id?, transit_gateway_attachment_id: transit_gateway_attachment_id?, subnet_ids: transit_gateway_subnet_id_list?, dry_run: boolean? }
       class DisassociateTransitGatewayMulticastDomainResult
         attr_accessor associations: TransitGatewayMulticastDomainAssociations
       end
+      type disassociate_transit_gateway_route_table_request = { transit_gateway_route_table_id: transit_gateway_route_table_id, transit_gateway_attachment_id: transit_gateway_attachment_id, dry_run: boolean? }
       class DisassociateTransitGatewayRouteTableResult
         attr_accessor association: TransitGatewayAssociation
       end
+      type disassociate_trunk_interface_request = { association_id: trunk_interface_association_id, client_token: string?, dry_run: boolean? }
       class DisassociateTrunkInterfaceResult
         attr_accessor return: boolean
         attr_accessor client_token: string
       end
+      type disassociate_vpc_cidr_block_request = { association_id: vpc_cidr_association_id }
       class DisassociateVpcCidrBlockResult
         attr_accessor ipv_6_cidr_block_association: VpcIpv6CidrBlockAssociation
         attr_accessor cidr_block_association: VpcCidrBlockAssociation
@@ -2088,9 +2433,11 @@ module Aws
       type elastic_inference_accelerators = ::Array[elastic_inference_accelerator]
       type elastic_ip_association_id = ::String
       type ena_support = ("unsupported" | "supported" | "required")
+      type enable_ebs_encryption_by_default_request = { dry_run: boolean? }
       class EnableEbsEncryptionByDefaultResult
         attr_accessor ebs_encryption_by_default: boolean
       end
+      type enable_fast_launch_request = { image_id: image_id, resource_type: string?, snapshot_configuration: fast_launch_snapshot_configuration_request?, launch_template: fast_launch_launch_template_specification_request?, max_parallel_launches: integer?, dry_run: boolean? }
       class EnableFastLaunchResult
         attr_accessor image_id: image_id
         attr_accessor resource_type: fast_launch_resource_type
@@ -2130,25 +2477,34 @@ module Aws
         attr_accessor disabled_time: millisecond_date_time
       end
       type enable_fast_snapshot_restore_success_set = ::Array[EnableFastSnapshotRestoreSuccessItem]
+      type enable_fast_snapshot_restores_request = { availability_zones: availability_zone_string_list, source_snapshot_ids: snapshot_id_string_list, dry_run: boolean? }
       class EnableFastSnapshotRestoresResult
         attr_accessor successful: enable_fast_snapshot_restore_success_set
         attr_accessor unsuccessful: enable_fast_snapshot_restore_error_set
       end
+      type enable_image_deprecation_request = { image_id: image_id, deprecate_at: millisecond_date_time, dry_run: boolean? }
       class EnableImageDeprecationResult
         attr_accessor return: boolean
       end
+      type enable_ipam_organization_admin_account_request = { dry_run: boolean?, delegated_admin_account_id: string }
       class EnableIpamOrganizationAdminAccountResult
         attr_accessor success: boolean
       end
+      type enable_serial_console_access_request = { dry_run: boolean? }
       class EnableSerialConsoleAccessResult
         attr_accessor serial_console_access_enabled: boolean
       end
+      type enable_transit_gateway_route_table_propagation_request = { transit_gateway_route_table_id: transit_gateway_route_table_id, transit_gateway_attachment_id: transit_gateway_attachment_id, dry_run: boolean? }
       class EnableTransitGatewayRouteTablePropagationResult
         attr_accessor propagation: TransitGatewayPropagation
       end
+      type enable_vgw_route_propagation_request = { gateway_id: vpn_gateway_id, route_table_id: route_table_id, dry_run: boolean? }
+      type enable_volume_io_request = { dry_run: boolean?, volume_id: volume_id }
+      type enable_vpc_classic_link_dns_support_request = { vpc_id: vpc_id? }
       class EnableVpcClassicLinkDnsSupportResult
         attr_accessor return: boolean
       end
+      type enable_vpc_classic_link_request = { dry_run: boolean?, vpc_id: vpc_id }
       class EnableVpcClassicLinkResult
         attr_accessor return: boolean
       end
@@ -2220,14 +2576,17 @@ module Aws
         attr_accessor vpn_gateway: AnalysisComponent
       end
       type explanation_list = ::Array[Explanation]
+      type export_client_vpn_client_certificate_revocation_list_request = { client_vpn_endpoint_id: client_vpn_endpoint_id, dry_run: boolean? }
       class ExportClientVpnClientCertificateRevocationListResult
         attr_accessor certificate_revocation_list: string
         attr_accessor status: ClientCertificateRevocationListStatus
       end
+      type export_client_vpn_client_configuration_request = { client_vpn_endpoint_id: client_vpn_endpoint_id, dry_run: boolean? }
       class ExportClientVpnClientConfigurationResult
         attr_accessor client_configuration: string
       end
       type export_environment = ("citrix" | "vmware" | "microsoft")
+      type export_image_request = { client_token: string?, description: string?, disk_image_format: disk_image_format, dry_run: boolean?, image_id: image_id, s3_export_location: export_task_s3_location_request, role_name: string?, tag_specifications: tag_specification_list_input? }
       class ExportImageResult
         attr_accessor description: string
         attr_accessor disk_image_format: disk_image_format
@@ -2278,6 +2637,7 @@ module Aws
         attr_accessor s3_key: string
       end
       type export_to_s3_task_specification = { container_format: container_format?, disk_image_format: disk_image_format?, s3_bucket: string?, s3_prefix: string? }
+      type export_transit_gateway_routes_request = { transit_gateway_route_table_id: transit_gateway_route_table_id, filters: filter_list?, s3_bucket: string, dry_run: boolean? }
       class ExportTransitGatewayRoutesResult
         attr_accessor s3_location: string
       end
@@ -2478,13 +2838,16 @@ module Aws
       type gvcd_max_results = ::Integer
       type gateway_association_state = ("associated" | "not-associated" | "associating" | "disassociating")
       type gateway_type = ("ipsec.1")
+      type get_associated_enclave_certificate_iam_roles_request = { certificate_arn: resource_arn?, dry_run: boolean? }
       class GetAssociatedEnclaveCertificateIamRolesResult
         attr_accessor associated_roles: associated_roles_list
       end
+      type get_associated_ipv_6_pool_cidrs_request = { pool_id: ipv_6_pool_ec2_id, next_token: next_token?, max_results: ipv_6_pool_max_results?, dry_run: boolean? }
       class GetAssociatedIpv6PoolCidrsResult
         attr_accessor ipv_6_cidr_associations: ipv_6_cidr_association_set
         attr_accessor next_token: string
       end
+      type get_capacity_reservation_usage_request = { capacity_reservation_id: capacity_reservation_id, next_token: string?, max_results: get_capacity_reservation_usage_request_max_results?, dry_run: boolean? }
       type get_capacity_reservation_usage_request_max_results = ::Integer
       class GetCapacityReservationUsageResult
         attr_accessor next_token: string
@@ -2495,90 +2858,111 @@ module Aws
         attr_accessor state: capacity_reservation_state
         attr_accessor instance_usages: instance_usage_set
       end
+      type get_coip_pool_usage_request = { pool_id: coip_pool_id, filters: filter_list?, max_results: coip_pool_max_results?, next_token: string?, dry_run: boolean? }
       class GetCoipPoolUsageResult
         attr_accessor coip_pool_id: string
         attr_accessor coip_address_usages: coip_address_usage_set
         attr_accessor local_gateway_route_table_id: string
       end
+      type get_console_output_request = { instance_id: instance_id, dry_run: boolean?, latest: boolean? }
       class GetConsoleOutputResult
         attr_accessor instance_id: string
         attr_accessor output: string
         attr_accessor timestamp: date_time
       end
+      type get_console_screenshot_request = { dry_run: boolean?, instance_id: instance_id, wake_up: boolean? }
       class GetConsoleScreenshotResult
         attr_accessor image_data: string
         attr_accessor instance_id: string
       end
+      type get_default_credit_specification_request = { dry_run: boolean?, instance_family: unlimited_supported_instance_family }
       class GetDefaultCreditSpecificationResult
         attr_accessor instance_family_credit_specification: InstanceFamilyCreditSpecification
       end
+      type get_ebs_default_kms_key_id_request = { dry_run: boolean? }
       class GetEbsDefaultKmsKeyIdResult
         attr_accessor kms_key_id: string
       end
+      type get_ebs_encryption_by_default_request = { dry_run: boolean? }
       class GetEbsEncryptionByDefaultResult
         attr_accessor ebs_encryption_by_default: boolean
       end
+      type get_flow_logs_integration_template_request = { dry_run: boolean?, flow_log_id: vpc_flow_log_id, config_delivery_s3_destination_arn: string, integrate_services: integrate_services }
       class GetFlowLogsIntegrationTemplateResult
         attr_accessor result: string
       end
+      type get_groups_for_capacity_reservation_request = { capacity_reservation_id: capacity_reservation_id, next_token: string?, max_results: get_groups_for_capacity_reservation_request_max_results?, dry_run: boolean? }
       type get_groups_for_capacity_reservation_request_max_results = ::Integer
       class GetGroupsForCapacityReservationResult
         attr_accessor next_token: string
         attr_accessor capacity_reservation_groups: capacity_reservation_group_set
       end
+      type get_host_reservation_purchase_preview_request = { host_id_set: request_host_id_set, offering_id: offering_id }
       class GetHostReservationPurchasePreviewResult
         attr_accessor currency_code: currency_code_values
         attr_accessor purchase: purchase_set
         attr_accessor total_hourly_price: string
         attr_accessor total_upfront_price: string
       end
+      type get_instance_types_from_instance_requirements_request = { dry_run: boolean?, architecture_types: architecture_type_set, virtualization_types: virtualization_type_set, instance_requirements: instance_requirements_request, max_results: integer?, next_token: string? }
       class GetInstanceTypesFromInstanceRequirementsResult
         attr_accessor instance_types: instance_type_info_from_instance_requirements_set
         attr_accessor next_token: string
       end
+      type get_ipam_address_history_request = { dry_run: boolean?, cidr: string, ipam_scope_id: ipam_scope_id, vpc_id: string?, start_time: millisecond_date_time?, end_time: millisecond_date_time?, max_results: ipam_address_history_max_results?, next_token: next_token? }
       class GetIpamAddressHistoryResult
         attr_accessor history_records: ipam_address_history_record_set
         attr_accessor next_token: next_token
       end
       type get_ipam_pool_allocations_max_results = ::Integer
+      type get_ipam_pool_allocations_request = { dry_run: boolean?, ipam_pool_id: ipam_pool_id, ipam_pool_allocation_id: ipam_pool_allocation_id?, filters: filter_list?, max_results: get_ipam_pool_allocations_max_results?, next_token: next_token? }
       class GetIpamPoolAllocationsResult
         attr_accessor ipam_pool_allocations: ipam_pool_allocation_set_output
         attr_accessor next_token: next_token
       end
+      type get_ipam_pool_cidrs_request = { dry_run: boolean?, ipam_pool_id: ipam_pool_id, filters: filter_list?, max_results: ipam_max_results?, next_token: next_token? }
       class GetIpamPoolCidrsResult
         attr_accessor ipam_pool_cidrs: ipam_pool_cidr_set_output
         attr_accessor next_token: next_token
       end
+      type get_ipam_resource_cidrs_request = { dry_run: boolean?, filters: filter_list?, max_results: ipam_max_results?, next_token: next_token?, ipam_scope_id: ipam_scope_id, ipam_pool_id: ipam_pool_id?, resource_id: string?, resource_type: ipam_resource_type?, resource_tag: request_ipam_resource_tag?, resource_owner: string? }
       class GetIpamResourceCidrsResult
         attr_accessor next_token: next_token
         attr_accessor ipam_resource_cidrs: ipam_resource_cidr_set_output
       end
+      type get_launch_template_data_request = { dry_run: boolean?, instance_id: instance_id }
       class GetLaunchTemplateDataResult
         attr_accessor launch_template_data: ResponseLaunchTemplateData
       end
       type get_managed_prefix_list_associations_max_results = ::Integer
+      type get_managed_prefix_list_associations_request = { dry_run: boolean?, prefix_list_id: prefix_list_resource_id, max_results: get_managed_prefix_list_associations_max_results?, next_token: next_token? }
       class GetManagedPrefixListAssociationsResult
         attr_accessor prefix_list_associations: prefix_list_association_set
         attr_accessor next_token: string
       end
+      type get_managed_prefix_list_entries_request = { dry_run: boolean?, prefix_list_id: prefix_list_resource_id, target_version: long?, max_results: prefix_list_max_results?, next_token: next_token? }
       class GetManagedPrefixListEntriesResult
         attr_accessor entries: prefix_list_entry_set
         attr_accessor next_token: next_token
       end
+      type get_network_insights_access_scope_analysis_findings_request = { network_insights_access_scope_analysis_id: network_insights_access_scope_analysis_id, max_results: network_insights_max_results?, next_token: next_token?, dry_run: boolean? }
       class GetNetworkInsightsAccessScopeAnalysisFindingsResult
         attr_accessor network_insights_access_scope_analysis_id: network_insights_access_scope_analysis_id
         attr_accessor analysis_status: analysis_status
         attr_accessor analysis_findings: access_scope_analysis_finding_list
         attr_accessor next_token: string
       end
+      type get_network_insights_access_scope_content_request = { network_insights_access_scope_id: network_insights_access_scope_id, dry_run: boolean? }
       class GetNetworkInsightsAccessScopeContentResult
         attr_accessor network_insights_access_scope_content: NetworkInsightsAccessScopeContent
       end
+      type get_password_data_request = { instance_id: instance_id, dry_run: boolean? }
       class GetPasswordDataResult
         attr_accessor instance_id: string
         attr_accessor password_data: string
         attr_accessor timestamp: date_time
       end
+      type get_reserved_instances_exchange_quote_request = { dry_run: boolean?, reserved_instance_ids: reserved_instance_id_set, target_configurations: target_configuration_request_set? }
       class GetReservedInstancesExchangeQuoteResult
         attr_accessor currency_code: string
         attr_accessor is_valid_exchange: boolean
@@ -2590,42 +2974,52 @@ module Aws
         attr_accessor target_configuration_value_set: target_reservation_value_set
         attr_accessor validation_failure_reason: string
       end
+      type get_serial_console_access_status_request = { dry_run: boolean? }
       class GetSerialConsoleAccessStatusResult
         attr_accessor serial_console_access_enabled: boolean
       end
+      type get_spot_placement_scores_request = { instance_types: instance_types?, target_capacity: spot_placement_scores_target_capacity, target_capacity_unit_type: target_capacity_unit_type?, single_availability_zone: boolean?, region_names: region_names?, instance_requirements_with_metadata: instance_requirements_with_metadata_request?, dry_run: boolean?, max_results: spot_placement_scores_max_results?, next_token: string? }
       class GetSpotPlacementScoresResult
         attr_accessor spot_placement_scores: spot_placement_scores
         attr_accessor next_token: string
       end
       type get_subnet_cidr_reservations_max_results = ::Integer
+      type get_subnet_cidr_reservations_request = { filters: filter_list?, subnet_id: subnet_id, dry_run: boolean?, next_token: string?, max_results: get_subnet_cidr_reservations_max_results? }
       class GetSubnetCidrReservationsResult
         attr_accessor subnet_ipv_4_cidr_reservations: subnet_cidr_reservation_list_output
         attr_accessor subnet_ipv_6_cidr_reservations: subnet_cidr_reservation_list_output
         attr_accessor next_token: string
       end
+      type get_transit_gateway_attachment_propagations_request = { transit_gateway_attachment_id: transit_gateway_attachment_id, filters: filter_list?, max_results: transit_gateway_max_results?, next_token: string?, dry_run: boolean? }
       class GetTransitGatewayAttachmentPropagationsResult
         attr_accessor transit_gateway_attachment_propagations: transit_gateway_attachment_propagation_list
         attr_accessor next_token: string
       end
+      type get_transit_gateway_multicast_domain_associations_request = { transit_gateway_multicast_domain_id: transit_gateway_multicast_domain_id?, filters: filter_list?, max_results: transit_gateway_max_results?, next_token: string?, dry_run: boolean? }
       class GetTransitGatewayMulticastDomainAssociationsResult
         attr_accessor multicast_domain_associations: transit_gateway_multicast_domain_association_list
         attr_accessor next_token: string
       end
+      type get_transit_gateway_prefix_list_references_request = { transit_gateway_route_table_id: transit_gateway_route_table_id, filters: filter_list?, max_results: transit_gateway_max_results?, next_token: string?, dry_run: boolean? }
       class GetTransitGatewayPrefixListReferencesResult
         attr_accessor transit_gateway_prefix_list_references: transit_gateway_prefix_list_reference_set_output
         attr_accessor next_token: string
       end
+      type get_transit_gateway_route_table_associations_request = { transit_gateway_route_table_id: transit_gateway_route_table_id, filters: filter_list?, max_results: transit_gateway_max_results?, next_token: string?, dry_run: boolean? }
       class GetTransitGatewayRouteTableAssociationsResult
         attr_accessor associations: transit_gateway_route_table_association_list
         attr_accessor next_token: string
       end
+      type get_transit_gateway_route_table_propagations_request = { transit_gateway_route_table_id: transit_gateway_route_table_id, filters: filter_list?, max_results: transit_gateway_max_results?, next_token: string?, dry_run: boolean? }
       class GetTransitGatewayRouteTablePropagationsResult
         attr_accessor transit_gateway_route_table_propagations: transit_gateway_route_table_propagation_list
         attr_accessor next_token: string
       end
+      type get_vpn_connection_device_sample_configuration_request = { vpn_connection_id: vpn_connection_id, vpn_connection_device_type_id: vpn_connection_device_type_id, internet_key_exchange_version: string?, dry_run: boolean? }
       class GetVpnConnectionDeviceSampleConfigurationResult
         attr_accessor vpn_connection_device_sample_configuration: vpn_connection_device_sample_configuration
       end
+      type get_vpn_connection_device_types_request = { max_results: gvcd_max_results?, next_token: next_token?, dry_run: boolean? }
       class GetVpnConnectionDeviceTypesResult
         attr_accessor vpn_connection_device_types: vpn_connection_device_type_list
         attr_accessor next_token: next_token
@@ -2831,6 +3225,7 @@ module Aws
       type image_list = ::Array[Image]
       type image_state = ("pending" | "available" | "invalid" | "deregistered" | "transient" | "failed" | "error")
       type image_type_values = ("machine" | "kernel" | "ramdisk")
+      type import_client_vpn_client_certificate_revocation_list_request = { client_vpn_endpoint_id: client_vpn_endpoint_id, certificate_revocation_list: string, dry_run: boolean? }
       class ImportClientVpnClientCertificateRevocationListResult
         attr_accessor return: boolean
       end
@@ -2840,6 +3235,7 @@ module Aws
       end
       type import_image_license_specification_list_request = ::Array[import_image_license_configuration_request]
       type import_image_license_specification_list_response = ::Array[ImportImageLicenseConfigurationResponse]
+      type import_image_request = { architecture: string?, client_data: client_data?, client_token: string?, description: string?, disk_containers: image_disk_container_list?, dry_run: boolean?, encrypted: boolean?, hypervisor: string?, kms_key_id: kms_key_id?, license_type: string?, platform: string?, role_name: string?, license_specifications: import_image_license_specification_list_request?, tag_specifications: tag_specification_list_input?, usage_operation: string?, boot_mode: boot_mode_values? }
       class ImportImageResult
         attr_accessor architecture: string
         attr_accessor description: string
@@ -2880,6 +3276,7 @@ module Aws
       type import_image_task_id = ::String
       type import_image_task_list = ::Array[ImportImageTask]
       type import_instance_launch_specification = { additional_info: string?, architecture: architecture_values?, group_ids: security_group_id_string_list?, group_names: security_group_string_list?, instance_initiated_shutdown_behavior: shutdown_behavior?, instance_type: instance_type?, monitoring: boolean?, placement: placement?, private_ip_address: string?, subnet_id: subnet_id?, user_data: user_data? }
+      type import_instance_request = { description: string?, disk_images: disk_image_list?, dry_run: boolean?, launch_specification: import_instance_launch_specification?, platform: platform_values }
       class ImportInstanceResult
         attr_accessor conversion_task: ConversionTask
       end
@@ -2899,12 +3296,14 @@ module Aws
         attr_accessor volume: DiskImageVolumeDescription
       end
       type import_instance_volume_detail_set = ::Array[ImportInstanceVolumeDetailItem]
+      type import_key_pair_request = { dry_run: boolean?, key_name: string, public_key_material: blob, tag_specifications: tag_specification_list_input? }
       class ImportKeyPairResult
         attr_accessor key_fingerprint: string
         attr_accessor key_name: string
         attr_accessor key_pair_id: string
         attr_accessor tags: tag_list_output
       end
+      type import_snapshot_request = { client_data: client_data?, client_token: string?, description: string?, disk_container: snapshot_disk_container?, dry_run: boolean?, encrypted: boolean?, kms_key_id: kms_key_id?, role_name: string?, tag_specifications: tag_specification_list_input? }
       class ImportSnapshotResult
         attr_accessor description: string
         attr_accessor import_task_id: string
@@ -2922,6 +3321,7 @@ module Aws
       type import_snapshot_task_list = ::Array[ImportSnapshotTask]
       type import_task_id = ::String
       type import_task_id_list = ::Array[import_image_task_id]
+      type import_volume_request = { availability_zone: string, description: string?, dry_run: boolean?, image: disk_image_detail, volume: volume_detail }
       class ImportVolumeResult
         attr_accessor conversion_task: ConversionTask
       end
@@ -3813,6 +4213,7 @@ module Aws
       type license_list = ::Array[LicenseConfiguration]
       type license_specification_list_request = ::Array[license_configuration_request]
       type list_snapshots_in_recycle_bin_max_results = ::Integer
+      type list_snapshots_in_recycle_bin_request = { max_results: list_snapshots_in_recycle_bin_max_results?, next_token: string?, snapshot_ids: snapshot_id_string_list?, dry_run: boolean? }
       class ListSnapshotsInRecycleBinResult
         attr_accessor snapshots: snapshot_recycle_bin_info_list
         attr_accessor next_token: string
@@ -3965,150 +4366,205 @@ module Aws
       type memory_mi_b_request = { min: integer, max: integer? }
       type memory_size = ::Integer
       type millisecond_date_time = ::Time
+      type modify_address_attribute_request = { allocation_id: allocation_id, domain_name: string?, dry_run: boolean? }
       class ModifyAddressAttributeResult
         attr_accessor address: AddressAttribute
       end
+      type modify_availability_zone_group_request = { group_name: string, opt_in_status: modify_availability_zone_opt_in_status, dry_run: boolean? }
       class ModifyAvailabilityZoneGroupResult
         attr_accessor return: boolean
       end
       type modify_availability_zone_opt_in_status = ("opted-in" | "not-opted-in")
+      type modify_capacity_reservation_fleet_request = { capacity_reservation_fleet_id: capacity_reservation_fleet_id, total_target_capacity: integer?, end_date: millisecond_date_time?, dry_run: boolean?, remove_end_date: boolean? }
       class ModifyCapacityReservationFleetResult
         attr_accessor return: boolean
       end
+      type modify_capacity_reservation_request = { capacity_reservation_id: capacity_reservation_id, instance_count: integer?, end_date: date_time?, end_date_type: end_date_type?, accept: boolean?, dry_run: boolean?, additional_info: string? }
       class ModifyCapacityReservationResult
         attr_accessor return: boolean
       end
+      type modify_client_vpn_endpoint_request = { client_vpn_endpoint_id: client_vpn_endpoint_id, server_certificate_arn: string?, connection_log_options: connection_log_options?, dns_servers: dns_servers_options_modify_structure?, vpn_port: integer?, description: string?, split_tunnel: boolean?, dry_run: boolean?, security_group_ids: client_vpn_security_group_id_set?, vpc_id: vpc_id?, self_service_portal: self_service_portal?, client_connect_options: client_connect_options?, session_timeout_hours: integer?, client_login_banner_options: client_login_banner_options? }
       class ModifyClientVpnEndpointResult
         attr_accessor return: boolean
       end
+      type modify_default_credit_specification_request = { dry_run: boolean?, instance_family: unlimited_supported_instance_family, cpu_credits: string }
       class ModifyDefaultCreditSpecificationResult
         attr_accessor instance_family_credit_specification: InstanceFamilyCreditSpecification
       end
+      type modify_ebs_default_kms_key_id_request = { kms_key_id: kms_key_id, dry_run: boolean? }
       class ModifyEbsDefaultKmsKeyIdResult
         attr_accessor kms_key_id: string
       end
+      type modify_fleet_request = { dry_run: boolean?, excess_capacity_termination_policy: fleet_excess_capacity_termination_policy?, launch_template_configs: fleet_launch_template_config_list_request?, fleet_id: fleet_id, target_capacity_specification: target_capacity_specification_request?, context: string? }
       class ModifyFleetResult
         attr_accessor return: boolean
       end
+      type modify_fpga_image_attribute_request = { dry_run: boolean?, fpga_image_id: fpga_image_id, attribute: fpga_image_attribute_name?, operation_type: operation_type?, user_ids: user_id_string_list?, user_groups: user_group_string_list?, product_codes: product_code_string_list?, load_permission: load_permission_modifications?, description: string?, name: string? }
       class ModifyFpgaImageAttributeResult
         attr_accessor fpga_image_attribute: FpgaImageAttribute
       end
+      type modify_hosts_request = { auto_placement: auto_placement?, host_ids: request_host_id_list, host_recovery: host_recovery?, instance_type: string?, instance_family: string? }
       class ModifyHostsResult
         attr_accessor successful: response_host_id_list
         attr_accessor unsuccessful: unsuccessful_item_list
       end
+      type modify_id_format_request = { resource: string, use_long_ids: boolean }
+      type modify_identity_id_format_request = { principal_arn: string, resource: string, use_long_ids: boolean }
+      type modify_image_attribute_request = { attribute: string?, description: attribute_value?, image_id: image_id, launch_permission: launch_permission_modifications?, operation_type: operation_type?, product_codes: product_code_string_list?, user_groups: user_group_string_list?, user_ids: user_id_string_list?, value: string?, dry_run: boolean?, organization_arns: organization_arn_string_list?, organizational_unit_arns: organizational_unit_arn_string_list? }
+      type modify_instance_attribute_request = { source_dest_check: attribute_boolean_value?, attribute: instance_attribute_name?, block_device_mappings: instance_block_device_mapping_specification_list?, disable_api_termination: attribute_boolean_value?, dry_run: boolean?, ebs_optimized: attribute_boolean_value?, ena_support: attribute_boolean_value?, groups: group_id_string_list?, instance_id: instance_id, instance_initiated_shutdown_behavior: attribute_value?, instance_type: attribute_value?, kernel: attribute_value?, ramdisk: attribute_value?, sriov_net_support: attribute_value?, user_data: blob_attribute_value?, value: string? }
+      type modify_instance_capacity_reservation_attributes_request = { instance_id: instance_id, capacity_reservation_specification: capacity_reservation_specification, dry_run: boolean? }
       class ModifyInstanceCapacityReservationAttributesResult
         attr_accessor return: boolean
       end
+      type modify_instance_credit_specification_request = { dry_run: boolean?, client_token: string?, instance_credit_specifications: instance_credit_specification_list_request }
       class ModifyInstanceCreditSpecificationResult
         attr_accessor successful_instance_credit_specifications: successful_instance_credit_specification_set
         attr_accessor unsuccessful_instance_credit_specifications: unsuccessful_instance_credit_specification_set
       end
+      type modify_instance_event_start_time_request = { dry_run: boolean?, instance_id: instance_id, instance_event_id: string, not_before: date_time }
       class ModifyInstanceEventStartTimeResult
         attr_accessor event: InstanceStatusEvent
       end
+      type modify_instance_event_window_request = { dry_run: boolean?, name: string?, instance_event_window_id: instance_event_window_id, time_ranges: instance_event_window_time_range_request_set?, cron_expression: instance_event_window_cron_expression? }
       class ModifyInstanceEventWindowResult
         attr_accessor instance_event_window: InstanceEventWindow
       end
+      type modify_instance_metadata_options_request = { instance_id: instance_id, http_tokens: http_tokens_state?, http_put_response_hop_limit: integer?, http_endpoint: instance_metadata_endpoint_state?, dry_run: boolean?, http_protocol_ipv_6: instance_metadata_protocol_state?, instance_metadata_tags: instance_metadata_tags_state? }
       class ModifyInstanceMetadataOptionsResult
         attr_accessor instance_id: string
         attr_accessor instance_metadata_options: InstanceMetadataOptionsResponse
       end
+      type modify_instance_placement_request = { affinity: affinity?, group_name: placement_group_name?, host_id: dedicated_host_id?, instance_id: instance_id, tenancy: host_tenancy?, partition_number: integer?, host_resource_group_arn: string? }
       class ModifyInstancePlacementResult
         attr_accessor return: boolean
       end
+      type modify_ipam_pool_request = { dry_run: boolean?, ipam_pool_id: ipam_pool_id, description: string?, auto_import: boolean?, allocation_min_netmask_length: ipam_netmask_length?, allocation_max_netmask_length: ipam_netmask_length?, allocation_default_netmask_length: ipam_netmask_length?, clear_allocation_default_netmask_length: boolean?, add_allocation_resource_tags: request_ipam_resource_tag_list_input?, remove_allocation_resource_tags: request_ipam_resource_tag_list_input? }
       class ModifyIpamPoolResult
         attr_accessor ipam_pool: IpamPool
       end
+      type modify_ipam_request = { dry_run: boolean?, ipam_id: ipam_id, description: string?, add_operating_regions: add_ipam_operating_region_set?, remove_operating_regions: remove_ipam_operating_region_set? }
+      type modify_ipam_resource_cidr_request = { dry_run: boolean?, resource_id: string, resource_cidr: string, resource_region: string, current_ipam_scope_id: ipam_scope_id, destination_ipam_scope_id: ipam_scope_id?, monitored: boolean }
       class ModifyIpamResourceCidrResult
         attr_accessor ipam_resource_cidr: IpamResourceCidr
       end
       class ModifyIpamResult
         attr_accessor ipam: Ipam
       end
+      type modify_ipam_scope_request = { dry_run: boolean?, ipam_scope_id: ipam_scope_id, description: string? }
       class ModifyIpamScopeResult
         attr_accessor ipam_scope: IpamScope
       end
+      type modify_launch_template_request = { dry_run: boolean?, client_token: string?, launch_template_id: launch_template_id?, launch_template_name: launch_template_name?, default_version: string? }
       class ModifyLaunchTemplateResult
         attr_accessor launch_template: LaunchTemplate
       end
+      type modify_managed_prefix_list_request = { dry_run: boolean?, prefix_list_id: prefix_list_resource_id, current_version: long?, prefix_list_name: string?, add_entries: add_prefix_list_entries?, remove_entries: remove_prefix_list_entries?, max_entries: integer? }
       class ModifyManagedPrefixListResult
         attr_accessor prefix_list: ManagedPrefixList
       end
+      type modify_network_interface_attribute_request = { attachment: network_interface_attachment_changes?, description: attribute_value?, dry_run: boolean?, groups: security_group_id_string_list?, network_interface_id: network_interface_id, source_dest_check: attribute_boolean_value? }
+      type modify_private_dns_name_options_request = { dry_run: boolean?, instance_id: instance_id?, private_dns_hostname_type: hostname_type?, enable_resource_name_dns_a_record: boolean?, enable_resource_name_dns_aaaa_record: boolean? }
       class ModifyPrivateDnsNameOptionsResult
         attr_accessor return: boolean
       end
+      type modify_reserved_instances_request = { reserved_instances_ids: reserved_instances_id_string_list, client_token: string?, target_configurations: reserved_instances_configuration_list_input }
       class ModifyReservedInstancesResult
         attr_accessor reserved_instances_modification_id: string
       end
+      type modify_security_group_rules_request = { group_id: security_group_id, security_group_rules: security_group_rule_update_list, dry_run: boolean? }
       class ModifySecurityGroupRulesResult
         attr_accessor return: boolean
       end
+      type modify_snapshot_attribute_request = { attribute: snapshot_attribute_name?, create_volume_permission: create_volume_permission_modifications?, group_names: group_name_string_list?, operation_type: operation_type?, snapshot_id: snapshot_id, user_ids: user_id_string_list?, dry_run: boolean? }
+      type modify_snapshot_tier_request = { snapshot_id: snapshot_id, storage_tier: target_storage_tier?, dry_run: boolean? }
       class ModifySnapshotTierResult
         attr_accessor snapshot_id: string
         attr_accessor tiering_start_time: millisecond_date_time
       end
+      type modify_spot_fleet_request_request = { excess_capacity_termination_policy: excess_capacity_termination_policy?, launch_template_configs: launch_template_config_list_input?, spot_fleet_request_id: spot_fleet_request_id, target_capacity: integer?, on_demand_target_capacity: integer?, context: string? }
       class ModifySpotFleetRequestResponse
         attr_accessor return: boolean
       end
+      type modify_subnet_attribute_request = { assign_ipv_6_address_on_creation: attribute_boolean_value?, map_public_ip_on_launch: attribute_boolean_value?, subnet_id: subnet_id, map_customer_owned_ip_on_launch: attribute_boolean_value?, customer_owned_ipv_4_pool: coip_pool_id?, enable_dns_64: attribute_boolean_value?, private_dns_hostname_type_on_launch: hostname_type?, enable_resource_name_dns_a_record_on_launch: attribute_boolean_value?, enable_resource_name_dns_aaaa_record_on_launch: attribute_boolean_value?, enable_lni_at_device_index: integer?, disable_lni_at_device_index: attribute_boolean_value? }
+      type modify_traffic_mirror_filter_network_services_request = { traffic_mirror_filter_id: traffic_mirror_filter_id, add_network_services: traffic_mirror_network_service_list?, remove_network_services: traffic_mirror_network_service_list?, dry_run: boolean? }
       class ModifyTrafficMirrorFilterNetworkServicesResult
         attr_accessor traffic_mirror_filter: TrafficMirrorFilter
       end
+      type modify_traffic_mirror_filter_rule_request = { traffic_mirror_filter_rule_id: traffic_mirror_filter_rule_id, traffic_direction: traffic_direction?, rule_number: integer?, rule_action: traffic_mirror_rule_action?, destination_port_range: traffic_mirror_port_range_request?, source_port_range: traffic_mirror_port_range_request?, protocol: integer?, destination_cidr_block: string?, source_cidr_block: string?, description: string?, remove_fields: traffic_mirror_filter_rule_field_list?, dry_run: boolean? }
       class ModifyTrafficMirrorFilterRuleResult
         attr_accessor traffic_mirror_filter_rule: TrafficMirrorFilterRule
       end
+      type modify_traffic_mirror_session_request = { traffic_mirror_session_id: traffic_mirror_session_id, traffic_mirror_target_id: traffic_mirror_target_id?, traffic_mirror_filter_id: traffic_mirror_filter_id?, packet_length: integer?, session_number: integer?, virtual_network_id: integer?, description: string?, remove_fields: traffic_mirror_session_field_list?, dry_run: boolean? }
       class ModifyTrafficMirrorSessionResult
         attr_accessor traffic_mirror_session: TrafficMirrorSession
       end
       type modify_transit_gateway_options = { add_transit_gateway_cidr_blocks: transit_gateway_cidr_block_string_list?, remove_transit_gateway_cidr_blocks: transit_gateway_cidr_block_string_list?, vpn_ecmp_support: vpn_ecmp_support_value?, dns_support: dns_support_value?, auto_accept_shared_attachments: auto_accept_shared_attachments_value?, default_route_table_association: default_route_table_association_value?, association_default_route_table_id: transit_gateway_route_table_id?, default_route_table_propagation: default_route_table_propagation_value?, propagation_default_route_table_id: transit_gateway_route_table_id? }
+      type modify_transit_gateway_prefix_list_reference_request = { transit_gateway_route_table_id: transit_gateway_route_table_id, prefix_list_id: prefix_list_resource_id, transit_gateway_attachment_id: transit_gateway_attachment_id?, blackhole: boolean?, dry_run: boolean? }
       class ModifyTransitGatewayPrefixListReferenceResult
         attr_accessor transit_gateway_prefix_list_reference: TransitGatewayPrefixListReference
       end
+      type modify_transit_gateway_request = { transit_gateway_id: transit_gateway_id, description: string?, options: modify_transit_gateway_options?, dry_run: boolean? }
       class ModifyTransitGatewayResult
         attr_accessor transit_gateway: TransitGateway
       end
+      type modify_transit_gateway_vpc_attachment_request = { transit_gateway_attachment_id: transit_gateway_attachment_id, add_subnet_ids: transit_gateway_subnet_id_list?, remove_subnet_ids: transit_gateway_subnet_id_list?, options: modify_transit_gateway_vpc_attachment_request_options?, dry_run: boolean? }
       type modify_transit_gateway_vpc_attachment_request_options = { dns_support: dns_support_value?, ipv_6_support: ipv_6_support_value?, appliance_mode_support: appliance_mode_support_value? }
       class ModifyTransitGatewayVpcAttachmentResult
         attr_accessor transit_gateway_vpc_attachment: TransitGatewayVpcAttachment
       end
+      type modify_volume_attribute_request = { auto_enable_io: attribute_boolean_value?, volume_id: volume_id, dry_run: boolean? }
+      type modify_volume_request = { dry_run: boolean?, volume_id: volume_id, size: integer?, volume_type: volume_type?, iops: integer?, throughput: integer?, multi_attach_enabled: boolean? }
       class ModifyVolumeResult
         attr_accessor volume_modification: VolumeModification
       end
+      type modify_vpc_attribute_request = { enable_dns_hostnames: attribute_boolean_value?, enable_dns_support: attribute_boolean_value?, vpc_id: vpc_id }
+      type modify_vpc_endpoint_connection_notification_request = { dry_run: boolean?, connection_notification_id: connection_notification_id, connection_notification_arn: string?, connection_events: value_string_list? }
       class ModifyVpcEndpointConnectionNotificationResult
         attr_accessor return_value: boolean
       end
+      type modify_vpc_endpoint_request = { dry_run: boolean?, vpc_endpoint_id: vpc_endpoint_id, reset_policy: boolean?, policy_document: string?, add_route_table_ids: vpc_endpoint_route_table_id_list?, remove_route_table_ids: vpc_endpoint_route_table_id_list?, add_subnet_ids: vpc_endpoint_subnet_id_list?, remove_subnet_ids: vpc_endpoint_subnet_id_list?, add_security_group_ids: vpc_endpoint_security_group_id_list?, remove_security_group_ids: vpc_endpoint_security_group_id_list?, private_dns_enabled: boolean? }
       class ModifyVpcEndpointResult
         attr_accessor return: boolean
       end
+      type modify_vpc_endpoint_service_configuration_request = { dry_run: boolean?, service_id: vpc_endpoint_service_id, private_dns_name: string?, remove_private_dns_name: boolean?, acceptance_required: boolean?, add_network_load_balancer_arns: value_string_list?, remove_network_load_balancer_arns: value_string_list?, add_gateway_load_balancer_arns: value_string_list?, remove_gateway_load_balancer_arns: value_string_list? }
       class ModifyVpcEndpointServiceConfigurationResult
         attr_accessor return: boolean
       end
+      type modify_vpc_endpoint_service_payer_responsibility_request = { dry_run: boolean?, service_id: vpc_endpoint_service_id, payer_responsibility: payer_responsibility }
       class ModifyVpcEndpointServicePayerResponsibilityResult
         attr_accessor return_value: boolean
       end
+      type modify_vpc_endpoint_service_permissions_request = { dry_run: boolean?, service_id: vpc_endpoint_service_id, add_allowed_principals: value_string_list?, remove_allowed_principals: value_string_list? }
       class ModifyVpcEndpointServicePermissionsResult
         attr_accessor return_value: boolean
       end
+      type modify_vpc_peering_connection_options_request = { accepter_peering_connection_options: peering_connection_options_request?, dry_run: boolean?, requester_peering_connection_options: peering_connection_options_request?, vpc_peering_connection_id: vpc_peering_connection_id }
       class ModifyVpcPeeringConnectionOptionsResult
         attr_accessor accepter_peering_connection_options: PeeringConnectionOptions
         attr_accessor requester_peering_connection_options: PeeringConnectionOptions
       end
+      type modify_vpc_tenancy_request = { vpc_id: vpc_id, instance_tenancy: vpc_tenancy, dry_run: boolean? }
       class ModifyVpcTenancyResult
         attr_accessor return_value: boolean
       end
+      type modify_vpn_connection_options_request = { vpn_connection_id: vpn_connection_id, local_ipv_4_network_cidr: string?, remote_ipv_4_network_cidr: string?, local_ipv_6_network_cidr: string?, remote_ipv_6_network_cidr: string?, dry_run: boolean? }
       class ModifyVpnConnectionOptionsResult
         attr_accessor vpn_connection: VpnConnection
       end
+      type modify_vpn_connection_request = { vpn_connection_id: vpn_connection_id, transit_gateway_id: transit_gateway_id?, customer_gateway_id: customer_gateway_id?, vpn_gateway_id: vpn_gateway_id?, dry_run: boolean? }
       class ModifyVpnConnectionResult
         attr_accessor vpn_connection: VpnConnection
       end
+      type modify_vpn_tunnel_certificate_request = { vpn_connection_id: vpn_connection_id, vpn_tunnel_outside_ip_address: string, dry_run: boolean? }
       class ModifyVpnTunnelCertificateResult
         attr_accessor vpn_connection: VpnConnection
       end
+      type modify_vpn_tunnel_options_request = { vpn_connection_id: vpn_connection_id, vpn_tunnel_outside_ip_address: string, tunnel_options: modify_vpn_tunnel_options_specification, dry_run: boolean? }
       class ModifyVpnTunnelOptionsResult
         attr_accessor vpn_connection: VpnConnection
       end
       type modify_vpn_tunnel_options_specification = { tunnel_inside_cidr: string?, tunnel_inside_ipv_6_cidr: string?, pre_shared_key: string?, phase_1_lifetime_seconds: integer?, phase_2_lifetime_seconds: integer?, rekey_margin_time_seconds: integer?, rekey_fuzz_percentage: integer?, replay_window_size: integer?, dpd_timeout_seconds: integer?, dpd_timeout_action: string?, phase_1_encryption_algorithms: phase_1_encryption_algorithms_request_list?, phase_2_encryption_algorithms: phase_2_encryption_algorithms_request_list?, phase_1_integrity_algorithms: phase_1_integrity_algorithms_request_list?, phase_2_integrity_algorithms: phase_2_integrity_algorithms_request_list?, phase_1_dh_group_numbers: phase_1_dh_group_numbers_request_list?, phase_2_dh_group_numbers: phase_2_dh_group_numbers_request_list?, ike_versions: ike_versions_request_list?, startup_action: string? }
+      type monitor_instances_request = { instance_ids: instance_id_string_list, dry_run: boolean? }
       class MonitorInstancesResult
         attr_accessor instance_monitorings: instance_monitoring_list
       end
@@ -4116,10 +4572,12 @@ module Aws
         attr_accessor state: monitoring_state
       end
       type monitoring_state = ("disabled" | "disabling" | "enabled" | "pending")
+      type move_address_to_vpc_request = { dry_run: boolean?, public_ip: string }
       class MoveAddressToVpcResult
         attr_accessor allocation_id: string
         attr_accessor status: status
       end
+      type move_byoip_cidr_to_ipam_request = { dry_run: boolean?, cidr: string, ipam_pool_id: ipam_pool_id, ipam_pool_owner: string }
       class MoveByoipCidrToIpamResult
         attr_accessor byoip_cidr: ByoipCidr
       end
@@ -4625,12 +5083,15 @@ module Aws
       type protocol = ("tcp" | "udp")
       type protocol_list = ::Array[protocol]
       type protocol_value = ("gre")
+      type provision_byoip_cidr_request = { cidr: string, cidr_authorization_context: cidr_authorization_context?, publicly_advertisable: boolean?, description: string?, dry_run: boolean?, pool_tag_specifications: tag_specification_list_input?, multi_region: boolean? }
       class ProvisionByoipCidrResult
         attr_accessor byoip_cidr: ByoipCidr
       end
+      type provision_ipam_pool_cidr_request = { dry_run: boolean?, ipam_pool_id: ipam_pool_id, cidr: string?, cidr_authorization_context: ipam_cidr_authorization_context? }
       class ProvisionIpamPoolCidrResult
         attr_accessor ipam_pool_cidr: IpamPoolCidr
       end
+      type provision_public_ipv_4_pool_cidr_request = { dry_run: boolean?, ipam_pool_id: ipam_pool_id, pool_id: ipv_4_pool_ec2_id, netmask_length: integer }
       class ProvisionPublicIpv4PoolCidrResult
         attr_accessor pool_id: ipv_4_pool_ec2_id
         attr_accessor pool_address_range: PublicIpv4PoolRange
@@ -4677,6 +5138,7 @@ module Aws
         attr_accessor payment_option: payment_option
         attr_accessor upfront_price: string
       end
+      type purchase_host_reservation_request = { client_token: string?, currency_code: currency_code_values?, host_id_set: request_host_id_set, limit_price: string?, offering_id: offering_id, tag_specifications: tag_specification_list_input? }
       class PurchaseHostReservationResult
         attr_accessor client_token: string
         attr_accessor currency_code: currency_code_values
@@ -4686,9 +5148,11 @@ module Aws
       end
       type purchase_request = { instance_count: integer, purchase_token: string }
       type purchase_request_set = ::Array[purchase_request]
+      type purchase_reserved_instances_offering_request = { instance_count: integer, reserved_instances_offering_id: reserved_instances_offering_id, dry_run: boolean?, limit_price: reserved_instance_limit_price?, purchase_time: date_time? }
       class PurchaseReservedInstancesOfferingResult
         attr_accessor reserved_instances_id: string
       end
+      type purchase_scheduled_instances_request = { client_token: string?, dry_run: boolean?, purchase_requests: purchase_request_set }
       class PurchaseScheduledInstancesResult
         attr_accessor scheduled_instance_set: purchased_scheduled_instance_set
       end
@@ -4697,6 +5161,7 @@ module Aws
       type ri_product_description = ("Linux/UNIX" | "Linux/UNIX (Amazon VPC)" | "Windows" | "Windows (Amazon VPC)")
       type ramdisk_id = ::String
       type reason_codes_list = ::Array[report_instance_reason_codes]
+      type reboot_instances_request = { instance_ids: instance_id_string_list, dry_run: boolean? }
       class RecurringCharge
         attr_accessor amount: double
         attr_accessor frequency: recurring_charge_frequency
@@ -4718,38 +5183,50 @@ module Aws
       type region_list = ::Array[Region]
       type region_name_string_list = ::Array[string]
       type region_names = ::Array[string]
+      type register_image_request = { image_location: string?, architecture: architecture_values?, block_device_mappings: block_device_mapping_request_list_input?, description: string?, dry_run: boolean?, ena_support: boolean?, kernel_id: kernel_id?, name: string, billing_products: billing_product_list?, ramdisk_id: ramdisk_id?, root_device_name: string?, sriov_net_support: string?, virtualization_type: string?, boot_mode: boot_mode_values? }
       class RegisterImageResult
         attr_accessor image_id: string
       end
+      type register_instance_event_notification_attributes_request = { dry_run: boolean?, instance_tag_attribute: register_instance_tag_attribute_request? }
       class RegisterInstanceEventNotificationAttributesResult
         attr_accessor instance_tag_attribute: InstanceTagNotificationAttribute
       end
       type register_instance_tag_attribute_request = { include_all_tags_of_instance: boolean?, instance_tag_keys: instance_tag_key_set? }
+      type register_transit_gateway_multicast_group_members_request = { transit_gateway_multicast_domain_id: transit_gateway_multicast_domain_id?, group_ip_address: string?, network_interface_ids: transit_gateway_network_interface_id_list?, dry_run: boolean? }
       class RegisterTransitGatewayMulticastGroupMembersResult
         attr_accessor registered_multicast_group_members: TransitGatewayMulticastRegisteredGroupMembers
       end
+      type register_transit_gateway_multicast_group_sources_request = { transit_gateway_multicast_domain_id: transit_gateway_multicast_domain_id?, group_ip_address: string?, network_interface_ids: transit_gateway_network_interface_id_list?, dry_run: boolean? }
       class RegisterTransitGatewayMulticastGroupSourcesResult
         attr_accessor registered_multicast_group_sources: TransitGatewayMulticastRegisteredGroupSources
       end
+      type reject_transit_gateway_multicast_domain_associations_request = { transit_gateway_multicast_domain_id: transit_gateway_multicast_domain_id?, transit_gateway_attachment_id: transit_gateway_attachment_id?, subnet_ids: value_string_list?, dry_run: boolean? }
       class RejectTransitGatewayMulticastDomainAssociationsResult
         attr_accessor associations: TransitGatewayMulticastDomainAssociations
       end
+      type reject_transit_gateway_peering_attachment_request = { transit_gateway_attachment_id: transit_gateway_attachment_id, dry_run: boolean? }
       class RejectTransitGatewayPeeringAttachmentResult
         attr_accessor transit_gateway_peering_attachment: TransitGatewayPeeringAttachment
       end
+      type reject_transit_gateway_vpc_attachment_request = { transit_gateway_attachment_id: transit_gateway_attachment_id, dry_run: boolean? }
       class RejectTransitGatewayVpcAttachmentResult
         attr_accessor transit_gateway_vpc_attachment: TransitGatewayVpcAttachment
       end
+      type reject_vpc_endpoint_connections_request = { dry_run: boolean?, service_id: vpc_endpoint_service_id, vpc_endpoint_ids: vpc_endpoint_id_list }
       class RejectVpcEndpointConnectionsResult
         attr_accessor unsuccessful: unsuccessful_item_set
       end
+      type reject_vpc_peering_connection_request = { dry_run: boolean?, vpc_peering_connection_id: vpc_peering_connection_id }
       class RejectVpcPeeringConnectionResult
         attr_accessor return: boolean
       end
+      type release_address_request = { allocation_id: allocation_id?, public_ip: string?, network_border_group: string?, dry_run: boolean? }
+      type release_hosts_request = { host_ids: request_host_id_list }
       class ReleaseHostsResult
         attr_accessor successful: response_host_id_list
         attr_accessor unsuccessful: unsuccessful_item_list
       end
+      type release_ipam_pool_allocation_request = { dry_run: boolean?, ipam_pool_id: ipam_pool_id, cidr: string, ipam_pool_allocation_id: ipam_pool_allocation_id? }
       class ReleaseIpamPoolAllocationResult
         attr_accessor success: boolean
       end
@@ -4757,12 +5234,15 @@ module Aws
       type remove_ipam_operating_region_set = ::Array[remove_ipam_operating_region]
       type remove_prefix_list_entries = ::Array[remove_prefix_list_entry]
       type remove_prefix_list_entry = { cidr: string }
+      type replace_iam_instance_profile_association_request = { iam_instance_profile: iam_instance_profile_specification, association_id: iam_instance_profile_association_id }
       class ReplaceIamInstanceProfileAssociationResult
         attr_accessor iam_instance_profile_association: IamInstanceProfileAssociation
       end
+      type replace_network_acl_association_request = { association_id: network_acl_association_id, dry_run: boolean?, network_acl_id: network_acl_id }
       class ReplaceNetworkAclAssociationResult
         attr_accessor new_association_id: string
       end
+      type replace_network_acl_entry_request = { cidr_block: string?, dry_run: boolean?, egress: boolean, icmp_type_code: icmp_type_code?, ipv_6_cidr_block: string?, network_acl_id: network_acl_id, port_range: port_range?, protocol: string, rule_action: rule_action, rule_number: integer }
       class ReplaceRootVolumeTask
         attr_accessor replace_root_volume_task_id: replace_root_volume_task_id
         attr_accessor instance_id: string
@@ -4775,15 +5255,19 @@ module Aws
       type replace_root_volume_task_ids = ::Array[replace_root_volume_task_id]
       type replace_root_volume_task_state = ("pending" | "in-progress" | "failing" | "succeeded" | "failed" | "failed-detached")
       type replace_root_volume_tasks_output = ::Array[ReplaceRootVolumeTask]
+      type replace_route_request = { destination_cidr_block: string?, destination_ipv_6_cidr_block: string?, destination_prefix_list_id: prefix_list_resource_id?, dry_run: boolean?, vpc_endpoint_id: vpc_endpoint_id?, egress_only_internet_gateway_id: egress_only_internet_gateway_id?, gateway_id: route_gateway_id?, instance_id: instance_id?, local_target: boolean?, nat_gateway_id: nat_gateway_id?, transit_gateway_id: transit_gateway_id?, local_gateway_id: local_gateway_id?, carrier_gateway_id: carrier_gateway_id?, network_interface_id: network_interface_id?, route_table_id: route_table_id, vpc_peering_connection_id: vpc_peering_connection_id?, core_network_arn: core_network_arn? }
+      type replace_route_table_association_request = { association_id: route_table_association_id, dry_run: boolean?, route_table_id: route_table_id }
       class ReplaceRouteTableAssociationResult
         attr_accessor new_association_id: string
         attr_accessor association_state: RouteTableAssociationState
       end
+      type replace_transit_gateway_route_request = { destination_cidr_block: string, transit_gateway_route_table_id: transit_gateway_route_table_id, transit_gateway_attachment_id: transit_gateway_attachment_id?, blackhole: boolean?, dry_run: boolean? }
       class ReplaceTransitGatewayRouteResult
         attr_accessor route: TransitGatewayRoute
       end
       type replacement_strategy = ("launch" | "launch-before-terminate")
       type report_instance_reason_codes = ("instance-stuck-in-state" | "unresponsive" | "not-accepting-credentials" | "password-not-available" | "performance-network" | "performance-instance-store" | "performance-ebs-volume" | "performance-other" | "other")
+      type report_instance_status_request = { description: string?, dry_run: boolean?, end_time: date_time?, instances: instance_id_string_list, reason_codes: reason_codes_list, start_time: date_time?, status: report_status_type }
       type report_status_type = ("ok" | "impaired")
       type request_host_id_list = ::Array[dedicated_host_id]
       type request_host_id_set = ::Array[dedicated_host_id]
@@ -4791,9 +5275,11 @@ module Aws
       type request_ipam_resource_tag = { key: string?, value: string? }
       type request_ipam_resource_tag_list_input = ::Array[request_ipam_resource_tag]
       type request_launch_template_data = { kernel_id: kernel_id?, ebs_optimized: boolean?, iam_instance_profile: launch_template_iam_instance_profile_specification_request?, block_device_mappings: launch_template_block_device_mapping_request_list?, network_interfaces: launch_template_instance_network_interface_specification_request_list?, image_id: image_id?, instance_type: instance_type?, key_name: key_pair_name?, monitoring: launch_templates_monitoring_request?, placement: launch_template_placement_request?, ram_disk_id: ramdisk_id?, disable_api_termination: boolean?, instance_initiated_shutdown_behavior: shutdown_behavior?, user_data: string?, tag_specifications: launch_template_tag_specification_request_list?, elastic_gpu_specifications: elastic_gpu_specification_list_input?, elastic_inference_accelerators: launch_template_elastic_inference_accelerator_list?, security_group_ids: security_group_id_string_list?, security_groups: security_group_string_list?, instance_market_options: launch_template_instance_market_options_request?, credit_specification: credit_specification_request?, cpu_options: launch_template_cpu_options_request?, capacity_reservation_specification: launch_template_capacity_reservation_specification_request?, license_specifications: launch_template_license_specification_list_request?, hibernation_options: launch_template_hibernation_options_request?, metadata_options: launch_template_instance_metadata_options_request?, enclave_options: launch_template_enclave_options_request?, instance_requirements: instance_requirements_request?, private_dns_name_options: launch_template_private_dns_name_options_request? }
+      type request_spot_fleet_request = { dry_run: boolean?, spot_fleet_request_config: spot_fleet_request_config_data }
       class RequestSpotFleetResponse
         attr_accessor spot_fleet_request_id: string
       end
+      type request_spot_instances_request = { availability_zone_group: string?, block_duration_minutes: integer?, client_token: string?, dry_run: boolean?, instance_count: integer?, launch_group: string?, launch_specification: request_spot_launch_specification?, spot_price: string?, type: spot_instance_type?, valid_from: date_time?, valid_until: date_time?, tag_specifications: tag_specification_list_input?, instance_interruption_behavior: instance_interruption_behavior? }
       class RequestSpotInstancesResult
         attr_accessor spot_instance_requests: spot_instance_request_list
       end
@@ -4913,17 +5399,24 @@ module Aws
       type reserved_instances_offering_id_string_list = ::Array[reserved_instances_offering_id]
       type reserved_instances_offering_list = ::Array[ReservedInstancesOffering]
       type reserved_intances_ids = ::Array[ReservedInstancesId]
+      type reset_address_attribute_request = { allocation_id: allocation_id, attribute: address_attribute_name, dry_run: boolean? }
       class ResetAddressAttributeResult
         attr_accessor address: AddressAttribute
       end
+      type reset_ebs_default_kms_key_id_request = { dry_run: boolean? }
       class ResetEbsDefaultKmsKeyIdResult
         attr_accessor kms_key_id: string
       end
       type reset_fpga_image_attribute_name = ("loadPermission")
+      type reset_fpga_image_attribute_request = { dry_run: boolean?, fpga_image_id: fpga_image_id, attribute: reset_fpga_image_attribute_name? }
       class ResetFpgaImageAttributeResult
         attr_accessor return: boolean
       end
       type reset_image_attribute_name = ("launchPermission")
+      type reset_image_attribute_request = { attribute: reset_image_attribute_name, image_id: image_id, dry_run: boolean? }
+      type reset_instance_attribute_request = { attribute: instance_attribute_name, dry_run: boolean?, instance_id: instance_id }
+      type reset_network_interface_attribute_request = { dry_run: boolean?, network_interface_id: network_interface_id, source_dest_check: string? }
+      type reset_snapshot_attribute_request = { attribute: snapshot_attribute_name, snapshot_id: snapshot_id, dry_run: boolean? }
       type resource_arn = ::String
       type resource_id_list = ::Array[taggable_resource_id]
       type resource_list = ::Array[string]
@@ -4971,13 +5464,16 @@ module Aws
         attr_accessor private_dns_name_options: LaunchTemplatePrivateDnsNameOptions
       end
       type restorable_by_string_list = ::Array[string]
+      type restore_address_to_classic_request = { dry_run: boolean?, public_ip: string }
       class RestoreAddressToClassicResult
         attr_accessor public_ip: string
         attr_accessor status: status
       end
+      type restore_managed_prefix_list_version_request = { dry_run: boolean?, prefix_list_id: prefix_list_resource_id, previous_version: long, current_version: long }
       class RestoreManagedPrefixListVersionResult
         attr_accessor prefix_list: ManagedPrefixList
       end
+      type restore_snapshot_from_recycle_bin_request = { snapshot_id: snapshot_id, dry_run: boolean? }
       class RestoreSnapshotFromRecycleBinResult
         attr_accessor snapshot_id: string
         attr_accessor outpost_arn: string
@@ -4990,6 +5486,7 @@ module Aws
         attr_accessor volume_id: string
         attr_accessor volume_size: integer
       end
+      type restore_snapshot_tier_request = { snapshot_id: snapshot_id, temporary_restore_days: restore_snapshot_tier_request_temporary_restore_days?, permanent_restore: boolean?, dry_run: boolean? }
       type restore_snapshot_tier_request_temporary_restore_days = ::Integer
       class RestoreSnapshotTierResult
         attr_accessor snapshot_id: string
@@ -4998,13 +5495,16 @@ module Aws
         attr_accessor is_permanent_restore: boolean
       end
       type result_range = ::Integer
+      type revoke_client_vpn_ingress_request = { client_vpn_endpoint_id: client_vpn_endpoint_id, target_network_cidr: string, access_group_id: string?, revoke_all_groups: boolean?, dry_run: boolean? }
       class RevokeClientVpnIngressResult
         attr_accessor status: ClientVpnAuthorizationRuleStatus
       end
+      type revoke_security_group_egress_request = { dry_run: boolean?, group_id: security_group_id, ip_permissions: ip_permission_list_input?, security_group_rule_ids: security_group_rule_id_list?, cidr_ip: string?, from_port: integer?, ip_protocol: string?, to_port: integer?, source_security_group_name: string?, source_security_group_owner_id: string? }
       class RevokeSecurityGroupEgressResult
         attr_accessor return: boolean
         attr_accessor unknown_ip_permissions: ip_permission_list_output
       end
+      type revoke_security_group_ingress_request = { cidr_ip: string?, from_port: integer?, group_id: security_group_id?, group_name: security_group_name?, ip_permissions: ip_permission_list_input?, ip_protocol: string?, source_security_group_name: string?, source_security_group_owner_id: string?, to_port: integer?, dry_run: boolean?, security_group_rule_ids: security_group_rule_id_list? }
       class RevokeSecurityGroupIngressResult
         attr_accessor return: boolean
         attr_accessor unknown_ip_permissions: ip_permission_list_output
@@ -5065,6 +5565,8 @@ module Aws
         attr_accessor enabled: boolean
       end
       type run_instances_monitoring_enabled = { enabled: boolean }
+      type run_instances_request = { block_device_mappings: block_device_mapping_request_list_input?, image_id: image_id?, instance_type: instance_type?, ipv_6_address_count: integer?, ipv_6_addresses: instance_ipv_6_address_list_input?, kernel_id: kernel_id?, key_name: key_pair_name?, max_count: integer, min_count: integer, monitoring: run_instances_monitoring_enabled?, placement: placement?, ramdisk_id: ramdisk_id?, security_group_ids: security_group_id_string_list?, security_groups: security_group_string_list?, subnet_id: subnet_id?, user_data: string?, additional_info: string?, client_token: string?, disable_api_termination: boolean?, dry_run: boolean?, ebs_optimized: boolean?, iam_instance_profile: iam_instance_profile_specification?, instance_initiated_shutdown_behavior: shutdown_behavior?, network_interfaces: instance_network_interface_specification_list_input?, private_ip_address: string?, elastic_gpu_specification: elastic_gpu_specifications_input?, elastic_inference_accelerators: elastic_inference_accelerators?, tag_specifications: tag_specification_list_input?, launch_template: launch_template_specification?, instance_market_options: instance_market_options_request?, credit_specification: credit_specification_request?, cpu_options: cpu_options_request?, capacity_reservation_specification: capacity_reservation_specification?, hibernation_options: hibernation_options_request?, license_specifications: license_specification_list_request?, metadata_options: instance_metadata_options_request?, enclave_options: enclave_options_request?, private_dns_name_options: private_dns_name_options_request? }
+      type run_scheduled_instances_request = { client_token: string?, dry_run: boolean?, instance_count: integer?, launch_specification: scheduled_instances_launch_specification, scheduled_instance_id: scheduled_instance_id }
       class RunScheduledInstancesResult
         attr_accessor instance_id_set: instance_id_set
       end
@@ -5135,14 +5637,17 @@ module Aws
       type scheduled_instances_placement = { availability_zone: string?, group_name: placement_group_name? }
       type scheduled_instances_private_ip_address_config = { primary: boolean?, private_ip_address: string? }
       type scheduled_instances_security_group_id_set = ::Array[security_group_id]
+      type search_local_gateway_routes_request = { local_gateway_route_table_id: local_gateway_routetable_id, filters: filter_list?, max_results: max_results?, next_token: string?, dry_run: boolean? }
       class SearchLocalGatewayRoutesResult
         attr_accessor routes: local_gateway_route_list_output
         attr_accessor next_token: string
       end
+      type search_transit_gateway_multicast_groups_request = { transit_gateway_multicast_domain_id: transit_gateway_multicast_domain_id?, filters: filter_list?, max_results: transit_gateway_max_results?, next_token: string?, dry_run: boolean? }
       class SearchTransitGatewayMulticastGroupsResult
         attr_accessor multicast_groups: transit_gateway_multicast_group_list
         attr_accessor next_token: string
       end
+      type search_transit_gateway_routes_request = { transit_gateway_route_table_id: transit_gateway_route_table_id, filters: filter_list, max_results: transit_gateway_max_results?, dry_run: boolean? }
       class SearchTransitGatewayRoutesResult
         attr_accessor routes: transit_gateway_route_list_output
         attr_accessor additional_routes_available: boolean
@@ -5196,6 +5701,7 @@ module Aws
       type security_group_rule_update_list = ::Array[security_group_rule_update]
       type security_group_string_list = ::Array[security_group_name]
       type self_service_portal = ("enabled" | "disabled")
+      type send_diagnostic_interrupt_request = { instance_id: instance_id, dry_run: boolean? }
       type sensitive_user_data = ::String
       class ServiceConfiguration
         attr_accessor service_type: service_type_detail_set
@@ -5505,15 +6011,19 @@ module Aws
         attr_accessor vpc_id: string
       end
       type stale_security_group_set = ::Array[StaleSecurityGroup]
+      type start_instances_request = { instance_ids: instance_id_string_list, additional_info: string?, dry_run: boolean? }
       class StartInstancesResult
         attr_accessor starting_instances: instance_state_change_list
       end
+      type start_network_insights_access_scope_analysis_request = { network_insights_access_scope_id: network_insights_access_scope_id, dry_run: boolean?, tag_specifications: tag_specification_list_input?, client_token: string }
       class StartNetworkInsightsAccessScopeAnalysisResult
         attr_accessor network_insights_access_scope_analysis: NetworkInsightsAccessScopeAnalysis
       end
+      type start_network_insights_analysis_request = { network_insights_path_id: network_insights_path_id, filter_in_arns: arn_list?, dry_run: boolean?, tag_specifications: tag_specification_list_input?, client_token: string }
       class StartNetworkInsightsAnalysisResult
         attr_accessor network_insights_analysis: NetworkInsightsAnalysis
       end
+      type start_vpc_endpoint_service_private_dns_verification_request = { dry_run: boolean?, service_id: vpc_endpoint_service_id }
       class StartVpcEndpointServicePrivateDnsVerificationResult
         attr_accessor return_value: boolean
       end
@@ -5526,6 +6036,7 @@ module Aws
       type status = ("MoveInProgress" | "InVpc" | "InClassic")
       type status_name = ("reachability")
       type status_type = ("passed" | "failed" | "insufficient-data" | "initializing")
+      type stop_instances_request = { instance_ids: instance_id_string_list, hibernate: boolean?, dry_run: boolean?, force: boolean? }
       class StopInstancesResult
         attr_accessor stopping_instances: instance_state_change_list
       end
@@ -5676,6 +6187,7 @@ module Aws
       type target_storage_tier = ("archive")
       type telemetry_status = ("UP" | "DOWN")
       type tenancy = ("default" | "dedicated" | "host")
+      type terminate_client_vpn_connections_request = { client_vpn_endpoint_id: client_vpn_endpoint_id, connection_id: vpn_connection_id?, username: string?, dry_run: boolean? }
       class TerminateClientVpnConnectionsResult
         attr_accessor client_vpn_endpoint_id: string
         attr_accessor username: string
@@ -5687,6 +6199,7 @@ module Aws
         attr_accessor current_status: ClientVpnConnectionStatus
       end
       type terminate_connection_status_set = ::Array[TerminateConnectionStatus]
+      type terminate_instances_request = { instance_ids: instance_id_string_list, dry_run: boolean? }
       class TerminateInstancesResult
         attr_accessor terminating_instances: instance_state_change_list
       end
@@ -6080,12 +6593,15 @@ module Aws
         attr_accessor startup_action: string
       end
       type tunnel_options_list = ::Array[TunnelOption]
+      type unassign_ipv_6_addresses_request = { ipv_6_addresses: ipv_6_address_list?, ipv_6_prefixes: ip_prefix_list?, network_interface_id: network_interface_id }
       class UnassignIpv6AddressesResult
         attr_accessor network_interface_id: string
         attr_accessor unassigned_ipv_6_addresses: ipv_6_address_list
         attr_accessor unassigned_ipv_6_prefixes: ip_prefix_list
       end
+      type unassign_private_ip_addresses_request = { network_interface_id: network_interface_id, private_ip_addresses: private_ip_address_string_list?, ipv_4_prefixes: ip_prefix_list? }
       type unlimited_supported_instance_family = ("t2" | "t3" | "t3a" | "t4g")
+      type unmonitor_instances_request = { instance_ids: instance_id_string_list, dry_run: boolean? }
       class UnmonitorInstancesResult
         attr_accessor instance_monitorings: instance_monitoring_list
       end
@@ -6109,9 +6625,11 @@ module Aws
       end
       type unsuccessful_item_list = ::Array[UnsuccessfulItem]
       type unsuccessful_item_set = ::Array[UnsuccessfulItem]
+      type update_security_group_rule_descriptions_egress_request = { dry_run: boolean?, group_id: security_group_id?, group_name: security_group_name?, ip_permissions: ip_permission_list_input?, security_group_rule_descriptions: security_group_rule_description_list? }
       class UpdateSecurityGroupRuleDescriptionsEgressResult
         attr_accessor return: boolean
       end
+      type update_security_group_rule_descriptions_ingress_request = { dry_run: boolean?, group_id: security_group_id?, group_name: security_group_name?, ip_permissions: ip_permission_list_input?, security_group_rule_descriptions: security_group_rule_description_list? }
       class UpdateSecurityGroupRuleDescriptionsIngressResult
         attr_accessor return: boolean
       end
@@ -6456,6 +6974,7 @@ module Aws
       type vpn_tunnel_options_specification = { tunnel_inside_cidr: string?, tunnel_inside_ipv_6_cidr: string?, pre_shared_key: string?, phase_1_lifetime_seconds: integer?, phase_2_lifetime_seconds: integer?, rekey_margin_time_seconds: integer?, rekey_fuzz_percentage: integer?, replay_window_size: integer?, dpd_timeout_seconds: integer?, dpd_timeout_action: string?, phase_1_encryption_algorithms: phase_1_encryption_algorithms_request_list?, phase_2_encryption_algorithms: phase_2_encryption_algorithms_request_list?, phase_1_integrity_algorithms: phase_1_integrity_algorithms_request_list?, phase_2_integrity_algorithms: phase_2_integrity_algorithms_request_list?, phase_1_dh_group_numbers: phase_1_dh_group_numbers_request_list?, phase_2_dh_group_numbers: phase_2_dh_group_numbers_request_list?, ike_versions: ike_versions_request_list?, startup_action: string? }
       type vpn_tunnel_options_specifications_list = ::Array[vpn_tunnel_options_specification]
       type week_day = ("sunday" | "monday" | "tuesday" | "wednesday" | "thursday" | "friday" | "saturday")
+      type withdraw_byoip_cidr_request = { cidr: string, dry_run: boolean? }
       class WithdrawByoipCidrResult
         attr_accessor byoip_cidr: ByoipCidr
       end
