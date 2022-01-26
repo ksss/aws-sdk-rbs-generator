@@ -28,4 +28,10 @@ module Aws
       attr_accessor self.code: String
     end
   end
+
+  module Waiters
+    class Poller
+    end
+    type options = { max_attempts: Integer?, delay: Integer?, before_attempt: Proc?, before_wait: Proc?, poller: Poller? }
+  end
 end
