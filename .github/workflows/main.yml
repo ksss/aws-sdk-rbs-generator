@@ -23,7 +23,5 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
-    - name: Run steep check on /test
-      run: |
-        cd test
-        bundle exec steep check
+    - name: Run steep check
+      run: bundle exec steep check test
