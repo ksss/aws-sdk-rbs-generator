@@ -75,9 +75,15 @@ module AwsSdkRbsGenerator
     def each: () { ([String, Array[Shape]]) -> void } -> self
   end
 
-  class RootResourceClass
-    @service: Service
-    def initialize: (service: Service) -> void
-    def build_source: () -> String
+  module Views
+    class ResourceClass
+      attr_reader waiters: Array[MethodSignature]
+    end
+
+    class RootResourceClass
+      @service: Service
+      def initialize: (service: Service) -> void
+      def build_source: () -> String
+    end
   end
 end

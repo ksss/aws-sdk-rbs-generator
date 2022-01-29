@@ -38,8 +38,8 @@ module Aws
 
       # waiters
 
-      def exists?: () -> bool
-      def wait_until_exists: () -> self
+      def exists?: (?Aws::Waiters::Waiter::options options) -> bool
+      def wait_until_exists: (?Aws::Waiters::Waiter::options options) -> self
 
       # actions
 

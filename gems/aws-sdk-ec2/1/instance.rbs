@@ -85,11 +85,11 @@ module Aws
 
       # waiters
 
-      def exists?: () -> bool
-      def wait_until_exists: () -> self
-      def wait_until_running: () -> self
-      def wait_until_stopped: () -> self
-      def wait_until_terminated: () -> self
+      def exists?: (?Aws::Waiters::Waiter::options options) -> bool
+      def wait_until_exists: (?Aws::Waiters::Waiter::options options) -> self
+      def wait_until_running: (?Aws::Waiters::Waiter::options options) -> self
+      def wait_until_stopped: (?Aws::Waiters::Waiter::options options) -> self
+      def wait_until_terminated: (?Aws::Waiters::Waiter::options options) -> self
 
       # actions
 
