@@ -30,6 +30,19 @@ module Aws
   end
 
   module Waiters
+    module Errors
+      class WaiterFailed < StandardError
+      end
+      class FailureStateError < WaiterFailed
+      end
+      class TooManyAttemptsError < WaiterFailed
+      end
+      class UnexpectedError < WaiterFailed
+      end
+      class NoSuchWaiterError < ArgumentError
+      end
+    end
+
     class Poller
     end
 
