@@ -32,8 +32,9 @@ module Aws
   module Waiters
     class Poller
     end
+
     class Waiter
-      type options = { max_attempts: Integer?, delay: Numeric?, before_attempt: Proc?, before_wait: Proc?, poller: Poller? }
+      type options = { max_attempts: Integer?, delay: Numeric?, before_attempt: (^(Integer attempts) -> void)?, before_wait: (^(Integer attempts, untyped response) -> void)? }
     end
   end
 end
