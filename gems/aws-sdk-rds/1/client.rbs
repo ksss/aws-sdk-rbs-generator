@@ -150,12 +150,12 @@ module Aws
       def stop_db_cluster: (db_cluster_identifier: Types::string) -> Types::StopDBClusterResult
       def stop_db_instance: (db_instance_identifier: Types::string, ?db_snapshot_identifier: Types::string) -> Types::StopDBInstanceResult
       def stop_db_instance_automated_backups_replication: (source_db_instance_arn: Types::string) -> Types::StopDBInstanceAutomatedBackupsReplicationResult
-      def wait_until: (:db_cluster_snapshot_available waiter_name, Types::describe_db_cluster_snapshots_message params, ?Aws::Waiters::Waiter::options options) -> Types::DBClusterSnapshotMessage
-                    | (:db_cluster_snapshot_deleted waiter_name, Types::describe_db_cluster_snapshots_message params, ?Aws::Waiters::Waiter::options options) -> Types::DBClusterSnapshotMessage
-                    | (:db_instance_available waiter_name, Types::describe_db_instances_message params, ?Aws::Waiters::Waiter::options options) -> Types::DBInstanceMessage
-                    | (:db_instance_deleted waiter_name, Types::describe_db_instances_message params, ?Aws::Waiters::Waiter::options options) -> Types::DBInstanceMessage
-                    | (:db_snapshot_available waiter_name, Types::describe_db_snapshots_message params, ?Aws::Waiters::Waiter::options options) -> Types::DBSnapshotMessage
-                    | (:db_snapshot_deleted waiter_name, Types::describe_db_snapshots_message params, ?Aws::Waiters::Waiter::options options) -> Types::DBSnapshotMessage
+      def wait_until: (:db_cluster_snapshot_available waiter_name, Types::describe_db_cluster_snapshots_message params, ?Waiters::waiter_options options) -> Types::DBClusterSnapshotMessage
+                    | (:db_cluster_snapshot_deleted waiter_name, Types::describe_db_cluster_snapshots_message params, ?Waiters::waiter_options options) -> Types::DBClusterSnapshotMessage
+                    | (:db_instance_available waiter_name, Types::describe_db_instances_message params, ?Waiters::waiter_options options) -> Types::DBInstanceMessage
+                    | (:db_instance_deleted waiter_name, Types::describe_db_instances_message params, ?Waiters::waiter_options options) -> Types::DBInstanceMessage
+                    | (:db_snapshot_available waiter_name, Types::describe_db_snapshots_message params, ?Waiters::waiter_options options) -> Types::DBSnapshotMessage
+                    | (:db_snapshot_deleted waiter_name, Types::describe_db_snapshots_message params, ?Waiters::waiter_options options) -> Types::DBSnapshotMessage
     end
   end
 end
