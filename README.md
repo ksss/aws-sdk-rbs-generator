@@ -1,3 +1,9 @@
+# DEPRECATED
+
+This repository has been merged into https://github.com/ruby/gem_rbs_collection
+
+https://github.com/ruby/gem_rbs_collection/pull/118
+
 # aws-sdk-rbs-generator
 
 RBS generator for [aws-sdk-ruby](https://github.com/aws/aws-sdk-ruby).
